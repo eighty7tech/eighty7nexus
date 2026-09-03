@@ -1,0 +1,2374 @@
+{
+  "products": [
+    {
+      "title": "Atlas Mobile Pro 00",
+      "slug": "seed-200-mobile-tablets-00",
+      "sku": "S200-MOB-00",
+      "description": "Atlas Mobile Pro 00 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Atlas Mobile Pro 00 for practical everyday use.",
+      "category": "Mobile & Tablets",
+      "productType": "Mobile & Tablets",
+      "price": 299,
+      "comparePrice": 369,
+      "cost": 180,
+      "stock": 10,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-mobile-tablets",
+        "tech",
+        "premium",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": true,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Midnight",
+              "colorCode": "#111827"
+            },
+            {
+              "value": "Silver",
+              "colorCode": "#D1D5DB"
+            }
+          ]
+        },
+        {
+          "name": "Storage",
+          "values": [
+            "128 GB",
+            "256 GB"
+          ]
+        }
+      ],
+      "weight": "0.22",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Atlas Mobile Pro 01",
+      "slug": "seed-200-mobile-tablets-01",
+      "sku": "S200-MOB-01",
+      "description": "Atlas Mobile Pro 01 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Atlas Mobile Pro 01 for practical everyday use.",
+      "category": "Mobile & Tablets",
+      "productType": "Mobile & Tablets",
+      "price": 317,
+      "comparePrice": 387,
+      "cost": 190,
+      "stock": 11,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-mobile-tablets",
+        "tech",
+        "premium",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Midnight",
+              "colorCode": "#111827"
+            },
+            {
+              "value": "Silver",
+              "colorCode": "#D1D5DB"
+            }
+          ]
+        },
+        {
+          "name": "Storage",
+          "values": [
+            "128 GB",
+            "256 GB"
+          ]
+        }
+      ],
+      "weight": "0.22",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Atlas Mobile Pro 02",
+      "slug": "seed-200-mobile-tablets-02",
+      "sku": "S200-MOB-02",
+      "description": "Atlas Mobile Pro 02 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Atlas Mobile Pro 02 for practical everyday use.",
+      "category": "Mobile & Tablets",
+      "productType": "Mobile & Tablets",
+      "price": 335,
+      "comparePrice": 405,
+      "cost": 200,
+      "stock": 12,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-mobile-tablets",
+        "tech",
+        "premium",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Midnight",
+              "colorCode": "#111827"
+            },
+            {
+              "value": "Silver",
+              "colorCode": "#D1D5DB"
+            }
+          ]
+        },
+        {
+          "name": "Storage",
+          "values": [
+            "128 GB",
+            "256 GB"
+          ]
+        }
+      ],
+      "weight": "0.22",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Atlas Mobile Pro 03",
+      "slug": "seed-200-mobile-tablets-03",
+      "sku": "S200-MOB-03",
+      "description": "Atlas Mobile Pro 03 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Atlas Mobile Pro 03 for practical everyday use.",
+      "category": "Mobile & Tablets",
+      "productType": "Mobile & Tablets",
+      "price": 353,
+      "comparePrice": 423,
+      "cost": 210,
+      "stock": 13,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-mobile-tablets",
+        "tech",
+        "premium",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Midnight",
+              "colorCode": "#111827"
+            },
+            {
+              "value": "Silver",
+              "colorCode": "#D1D5DB"
+            }
+          ]
+        },
+        {
+          "name": "Storage",
+          "values": [
+            "128 GB",
+            "256 GB"
+          ]
+        }
+      ],
+      "weight": "0.22",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Atlas Mobile Pro 04",
+      "slug": "seed-200-mobile-tablets-04",
+      "sku": "S200-MOB-04",
+      "description": "Atlas Mobile Pro 04 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Atlas Mobile Pro 04 for practical everyday use.",
+      "category": "Mobile & Tablets",
+      "productType": "Mobile & Tablets",
+      "price": 371,
+      "comparePrice": 441,
+      "cost": 220,
+      "stock": 14,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-mobile-tablets",
+        "tech",
+        "premium",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Midnight",
+              "colorCode": "#111827"
+            },
+            {
+              "value": "Silver",
+              "colorCode": "#D1D5DB"
+            }
+          ]
+        },
+        {
+          "name": "Storage",
+          "values": [
+            "128 GB",
+            "256 GB"
+          ]
+        }
+      ],
+      "weight": "0.22",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Axiom Workstation 00",
+      "slug": "seed-200-computing-00",
+      "sku": "S200-CMP-00",
+      "description": "Axiom Workstation 00 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Axiom Workstation 00 for practical everyday use.",
+      "category": "Computing",
+      "productType": "Computing",
+      "price": 549,
+      "comparePrice": 669,
+      "cost": 330,
+      "stock": 10,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-computing",
+        "tech",
+        "premium"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": true,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Graphite",
+              "colorCode": "#374151"
+            },
+            {
+              "value": "Cloud",
+              "colorCode": "#F3F4F6"
+            }
+          ]
+        },
+        {
+          "name": "Configuration",
+          "values": [
+            "Core",
+            "Plus"
+          ]
+        }
+      ],
+      "weight": "1.45",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Axiom Workstation 01",
+      "slug": "seed-200-computing-01",
+      "sku": "S200-CMP-01",
+      "description": "Axiom Workstation 01 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Axiom Workstation 01 for practical everyday use.",
+      "category": "Computing",
+      "productType": "Computing",
+      "price": 579,
+      "comparePrice": 699,
+      "cost": 348,
+      "stock": 11,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-computing",
+        "tech",
+        "premium"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Graphite",
+              "colorCode": "#374151"
+            },
+            {
+              "value": "Cloud",
+              "colorCode": "#F3F4F6"
+            }
+          ]
+        },
+        {
+          "name": "Configuration",
+          "values": [
+            "Core",
+            "Plus"
+          ]
+        }
+      ],
+      "weight": "1.45",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Axiom Workstation 02",
+      "slug": "seed-200-computing-02",
+      "sku": "S200-CMP-02",
+      "description": "Axiom Workstation 02 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Axiom Workstation 02 for practical everyday use.",
+      "category": "Computing",
+      "productType": "Computing",
+      "price": 609,
+      "comparePrice": 729,
+      "cost": 366,
+      "stock": 12,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-computing",
+        "tech",
+        "premium"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Graphite",
+              "colorCode": "#374151"
+            },
+            {
+              "value": "Cloud",
+              "colorCode": "#F3F4F6"
+            }
+          ]
+        },
+        {
+          "name": "Configuration",
+          "values": [
+            "Core",
+            "Plus"
+          ]
+        }
+      ],
+      "weight": "1.45",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Axiom Workstation 03",
+      "slug": "seed-200-computing-03",
+      "sku": "S200-CMP-03",
+      "description": "Axiom Workstation 03 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Axiom Workstation 03 for practical everyday use.",
+      "category": "Computing",
+      "productType": "Computing",
+      "price": 639,
+      "comparePrice": 759,
+      "cost": 384,
+      "stock": 13,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-computing",
+        "tech",
+        "premium"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Graphite",
+              "colorCode": "#374151"
+            },
+            {
+              "value": "Cloud",
+              "colorCode": "#F3F4F6"
+            }
+          ]
+        },
+        {
+          "name": "Configuration",
+          "values": [
+            "Core",
+            "Plus"
+          ]
+        }
+      ],
+      "weight": "1.45",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Axiom Workstation 04",
+      "slug": "seed-200-computing-04",
+      "sku": "S200-CMP-04",
+      "description": "Axiom Workstation 04 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Axiom Workstation 04 for practical everyday use.",
+      "category": "Computing",
+      "productType": "Computing",
+      "price": 669,
+      "comparePrice": 789,
+      "cost": 402,
+      "stock": 14,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-computing",
+        "tech",
+        "premium"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Graphite",
+              "colorCode": "#374151"
+            },
+            {
+              "value": "Cloud",
+              "colorCode": "#F3F4F6"
+            }
+          ]
+        },
+        {
+          "name": "Configuration",
+          "values": [
+            "Core",
+            "Plus"
+          ]
+        }
+      ],
+      "weight": "1.45",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Sonic Pulse 00",
+      "slug": "seed-200-audio-wearables-00",
+      "sku": "S200-AUD-00",
+      "description": "Sonic Pulse 00 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Sonic Pulse 00 for practical everyday use.",
+      "category": "Audio & Wearables",
+      "productType": "Audio & Wearables",
+      "price": 69,
+      "comparePrice": 104,
+      "cost": 32,
+      "stock": 10,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-audio-wearables",
+        "tech",
+        "everyday",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": true,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Onyx",
+              "colorCode": "#111111"
+            },
+            {
+              "value": "Stone",
+              "colorCode": "#A8A29E"
+            }
+          ]
+        },
+        {
+          "name": "Edition",
+          "values": [
+            "Standard",
+            "Travel"
+          ]
+        }
+      ],
+      "weight": "0.34",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Sonic Pulse 01",
+      "slug": "seed-200-audio-wearables-01",
+      "sku": "S200-AUD-01",
+      "description": "Sonic Pulse 01 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Sonic Pulse 01 for practical everyday use.",
+      "category": "Audio & Wearables",
+      "productType": "Audio & Wearables",
+      "price": 80,
+      "comparePrice": 115,
+      "cost": 37,
+      "stock": 11,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-audio-wearables",
+        "tech",
+        "everyday",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Onyx",
+              "colorCode": "#111111"
+            },
+            {
+              "value": "Stone",
+              "colorCode": "#A8A29E"
+            }
+          ]
+        },
+        {
+          "name": "Edition",
+          "values": [
+            "Standard",
+            "Travel"
+          ]
+        }
+      ],
+      "weight": "0.34",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Sonic Pulse 02",
+      "slug": "seed-200-audio-wearables-02",
+      "sku": "S200-AUD-02",
+      "description": "Sonic Pulse 02 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Sonic Pulse 02 for practical everyday use.",
+      "category": "Audio & Wearables",
+      "productType": "Audio & Wearables",
+      "price": 91,
+      "comparePrice": 126,
+      "cost": 42,
+      "stock": 12,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-audio-wearables",
+        "tech",
+        "everyday",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Onyx",
+              "colorCode": "#111111"
+            },
+            {
+              "value": "Stone",
+              "colorCode": "#A8A29E"
+            }
+          ]
+        },
+        {
+          "name": "Edition",
+          "values": [
+            "Standard",
+            "Travel"
+          ]
+        }
+      ],
+      "weight": "0.34",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Sonic Pulse 03",
+      "slug": "seed-200-audio-wearables-03",
+      "sku": "S200-AUD-03",
+      "description": "Sonic Pulse 03 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Sonic Pulse 03 for practical everyday use.",
+      "category": "Audio & Wearables",
+      "productType": "Audio & Wearables",
+      "price": 102,
+      "comparePrice": 137,
+      "cost": 47,
+      "stock": 13,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-audio-wearables",
+        "tech",
+        "everyday",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Onyx",
+              "colorCode": "#111111"
+            },
+            {
+              "value": "Stone",
+              "colorCode": "#A8A29E"
+            }
+          ]
+        },
+        {
+          "name": "Edition",
+          "values": [
+            "Standard",
+            "Travel"
+          ]
+        }
+      ],
+      "weight": "0.34",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Sonic Pulse 04",
+      "slug": "seed-200-audio-wearables-04",
+      "sku": "S200-AUD-04",
+      "description": "Sonic Pulse 04 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Sonic Pulse 04 for practical everyday use.",
+      "category": "Audio & Wearables",
+      "productType": "Audio & Wearables",
+      "price": 113,
+      "comparePrice": 148,
+      "cost": 52,
+      "stock": 14,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-audio-wearables",
+        "tech",
+        "everyday",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Onyx",
+              "colorCode": "#111111"
+            },
+            {
+              "value": "Stone",
+              "colorCode": "#A8A29E"
+            }
+          ]
+        },
+        {
+          "name": "Edition",
+          "values": [
+            "Standard",
+            "Travel"
+          ]
+        }
+      ],
+      "weight": "0.34",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Lumen Capture 00",
+      "slug": "seed-200-cameras-smart-home-00",
+      "sku": "S200-CAM-00",
+      "description": "Lumen Capture 00 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Lumen Capture 00 for practical everyday use.",
+      "category": "Cameras & Smart Home",
+      "productType": "Cameras & Smart Home",
+      "price": 129,
+      "comparePrice": 194,
+      "cost": 70,
+      "stock": 10,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-cameras-smart-home",
+        "tech",
+        "premium",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": true,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Carbon",
+              "colorCode": "#1F2937"
+            },
+            {
+              "value": "Ivory",
+              "colorCode": "#FAFAF9"
+            }
+          ]
+        },
+        {
+          "name": "Kit",
+          "values": [
+            "Essential",
+            "Creator"
+          ]
+        }
+      ],
+      "weight": "0.68",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Lumen Capture 01",
+      "slug": "seed-200-cameras-smart-home-01",
+      "sku": "S200-CAM-01",
+      "description": "Lumen Capture 01 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Lumen Capture 01 for practical everyday use.",
+      "category": "Cameras & Smart Home",
+      "productType": "Cameras & Smart Home",
+      "price": 151,
+      "comparePrice": 216,
+      "cost": 82,
+      "stock": 11,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-cameras-smart-home",
+        "tech",
+        "premium",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Carbon",
+              "colorCode": "#1F2937"
+            },
+            {
+              "value": "Ivory",
+              "colorCode": "#FAFAF9"
+            }
+          ]
+        },
+        {
+          "name": "Kit",
+          "values": [
+            "Essential",
+            "Creator"
+          ]
+        }
+      ],
+      "weight": "0.68",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Lumen Capture 02",
+      "slug": "seed-200-cameras-smart-home-02",
+      "sku": "S200-CAM-02",
+      "description": "Lumen Capture 02 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Lumen Capture 02 for practical everyday use.",
+      "category": "Cameras & Smart Home",
+      "productType": "Cameras & Smart Home",
+      "price": 173,
+      "comparePrice": 238,
+      "cost": 94,
+      "stock": 12,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-cameras-smart-home",
+        "tech",
+        "premium",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Carbon",
+              "colorCode": "#1F2937"
+            },
+            {
+              "value": "Ivory",
+              "colorCode": "#FAFAF9"
+            }
+          ]
+        },
+        {
+          "name": "Kit",
+          "values": [
+            "Essential",
+            "Creator"
+          ]
+        }
+      ],
+      "weight": "0.68",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Lumen Capture 03",
+      "slug": "seed-200-cameras-smart-home-03",
+      "sku": "S200-CAM-03",
+      "description": "Lumen Capture 03 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Lumen Capture 03 for practical everyday use.",
+      "category": "Cameras & Smart Home",
+      "productType": "Cameras & Smart Home",
+      "price": 195,
+      "comparePrice": 260,
+      "cost": 106,
+      "stock": 13,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-cameras-smart-home",
+        "tech",
+        "premium",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Carbon",
+              "colorCode": "#1F2937"
+            },
+            {
+              "value": "Ivory",
+              "colorCode": "#FAFAF9"
+            }
+          ]
+        },
+        {
+          "name": "Kit",
+          "values": [
+            "Essential",
+            "Creator"
+          ]
+        }
+      ],
+      "weight": "0.68",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Lumen Capture 04",
+      "slug": "seed-200-cameras-smart-home-04",
+      "sku": "S200-CAM-04",
+      "description": "Lumen Capture 04 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Lumen Capture 04 for practical everyday use.",
+      "category": "Cameras & Smart Home",
+      "productType": "Cameras & Smart Home",
+      "price": 217,
+      "comparePrice": 282,
+      "cost": 118,
+      "stock": 14,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-cameras-smart-home",
+        "tech",
+        "premium",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Carbon",
+              "colorCode": "#1F2937"
+            },
+            {
+              "value": "Ivory",
+              "colorCode": "#FAFAF9"
+            }
+          ]
+        },
+        {
+          "name": "Kit",
+          "values": [
+            "Essential",
+            "Creator"
+          ]
+        }
+      ],
+      "weight": "0.68",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Meridian Layer 00",
+      "slug": "seed-200-apparel-00",
+      "sku": "S200-APR-00",
+      "description": "Meridian Layer 00 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Meridian Layer 00 for practical everyday use.",
+      "category": "Apparel",
+      "productType": "Apparel",
+      "price": 39,
+      "comparePrice": 59,
+      "cost": 16,
+      "stock": 10,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-apparel",
+        "everyday",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": true,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Navy",
+              "colorCode": "#1E3A5F"
+            },
+            {
+              "value": "Sand",
+              "colorCode": "#D6C2A8"
+            }
+          ]
+        },
+        {
+          "name": "Size",
+          "values": [
+            "S",
+            "M"
+          ]
+        }
+      ],
+      "weight": "0.42",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Meridian Layer 01",
+      "slug": "seed-200-apparel-01",
+      "sku": "S200-APR-01",
+      "description": "Meridian Layer 01 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Meridian Layer 01 for practical everyday use.",
+      "category": "Apparel",
+      "productType": "Apparel",
+      "price": 46,
+      "comparePrice": 66,
+      "cost": 19,
+      "stock": 11,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-apparel",
+        "everyday",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Navy",
+              "colorCode": "#1E3A5F"
+            },
+            {
+              "value": "Sand",
+              "colorCode": "#D6C2A8"
+            }
+          ]
+        },
+        {
+          "name": "Size",
+          "values": [
+            "S",
+            "M"
+          ]
+        }
+      ],
+      "weight": "0.42",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Meridian Layer 02",
+      "slug": "seed-200-apparel-02",
+      "sku": "S200-APR-02",
+      "description": "Meridian Layer 02 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Meridian Layer 02 for practical everyday use.",
+      "category": "Apparel",
+      "productType": "Apparel",
+      "price": 53,
+      "comparePrice": 73,
+      "cost": 22,
+      "stock": 12,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-apparel",
+        "everyday",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Navy",
+              "colorCode": "#1E3A5F"
+            },
+            {
+              "value": "Sand",
+              "colorCode": "#D6C2A8"
+            }
+          ]
+        },
+        {
+          "name": "Size",
+          "values": [
+            "S",
+            "M"
+          ]
+        }
+      ],
+      "weight": "0.42",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Meridian Layer 03",
+      "slug": "seed-200-apparel-03",
+      "sku": "S200-APR-03",
+      "description": "Meridian Layer 03 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Meridian Layer 03 for practical everyday use.",
+      "category": "Apparel",
+      "productType": "Apparel",
+      "price": 60,
+      "comparePrice": 80,
+      "cost": 25,
+      "stock": 13,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-apparel",
+        "everyday",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Navy",
+              "colorCode": "#1E3A5F"
+            },
+            {
+              "value": "Sand",
+              "colorCode": "#D6C2A8"
+            }
+          ]
+        },
+        {
+          "name": "Size",
+          "values": [
+            "S",
+            "M"
+          ]
+        }
+      ],
+      "weight": "0.42",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Meridian Layer 04",
+      "slug": "seed-200-apparel-04",
+      "sku": "S200-APR-04",
+      "description": "Meridian Layer 04 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Meridian Layer 04 for practical everyday use.",
+      "category": "Apparel",
+      "productType": "Apparel",
+      "price": 67,
+      "comparePrice": 87,
+      "cost": 28,
+      "stock": 14,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-apparel",
+        "everyday",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Navy",
+              "colorCode": "#1E3A5F"
+            },
+            {
+              "value": "Sand",
+              "colorCode": "#D6C2A8"
+            }
+          ]
+        },
+        {
+          "name": "Size",
+          "values": [
+            "S",
+            "M"
+          ]
+        }
+      ],
+      "weight": "0.42",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Venture Step 00",
+      "slug": "seed-200-footwear-bags-00",
+      "sku": "S200-FTB-00",
+      "description": "Venture Step 00 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Venture Step 00 for practical everyday use.",
+      "category": "Footwear & Bags",
+      "productType": "Footwear & Bags",
+      "price": 59,
+      "comparePrice": 89,
+      "cost": 25,
+      "stock": 10,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-footwear-bags",
+        "everyday",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": true,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Black",
+              "colorCode": "#111111"
+            },
+            {
+              "value": "Tan",
+              "colorCode": "#B77945"
+            }
+          ]
+        },
+        {
+          "name": "Size",
+          "values": [
+            "Medium",
+            "Large"
+          ]
+        }
+      ],
+      "weight": "0.76",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Venture Step 01",
+      "slug": "seed-200-footwear-bags-01",
+      "sku": "S200-FTB-01",
+      "description": "Venture Step 01 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Venture Step 01 for practical everyday use.",
+      "category": "Footwear & Bags",
+      "productType": "Footwear & Bags",
+      "price": 68,
+      "comparePrice": 98,
+      "cost": 29,
+      "stock": 11,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-footwear-bags",
+        "everyday",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Black",
+              "colorCode": "#111111"
+            },
+            {
+              "value": "Tan",
+              "colorCode": "#B77945"
+            }
+          ]
+        },
+        {
+          "name": "Size",
+          "values": [
+            "Medium",
+            "Large"
+          ]
+        }
+      ],
+      "weight": "0.76",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Venture Step 02",
+      "slug": "seed-200-footwear-bags-02",
+      "sku": "S200-FTB-02",
+      "description": "Venture Step 02 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Venture Step 02 for practical everyday use.",
+      "category": "Footwear & Bags",
+      "productType": "Footwear & Bags",
+      "price": 77,
+      "comparePrice": 107,
+      "cost": 33,
+      "stock": 12,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-footwear-bags",
+        "everyday",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Black",
+              "colorCode": "#111111"
+            },
+            {
+              "value": "Tan",
+              "colorCode": "#B77945"
+            }
+          ]
+        },
+        {
+          "name": "Size",
+          "values": [
+            "Medium",
+            "Large"
+          ]
+        }
+      ],
+      "weight": "0.76",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Venture Step 03",
+      "slug": "seed-200-footwear-bags-03",
+      "sku": "S200-FTB-03",
+      "description": "Venture Step 03 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Venture Step 03 for practical everyday use.",
+      "category": "Footwear & Bags",
+      "productType": "Footwear & Bags",
+      "price": 86,
+      "comparePrice": 116,
+      "cost": 37,
+      "stock": 13,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-footwear-bags",
+        "everyday",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Black",
+              "colorCode": "#111111"
+            },
+            {
+              "value": "Tan",
+              "colorCode": "#B77945"
+            }
+          ]
+        },
+        {
+          "name": "Size",
+          "values": [
+            "Medium",
+            "Large"
+          ]
+        }
+      ],
+      "weight": "0.76",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Venture Step 04",
+      "slug": "seed-200-footwear-bags-04",
+      "sku": "S200-FTB-04",
+      "description": "Venture Step 04 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Venture Step 04 for practical everyday use.",
+      "category": "Footwear & Bags",
+      "productType": "Footwear & Bags",
+      "price": 95,
+      "comparePrice": 125,
+      "cost": 41,
+      "stock": 14,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-footwear-bags",
+        "everyday",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Black",
+              "colorCode": "#111111"
+            },
+            {
+              "value": "Tan",
+              "colorCode": "#B77945"
+            }
+          ]
+        },
+        {
+          "name": "Size",
+          "values": [
+            "Medium",
+            "Large"
+          ]
+        }
+      ],
+      "weight": "0.76",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Haven Everyday 00",
+      "slug": "seed-200-home-kitchen-00",
+      "sku": "S200-HMK-00",
+      "description": "Haven Everyday 00 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Haven Everyday 00 for practical everyday use.",
+      "category": "Home & Kitchen",
+      "productType": "Home & Kitchen",
+      "price": 29,
+      "comparePrice": 44,
+      "cost": 11,
+      "stock": 10,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-home-kitchen",
+        "everyday",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": true,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Sage",
+              "colorCode": "#8A9A5B"
+            },
+            {
+              "value": "Cream",
+              "colorCode": "#F5F1E8"
+            }
+          ]
+        },
+        {
+          "name": "Capacity",
+          "values": [
+            "Compact",
+            "Family"
+          ]
+        }
+      ],
+      "weight": "0.88",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Haven Everyday 01",
+      "slug": "seed-200-home-kitchen-01",
+      "sku": "S200-HMK-01",
+      "description": "Haven Everyday 01 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Haven Everyday 01 for practical everyday use.",
+      "category": "Home & Kitchen",
+      "productType": "Home & Kitchen",
+      "price": 35,
+      "comparePrice": 50,
+      "cost": 13,
+      "stock": 11,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-home-kitchen",
+        "everyday",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Sage",
+              "colorCode": "#8A9A5B"
+            },
+            {
+              "value": "Cream",
+              "colorCode": "#F5F1E8"
+            }
+          ]
+        },
+        {
+          "name": "Capacity",
+          "values": [
+            "Compact",
+            "Family"
+          ]
+        }
+      ],
+      "weight": "0.88",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Haven Everyday 02",
+      "slug": "seed-200-home-kitchen-02",
+      "sku": "S200-HMK-02",
+      "description": "Haven Everyday 02 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Haven Everyday 02 for practical everyday use.",
+      "category": "Home & Kitchen",
+      "productType": "Home & Kitchen",
+      "price": 41,
+      "comparePrice": 56,
+      "cost": 15,
+      "stock": 12,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-home-kitchen",
+        "everyday",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Sage",
+              "colorCode": "#8A9A5B"
+            },
+            {
+              "value": "Cream",
+              "colorCode": "#F5F1E8"
+            }
+          ]
+        },
+        {
+          "name": "Capacity",
+          "values": [
+            "Compact",
+            "Family"
+          ]
+        }
+      ],
+      "weight": "0.88",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Haven Everyday 03",
+      "slug": "seed-200-home-kitchen-03",
+      "sku": "S200-HMK-03",
+      "description": "Haven Everyday 03 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Haven Everyday 03 for practical everyday use.",
+      "category": "Home & Kitchen",
+      "productType": "Home & Kitchen",
+      "price": 47,
+      "comparePrice": 62,
+      "cost": 17,
+      "stock": 13,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-home-kitchen",
+        "everyday",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Sage",
+              "colorCode": "#8A9A5B"
+            },
+            {
+              "value": "Cream",
+              "colorCode": "#F5F1E8"
+            }
+          ]
+        },
+        {
+          "name": "Capacity",
+          "values": [
+            "Compact",
+            "Family"
+          ]
+        }
+      ],
+      "weight": "0.88",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Haven Everyday 04",
+      "slug": "seed-200-home-kitchen-04",
+      "sku": "S200-HMK-04",
+      "description": "Haven Everyday 04 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Haven Everyday 04 for practical everyday use.",
+      "category": "Home & Kitchen",
+      "productType": "Home & Kitchen",
+      "price": 53,
+      "comparePrice": 68,
+      "cost": 19,
+      "stock": 14,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-home-kitchen",
+        "everyday",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Sage",
+              "colorCode": "#8A9A5B"
+            },
+            {
+              "value": "Cream",
+              "colorCode": "#F5F1E8"
+            }
+          ]
+        },
+        {
+          "name": "Capacity",
+          "values": [
+            "Compact",
+            "Family"
+          ]
+        }
+      ],
+      "weight": "0.88",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Formline Studio 00",
+      "slug": "seed-200-furniture-decor-00",
+      "sku": "S200-FUR-00",
+      "description": "Formline Studio 00 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Formline Studio 00 for practical everyday use.",
+      "category": "Furniture & Decor",
+      "productType": "Furniture & Decor",
+      "price": 119,
+      "comparePrice": 179,
+      "cost": 55,
+      "stock": 10,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-furniture-decor",
+        "premium",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": true,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Walnut",
+              "colorCode": "#6B4226"
+            },
+            {
+              "value": "Oak",
+              "colorCode": "#C19A6B"
+            }
+          ]
+        },
+        {
+          "name": "Finish",
+          "values": [
+            "Matte",
+            "Natural"
+          ]
+        }
+      ],
+      "weight": "6.5",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Formline Studio 01",
+      "slug": "seed-200-furniture-decor-01",
+      "sku": "S200-FUR-01",
+      "description": "Formline Studio 01 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Formline Studio 01 for practical everyday use.",
+      "category": "Furniture & Decor",
+      "productType": "Furniture & Decor",
+      "price": 143,
+      "comparePrice": 203,
+      "cost": 67,
+      "stock": 11,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-furniture-decor",
+        "premium",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Walnut",
+              "colorCode": "#6B4226"
+            },
+            {
+              "value": "Oak",
+              "colorCode": "#C19A6B"
+            }
+          ]
+        },
+        {
+          "name": "Finish",
+          "values": [
+            "Matte",
+            "Natural"
+          ]
+        }
+      ],
+      "weight": "6.5",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Formline Studio 02",
+      "slug": "seed-200-furniture-decor-02",
+      "sku": "S200-FUR-02",
+      "description": "Formline Studio 02 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Formline Studio 02 for practical everyday use.",
+      "category": "Furniture & Decor",
+      "productType": "Furniture & Decor",
+      "price": 167,
+      "comparePrice": 227,
+      "cost": 79,
+      "stock": 12,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-furniture-decor",
+        "premium",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Walnut",
+              "colorCode": "#6B4226"
+            },
+            {
+              "value": "Oak",
+              "colorCode": "#C19A6B"
+            }
+          ]
+        },
+        {
+          "name": "Finish",
+          "values": [
+            "Matte",
+            "Natural"
+          ]
+        }
+      ],
+      "weight": "6.5",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Formline Studio 03",
+      "slug": "seed-200-furniture-decor-03",
+      "sku": "S200-FUR-03",
+      "description": "Formline Studio 03 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Formline Studio 03 for practical everyday use.",
+      "category": "Furniture & Decor",
+      "productType": "Furniture & Decor",
+      "price": 191,
+      "comparePrice": 251,
+      "cost": 91,
+      "stock": 13,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-furniture-decor",
+        "premium",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Walnut",
+              "colorCode": "#6B4226"
+            },
+            {
+              "value": "Oak",
+              "colorCode": "#C19A6B"
+            }
+          ]
+        },
+        {
+          "name": "Finish",
+          "values": [
+            "Matte",
+            "Natural"
+          ]
+        }
+      ],
+      "weight": "6.5",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Formline Studio 04",
+      "slug": "seed-200-furniture-decor-04",
+      "sku": "S200-FUR-04",
+      "description": "Formline Studio 04 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Formline Studio 04 for practical everyday use.",
+      "category": "Furniture & Decor",
+      "productType": "Furniture & Decor",
+      "price": 215,
+      "comparePrice": 275,
+      "cost": 103,
+      "stock": 14,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-furniture-decor",
+        "premium",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Color",
+          "visual": "color",
+          "values": [
+            {
+              "value": "Walnut",
+              "colorCode": "#6B4226"
+            },
+            {
+              "value": "Oak",
+              "colorCode": "#C19A6B"
+            }
+          ]
+        },
+        {
+          "name": "Finish",
+          "values": [
+            "Matte",
+            "Natural"
+          ]
+        }
+      ],
+      "weight": "6.5",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Verde Ritual 00",
+      "slug": "seed-200-beauty-wellness-00",
+      "sku": "S200-BEA-00",
+      "description": "Verde Ritual 00 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Verde Ritual 00 for practical everyday use.",
+      "category": "Beauty & Wellness",
+      "productType": "Beauty & Wellness",
+      "price": 19,
+      "comparePrice": 29,
+      "cost": 7,
+      "stock": 10,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-beauty-wellness",
+        "everyday",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": true,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Scent",
+          "values": [
+            "Citrus",
+            "Botanical"
+          ]
+        },
+        {
+          "name": "Size",
+          "values": [
+            "50 ml",
+            "100 ml"
+          ]
+        }
+      ],
+      "weight": "0.3",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Verde Ritual 01",
+      "slug": "seed-200-beauty-wellness-01",
+      "sku": "S200-BEA-01",
+      "description": "Verde Ritual 01 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Verde Ritual 01 for practical everyday use.",
+      "category": "Beauty & Wellness",
+      "productType": "Beauty & Wellness",
+      "price": 24,
+      "comparePrice": 34,
+      "cost": 9,
+      "stock": 11,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-beauty-wellness",
+        "everyday",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Scent",
+          "values": [
+            "Citrus",
+            "Botanical"
+          ]
+        },
+        {
+          "name": "Size",
+          "values": [
+            "50 ml",
+            "100 ml"
+          ]
+        }
+      ],
+      "weight": "0.3",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Verde Ritual 02",
+      "slug": "seed-200-beauty-wellness-02",
+      "sku": "S200-BEA-02",
+      "description": "Verde Ritual 02 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Verde Ritual 02 for practical everyday use.",
+      "category": "Beauty & Wellness",
+      "productType": "Beauty & Wellness",
+      "price": 29,
+      "comparePrice": 39,
+      "cost": 11,
+      "stock": 12,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-beauty-wellness",
+        "everyday",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Scent",
+          "values": [
+            "Citrus",
+            "Botanical"
+          ]
+        },
+        {
+          "name": "Size",
+          "values": [
+            "50 ml",
+            "100 ml"
+          ]
+        }
+      ],
+      "weight": "0.3",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Verde Ritual 03",
+      "slug": "seed-200-beauty-wellness-03",
+      "sku": "S200-BEA-03",
+      "description": "Verde Ritual 03 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Verde Ritual 03 for practical everyday use.",
+      "category": "Beauty & Wellness",
+      "productType": "Beauty & Wellness",
+      "price": 34,
+      "comparePrice": 44,
+      "cost": 13,
+      "stock": 13,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-beauty-wellness",
+        "everyday",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Scent",
+          "values": [
+            "Citrus",
+            "Botanical"
+          ]
+        },
+        {
+          "name": "Size",
+          "values": [
+            "50 ml",
+            "100 ml"
+          ]
+        }
+      ],
+      "weight": "0.3",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Verde Ritual 04",
+      "slug": "seed-200-beauty-wellness-04",
+      "sku": "S200-BEA-04",
+      "description": "Verde Ritual 04 is designed for reliable daily use, with considered details for home, work, and gifting.",
+      "shortDescription": "Verde Ritual 04 for practical everyday use.",
+      "category": "Beauty & Wellness",
+      "productType": "Beauty & Wellness",
+      "price": 39,
+      "comparePrice": 49,
+      "cost": 15,
+      "stock": 14,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-beauty-wellness",
+        "everyday",
+        "giftable"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": true,
+      "options": [
+        {
+          "name": "Scent",
+          "values": [
+            "Citrus",
+            "Botanical"
+          ]
+        },
+        {
+          "name": "Size",
+          "values": [
+            "50 ml",
+            "100 ml"
+          ]
+        }
+      ],
+      "weight": "0.3",
+      "weightUnit": "kg"
+    },
+    {
+      "title": "Creator Studio Pack 00",
+      "slug": "seed-200-digital-downloads-00",
+      "sku": "S200-DIG-00",
+      "description": "Creator Studio Pack 00 is designed for creative work, with an immediate digital license for flexible projects.",
+      "shortDescription": "Creator Studio Pack 00 for practical everyday use.",
+      "category": "Digital Downloads",
+      "productType": "Digital Downloads",
+      "price": 12,
+      "comparePrice": 20,
+      "cost": 2,
+      "stock": 0,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-digital-downloads",
+        "digital",
+        "giftable",
+        "tech"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": true,
+      "isPhysicalProduct": false,
+      "options": [
+        {
+          "name": "License",
+          "values": [
+            "Personal",
+            "Commercial"
+          ]
+        }
+      ],
+      "digitalDelivery": {
+        "downloadLimit": 3
+      }
+    },
+    {
+      "title": "Creator Studio Pack 01",
+      "slug": "seed-200-digital-downloads-01",
+      "sku": "S200-DIG-01",
+      "description": "Creator Studio Pack 01 is designed for creative work, with an immediate digital license for flexible projects.",
+      "shortDescription": "Creator Studio Pack 01 for practical everyday use.",
+      "category": "Digital Downloads",
+      "productType": "Digital Downloads",
+      "price": 15,
+      "comparePrice": 23,
+      "cost": 2,
+      "stock": 0,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-digital-downloads",
+        "digital",
+        "giftable",
+        "tech"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": false,
+      "options": [
+        {
+          "name": "License",
+          "values": [
+            "Personal",
+            "Commercial"
+          ]
+        }
+      ],
+      "digitalDelivery": {
+        "downloadLimit": 3
+      }
+    },
+    {
+      "title": "Creator Studio Pack 02",
+      "slug": "seed-200-digital-downloads-02",
+      "sku": "S200-DIG-02",
+      "description": "Creator Studio Pack 02 is designed for creative work, with an immediate digital license for flexible projects.",
+      "shortDescription": "Creator Studio Pack 02 for practical everyday use.",
+      "category": "Digital Downloads",
+      "productType": "Digital Downloads",
+      "price": 18,
+      "comparePrice": 26,
+      "cost": 2,
+      "stock": 0,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-digital-downloads",
+        "digital",
+        "giftable",
+        "tech"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": false,
+      "options": [
+        {
+          "name": "License",
+          "values": [
+            "Personal",
+            "Commercial"
+          ]
+        }
+      ],
+      "digitalDelivery": {
+        "downloadLimit": 3
+      }
+    },
+    {
+      "title": "Creator Studio Pack 03",
+      "slug": "seed-200-digital-downloads-03",
+      "sku": "S200-DIG-03",
+      "description": "Creator Studio Pack 03 is designed for creative work, with an immediate digital license for flexible projects.",
+      "shortDescription": "Creator Studio Pack 03 for practical everyday use.",
+      "category": "Digital Downloads",
+      "productType": "Digital Downloads",
+      "price": 21,
+      "comparePrice": 29,
+      "cost": 2,
+      "stock": 0,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-digital-downloads",
+        "digital",
+        "giftable",
+        "tech"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": false,
+      "options": [
+        {
+          "name": "License",
+          "values": [
+            "Personal",
+            "Commercial"
+          ]
+        }
+      ],
+      "digitalDelivery": {
+        "downloadLimit": 3
+      }
+    },
+    {
+      "title": "Creator Studio Pack 04",
+      "slug": "seed-200-digital-downloads-04",
+      "sku": "S200-DIG-04",
+      "description": "Creator Studio Pack 04 is designed for creative work, with an immediate digital license for flexible projects.",
+      "shortDescription": "Creator Studio Pack 04 for practical everyday use.",
+      "category": "Digital Downloads",
+      "productType": "Digital Downloads",
+      "price": 24,
+      "comparePrice": 32,
+      "cost": 2,
+      "stock": 0,
+      "status": "active",
+      "tags": [
+        "seed-200",
+        "catalog-digital-downloads",
+        "digital",
+        "giftable",
+        "tech"
+      ],
+      "onlineStore": true,
+      "pointOfSale": false,
+      "featured": false,
+      "isPhysicalProduct": false,
+      "options": [
+        {
+          "name": "License",
+          "values": [
+            "Personal",
+            "Commercial"
+          ]
+        }
+      ],
+      "digitalDelivery": {
+        "downloadLimit": 3
+      }
+    }
+  ]
+}

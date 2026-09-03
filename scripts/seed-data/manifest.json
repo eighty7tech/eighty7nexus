@@ -1,0 +1,21 @@
+{
+  "exportedAt": "2026-09-02T22:14:17.799Z",
+  "sourceDb": "eighty7nexus",
+  "counts": {
+    "vendors.json": 7,
+    "inventory-locations.json": 10,
+    "categories.json": 93,
+    "brands.json": 9,
+    "global-variants.json": 5,
+    "products.json": 27,
+    "collections.json": 19,
+    "menus.json": 2,
+    "sliders.json": 4,
+    "store-pages.json": 8,
+    "blog-categories.json": 5,
+    "blog-posts.json": 9,
+    "vendor-plans.json": 5,
+    "onboarding-template.json": 1,
+    "settings.json": 1
+  }
+}

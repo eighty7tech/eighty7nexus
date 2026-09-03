@@ -1,0 +1,247 @@
+[
+  {
+    "_id": {
+      "$oid": "6a985f5e79b4ff5be2246241"
+    },
+    "name": "Main Header",
+    "handle": "main-header",
+    "location": "header",
+    "description": "Primary navigation links shown in the store header.",
+    "items": [
+      {
+        "label": "Blog",
+        "url": "/blog",
+        "type": "page",
+        "target": "_self",
+        "children": []
+      },
+      {
+        "label": "Track Order",
+        "url": "/track-order",
+        "type": "page",
+        "target": "_self",
+        "children": []
+      }
+    ],
+    "isActive": true,
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-09-02T17:39:42.744Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-02T17:39:42.744Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a985f5e79b4ff5be2246242"
+    },
+    "name": "Mega Menu",
+    "handle": "main-mega-menu",
+    "location": "header-mega",
+    "description": "Layered storefront mega menu shown from the header category menu.",
+    "items": [
+      {
+        "label": "Electronics",
+        "url": "/products?category=electronics",
+        "type": "category",
+        "target": "_self",
+        "children": [
+          {
+            "label": "Phone",
+            "url": "/products?category=phone",
+            "type": "category",
+            "target": "_self",
+            "children": [
+              {
+                "label": "iPhone",
+                "url": "/products?search=iPhone",
+                "type": "custom",
+                "target": "_self",
+                "children": []
+              },
+              {
+                "label": "Samsung",
+                "url": "/products?search=Samsung",
+                "type": "custom",
+                "target": "_self",
+                "children": []
+              },
+              {
+                "label": "Google",
+                "url": "/products?search=Google",
+                "type": "custom",
+                "target": "_self",
+                "children": []
+              },
+              {
+                "label": "Nothing Phone",
+                "url": "/products?search=Nothing%20Phone",
+                "type": "custom",
+                "target": "_self",
+                "children": []
+              },
+              {
+                "label": "Vivo",
+                "url": "/products?search=Vivo",
+                "type": "custom",
+                "target": "_self",
+                "children": []
+              },
+              {
+                "label": "OnePlus",
+                "url": "/products?search=OnePlus",
+                "type": "custom",
+                "target": "_self",
+                "children": []
+              },
+              {
+                "label": "Symphony",
+                "url": "/products?search=Symphony",
+                "type": "custom",
+                "target": "_self",
+                "children": []
+              },
+              {
+                "label": "Xiaomi",
+                "url": "/products?search=Xiaomi",
+                "type": "custom",
+                "target": "_self",
+                "children": []
+              },
+              {
+                "label": "Oppo",
+                "url": "/products?search=Oppo",
+                "type": "custom",
+                "target": "_self",
+                "children": []
+              },
+              {
+                "label": "Honor",
+                "url": "/products?search=Honor",
+                "type": "custom",
+                "target": "_self",
+                "children": []
+              },
+              {
+                "label": "Nokia",
+                "url": "/products?search=Nokia",
+                "type": "custom",
+                "target": "_self",
+                "children": []
+              },
+              {
+                "label": "Infinix",
+                "url": "/products?search=Infinix",
+                "type": "custom",
+                "target": "_self",
+                "children": []
+              }
+            ]
+          },
+          {
+            "label": "Laptop",
+            "url": "/products?category=laptop",
+            "type": "category",
+            "target": "_self",
+            "children": []
+          },
+          {
+            "label": "Camera",
+            "url": "/products?category=camera",
+            "type": "category",
+            "target": "_self",
+            "children": []
+          },
+          {
+            "label": "Accessories",
+            "url": "/products?category=accessories",
+            "type": "category",
+            "target": "_self",
+            "children": []
+          },
+          {
+            "label": "Appliance",
+            "url": "/products?category=appliance",
+            "type": "category",
+            "target": "_self",
+            "children": []
+          },
+          {
+            "label": "TV & Monitors",
+            "url": "/products?category=tv-monitors",
+            "type": "category",
+            "target": "_self",
+            "children": []
+          },
+          {
+            "label": "Office Equipments",
+            "url": "/products?category=office-equipments",
+            "type": "category",
+            "target": "_self",
+            "children": []
+          },
+          {
+            "label": "Headphones",
+            "url": "/products?category=headphones",
+            "type": "category",
+            "target": "_self",
+            "children": []
+          },
+          {
+            "label": "Galaxy S26 Ultra",
+            "url": "/products?search=Galaxy%20S26%20Ultra",
+            "type": "custom",
+            "target": "_self",
+            "description": "Galaxy AI",
+            "isFeatured": true,
+            "children": []
+          }
+        ]
+      },
+      {
+        "label": "Fashion",
+        "url": "/products?category=fashion",
+        "type": "category",
+        "target": "_self",
+        "children": []
+      },
+      {
+        "label": "Furniture",
+        "url": "/products?category=furniture",
+        "type": "category",
+        "target": "_self",
+        "children": []
+      },
+      {
+        "label": "Shoe",
+        "url": "/products?category=shoe",
+        "type": "category",
+        "target": "_self",
+        "children": []
+      },
+      {
+        "label": "Jewelry & Accessories",
+        "url": "/products?category=jewelry-accessories",
+        "type": "category",
+        "target": "_self",
+        "children": []
+      },
+      {
+        "label": "Food & Grocery",
+        "url": "/products?category=food-grocery",
+        "type": "category",
+        "target": "_self",
+        "children": []
+      }
+    ],
+    "isActive": true,
+    "__v": 0,
+    "createdAt": {
+      "$date": "2026-09-02T17:39:42.745Z"
+    },
+    "updatedAt": {
+      "$date": "2026-09-02T17:39:42.745Z"
+    }
+  }
+]
