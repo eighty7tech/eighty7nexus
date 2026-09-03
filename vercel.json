@@ -2,31 +2,31 @@
   "crons": [
     {
       "path": "/api/cron/email-deliveries",
-      "schedule": "*/5 * * * *"
+      "schedule": "0 0 * * *"
     },
     {
       "path": "/api/cron/vendor-subscriptions",
-      "schedule": "0 * * * *"
+      "schedule": "0 1 * * *"
     },
     {
       "path": "/api/cron/messaging-outbox",
-      "schedule": "* * * * *"
+      "schedule": "0 2 * * *"
     },
     {
       "path": "/api/cron/messaging-escalations",
-      "schedule": "*/5 * * * *"
+      "schedule": "0 3 * * *"
     },
     {
       "path": "/api/cron/boosts",
-      "schedule": "*/5 * * * *"
+      "schedule": "0 4 * * *"
     },
     {
       "path": "/api/cron/carrier-shipments",
-      "schedule": "* * * * *"
+      "schedule": "0 5 * * *"
     },
     {
       "path": "/api/cron/carrier-tracking",
-      "schedule": "*/30 * * * *"
+      "schedule": "0 6 * * *"
     },
     {
       "path": "/api/cron/finance",
