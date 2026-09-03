@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/glamourk/shop.eightyseventech.com/
+    - /bin/cp -R . $DEPLOYPATH
