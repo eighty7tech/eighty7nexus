@@ -6,6 +6,9 @@
 - **AI Sales Agent Delivery Wizard**: Implemented the "Ghana Delivery/Logistics/Install Wizard" interactive widget for the AI Sales Agent. When customers ask about delivery to regions in Ghana, Dispatch Riders, MoMo/COD payment, or installation services, the AI now routes them to a dynamic UI card to capture their region and installation preference before proceeding to checkout.
 - **Bulk Delete Capabilities**: Added multi-select checkboxes to the `GhanaDeliveryCard` in the Shipping Settings. Merchants can now easily select multiple delivery methods or "Select All" to bulk delete them, streamlining the process of resetting or overhauling regional delivery configurations.
 
+### Improvements:
+- **Multi-Select Dropdown Clear Option**: Added a dedicated "Clear" button inside the `MultiSelectDropdown` header in the Delivery Method Dialog to quickly clear all selected Available Regions and Available Cities.
+
 ## [2026-09-04] - Premium Track Order Redesign & Admin Settings
 
 ### Added:
