@@ -23,6 +23,8 @@
 - **AI Widget Theme Types**: Fixed TypeScript type overlap errors in `widget-tab.tsx` and `settings.ts` by updating legacy widget theme values (`nexus-glass`, `nexus-cyber-hud`, `nexus-capsule`) to the new values (`aether-core`, `quantum-sentience`, `helix-synth`).
 - **Vendor Page Guard**: Fixed the page guard import path and parameters in the vendor `ai-sales-agent/page.tsx` route to correctly enforce `requireVendorAreaAccess`.
 - **Vendor API Authentication**: Corrected the `auth: "vendor"` configuration in the `app/api/vendor/ai-sales-agent/route.ts` API route handler to correctly use `auth: "user"` along with `requireApprovedVendorByUserId` for accurate vendor context validation.
+- **AI Chatbot Models Added**: Added missing `chatbot-lead.model.ts` and `chatbot-conversation.model.ts` files that were causing typecheck TS2307 errors.
+- **AI Settings Model Sync**: Fixed typecheck TS2339 errors by adding `knowledgeBase` and `handoff` properties into `IAISalesAgentSettings` in `models/settings.model.ts` and aligning with engine usage.
 
 ## [2026-09-04] - Fix Vercel Serverless Upload Issue
 
