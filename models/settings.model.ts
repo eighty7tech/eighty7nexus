@@ -1049,6 +1049,9 @@ export interface IAISalesAgentCapabilities {
 
 export type AISalesAgentWidgetTheme =
   | "nexus-modern"
+  | "nexus-glass"
+  | "nexus-cyber-hud"
+  | "nexus-capsule"
   | "genetic-neural"
   | "helix-synth"
   | "quantum-sentience"
@@ -1098,6 +1101,22 @@ export interface IAISalesAgentSettings {
   widget: IAISalesAgentWidgetSettings;
   capabilities: IAISalesAgentCapabilities;
   faq: IAISalesAgentFaqEntry[];
+  knowledgeBase?: {
+    businessProfile?: string;
+    targetMarket?: string;
+    serviceAreas?: string;
+    uniqueSellingPoints?: string;
+  };
+  handoff?: {
+    enabled?: boolean;
+    email?: string;
+    emailSubject?: string;
+    whatsapp?: string;
+    whatsappMessage?: string;
+    phone?: string;
+    customChannelUrl?: string;
+    customChannelLabel?: string;
+  };
 }
 
 export interface IAIAuthoringSurfaces {
