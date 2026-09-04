@@ -154,6 +154,9 @@ const withSerwist = withSerwistInit({
   swSrc: "app/sw.ts",
   swDest: "public/sw.js",
   reloadOnOnline: false,
+  // Serwist does not support Turbopack (used in `next dev`).
+  // Disable the plugin in non-production environments to suppress the warning.
+  disable: process.env.NODE_ENV !== "production",
 });
 
 export default withSerwist(withNextIntl(nextConfig));
