@@ -1,4 +1,5 @@
 import path from "path";
+import dns from "node:dns";
 import mongoose from "mongoose";
 import { BSON } from "mongodb";
 import { fileURLToPath } from "url";
@@ -6,6 +7,8 @@ import { existsSync, readFileSync } from "fs";
 import { betterAuth } from "better-auth";
 import { twoFactor } from "better-auth/plugins";
 import { randomBytes, randomUUID } from "crypto";
+
+dns.setServers(["1.1.1.1", "8.8.8.8"]);
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
 import {
   ADMIN_PERMISSIONS,
