@@ -141,7 +141,7 @@ export function TypographyApplier({
     if (typography.monoColor) {
       root.style.setProperty("--font-mono-color", typography.monoColor);
     }
-  }, [typography]);
+  }, [typography, storeTypography]);
 
   return null;
 }

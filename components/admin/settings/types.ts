@@ -646,6 +646,9 @@ export interface Settings {
       showItemList?: boolean;
       accentColor?: string;
       enableGlassmorphism?: boolean;
+      ghanaPostGps?: boolean;
+      dispatchRiderInfo?: boolean;
+      momoCodTracking?: boolean;
     };
   };
   aiSalesAgent?: {

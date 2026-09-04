@@ -70,7 +70,7 @@ export function ReceiptSettingsTab(props: ReceiptSettingsTabProps) {
                 <FileUploadField
                   id="logoUrl"
                   value={receipt.logoUrl || ""}
-                  onChange={(val) => props.updateField("receipt.logoUrl", val)}
+                  onChange={(val) => props.updateField("pos.receipt.logoUrl", val)}
                   accept="image/png,image/jpeg,image/webp"
                   maxSizeMb={5}
                 />
@@ -85,7 +85,7 @@ export function ReceiptSettingsTab(props: ReceiptSettingsTabProps) {
                   id="headerText"
                   placeholder="Welcome to our store!"
                   value={receipt.headerText || ""}
-                  onChange={(e) => props.updateField("receipt.headerText", e.target.value)}
+                  onChange={(e) => props.updateField("pos.receipt.headerText", e.target.value)}
                   className="min-h-[80px]"
                 />
               </div>
@@ -96,7 +96,7 @@ export function ReceiptSettingsTab(props: ReceiptSettingsTabProps) {
                   id="footerText"
                   placeholder="Thank you for your purchase."
                   value={receipt.footerText || ""}
-                  onChange={(e) => props.updateField("receipt.footerText", e.target.value)}
+                  onChange={(e) => props.updateField("pos.receipt.footerText", e.target.value)}
                   className="min-h-[80px]"
                 />
               </div>
@@ -115,7 +115,7 @@ export function ReceiptSettingsTab(props: ReceiptSettingsTabProps) {
                   id="taxNumber"
                   placeholder="e.g. VAT-12345678"
                   value={receipt.taxNumber || ""}
-                  onChange={(e) => props.updateField("receipt.taxNumber", e.target.value)}
+                  onChange={(e) => props.updateField("pos.receipt.taxNumber", e.target.value)}
                 />
               </div>
               <div className="space-y-2 sm:col-span-2">
@@ -124,7 +124,7 @@ export function ReceiptSettingsTab(props: ReceiptSettingsTabProps) {
                   id="returnPolicyText"
                   placeholder="Items can be returned within 30 days with receipt."
                   value={receipt.returnPolicyText || ""}
-                  onChange={(e) => props.updateField("receipt.returnPolicyText", e.target.value)}
+                  onChange={(e) => props.updateField("pos.receipt.returnPolicyText", e.target.value)}
                   className="min-h-[80px]"
                 />
               </div>
@@ -146,7 +146,7 @@ export function ReceiptSettingsTab(props: ReceiptSettingsTabProps) {
                 </div>
                 <Switch
                   checked={receipt.showQrCode ?? true}
-                  onCheckedChange={(v) => props.updateField("receipt.showQrCode", v)}
+                  onCheckedChange={(v) => props.updateField("pos.receipt.showQrCode", v)}
                 />
               </div>
 
@@ -157,7 +157,7 @@ export function ReceiptSettingsTab(props: ReceiptSettingsTabProps) {
                     id="qrCodeUrl"
                     placeholder="https://example.com/return-policy"
                     value={receipt.qrCodeUrl || ""}
-                    onChange={(e) => props.updateField("receipt.qrCodeUrl", e.target.value)}
+                    onChange={(e) => props.updateField("pos.receipt.qrCodeUrl", e.target.value)}
                   />
                   <p className="text-[13px] text-muted-foreground">
                     Link to your full digital return policy, feedback form, or store website.

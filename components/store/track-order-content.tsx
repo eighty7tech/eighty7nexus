@@ -39,10 +39,8 @@ import {
 } from "@/components/ui/table";
 import { toast } from "@/components/ui/toast-notification";
 import { StoreBreadcrumb } from "@/components/store/store-breadcrumb";
-import {
-  ScanHistory,
-  type ScanEvent,
-} from "@/components/shipping/scan-history";
+import { TrackOrderTimeline } from "./track-order-timeline";
+import { type ScanEvent } from "@/components/shipping/scan-history";
 import {
   DeliveryException,
   type DeliveryException as DeliveryExceptionData,
@@ -127,6 +125,9 @@ interface TrackOrderSettings {
   showItemList?: boolean;
   accentColor?: string;
   enableGlassmorphism?: boolean;
+  ghanaPostGps?: boolean;
+  dispatchRiderInfo?: boolean;
+  momoCodTracking?: boolean;
 }
 
 interface TrackOrderContentProps {
@@ -399,14 +400,13 @@ export function TrackOrderContent({
         >
           <div className="inline-flex items-center gap-2 rounded-full border border-[#77CDCC]/30 bg-[#77CDCC]/10 px-3 py-1 text-xs font-semibold text-[#77CDCC] mb-4">
             <Sparkles className="h-3.5 w-3.5" />
-            <span>Real-time Live Package Tracker</span>
+            <span>{t("orders.tracking.livePackageTracker")}</span>
           </div>
           <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl text-foreground">
-            Track Your Order
+            {t("orders.tracking.heroTitle")}
           </h1>
           <p className="mt-3 text-sm leading-6 text-muted-foreground">
-            Enter your order number and contact email or phone number to see
-            real-time delivery status, courier telemetry, and dispatch milestones.
+            {t("orders.tracking.heroDescription")}
           </p>
         </header>
 
@@ -418,13 +418,13 @@ export function TrackOrderContent({
           <div className="grid gap-4 md:grid-cols-[1fr_1fr_auto] md:items-end">
             <div className="space-y-2">
               <Label htmlFor="order-number" className="font-semibold text-xs text-muted-foreground uppercase tracking-wider">
-                Order number
+                {t("orders.tracking.orderNumberLabel")}
               </Label>
               <Input
                 id="order-number"
                 value={orderNumber}
                 onChange={(event) => setOrderNumber(event.target.value)}
-                placeholder="e.g. ORD-123456"
+                placeholder={t("orders.tracking.orderNumberPlaceholder")}
                 required
                 className={cn(
                   "h-12 rounded-xl transition-all duration-200 focus:scale-[1.005]",
@@ -434,13 +434,13 @@ export function TrackOrderContent({
             </div>
             <div className="space-y-2">
               <Label htmlFor="identifier" className="font-semibold text-xs text-muted-foreground uppercase tracking-wider">
-                Email or phone number
+                {t("orders.tracking.identifierLabel")}
               </Label>
               <Input
                 id="identifier"
                 value={identifier}
                 onChange={(event) => setIdentifier(event.target.value)}
-                placeholder="customer@email.com or +233..."
+                placeholder={t("orders.tracking.identifierPlaceholder")}
                 required
                 className={cn(
                   "h-12 rounded-xl transition-all duration-200 focus:scale-[1.005]",
@@ -464,7 +464,7 @@ export function TrackOrderContent({
               ) : (
                 <Search className="mr-2 h-4 w-4" />
               )}
-              Track Order
+              {t("orders.tracking.trackButton")}
             </Button>
           </div>
           {error ? (
@@ -557,13 +557,13 @@ export function TrackOrderContent({
                     )}
                   </div>
                   <div>
-                    <span className="text-xs font-medium text-muted-foreground">Carrier &amp; Dispatch Partner</span>
+                    <span className="text-xs font-medium text-muted-foreground">{t("orders.tracking.carrierPartner")}</span>
                     <h3 className="text-base font-bold text-foreground flex items-center gap-2">
                       {order.carrier || "Ghana Express Dispatch Network"}
                       <ShieldCheck className="h-4 w-4 text-[#77CDCC]" />
                     </h3>
                     <p className="text-xs text-muted-foreground mt-0.5">
-                      Tracking ID: <span className="font-mono font-semibold text-foreground">{order.trackingNumber || order.orderNumber}</span>
+                      {t("orders.tracking.trackingId")}: <span className="font-mono font-semibold text-foreground">{order.trackingNumber || order.orderNumber}</span>
                     </p>
                   </div>
                 </div>
@@ -571,7 +571,7 @@ export function TrackOrderContent({
                 <div className="flex items-center gap-2.5">
                   <Badge variant="outline" className="gap-1 px-3 py-1 text-xs border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
                     <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                    Live Route Active
+                    {t("orders.tracking.liveRouteActive")}
                   </Badge>
                   {order.trackingUrl ? (
                     <Button
@@ -581,102 +581,88 @@ export function TrackOrderContent({
                       className="h-8 gap-1 rounded-lg text-xs"
                     >
                       <a href={order.trackingUrl} target="_blank" rel="noopener noreferrer">
-                        Carrier Tracking <ExternalLink className="h-3 w-3" />
+                        {t("orders.tracking.carrierTracking")} <ExternalLink className="h-3 w-3" />
                       </a>
                     </Button>
                   ) : null}
                 </div>
               </div>
+
+              {/* Conditionally Rendered Ghana Deliveries features */}
+              {settings?.ghanaPostGps && currentTrackingStatus === statusLabels["processing"] && (
+                <div className="mt-5 border-t pt-5 animate-in fade-in slide-in-from-top-4 duration-300">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-primary/10 p-2 rounded-xl text-primary"><MapPin className="h-5 w-5" /></div>
+                    <div className="flex-1">
+                      <h4 className="font-bold text-sm text-foreground">{t("orders.tracking.ghanaPostGpsTitle", { defaultMessage: "Digital Address Required" })}</h4>
+                      <p className="text-xs text-muted-foreground mt-1">{t("orders.tracking.ghanaPostGpsDesc", { defaultMessage: "Please verify your GhanaPostGPS address or drop a precise map pin for accurate last-mile delivery." })}</p>
+                    </div>
+                    <Button size="sm" variant="outline" className="rounded-xl border-primary text-primary hover:bg-primary/5">
+                      {t("orders.tracking.ghanaPostGpsAction", { defaultMessage: "Update Address" })}
+                    </Button>
+                  </div>
+                </div>
+              )}
+
+              {settings?.dispatchRiderInfo && currentTrackingStatus === statusLabels["shipped"] && (
+                <div className="mt-5 border-t pt-5 animate-in fade-in slide-in-from-top-4 duration-300">
+                  <div className="flex items-start gap-4">
+                    <div className="relative h-10 w-10 overflow-hidden rounded-full border bg-muted">
+                      <AppImage src="/placeholder-driver.png" alt="Driver" fill className="object-cover" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="font-bold text-sm text-foreground">{t("orders.tracking.riderName", { defaultMessage: "Your Dispatch Rider: Kwame" })}</h4>
+                      <p className="text-xs text-muted-foreground font-mono">Honda Motorbike • GW-1234-23</p>
+                    </div>
+                    <Button size="sm" variant="outline" className="rounded-xl border-emerald-500/50 text-emerald-600 bg-emerald-50 hover:bg-emerald-100 gap-1.5 dark:bg-emerald-950 dark:text-emerald-400">
+                      <MessageSquare className="h-3.5 w-3.5" />
+                      {t("orders.tracking.riderContact", { defaultMessage: "WhatsApp Rider" })}
+                    </Button>
+                  </div>
+                </div>
+              )}
+              
+              {settings?.momoCodTracking && order.paymentStatus !== "paid" && (
+                <div className="mt-5 border-t pt-5 animate-in fade-in slide-in-from-top-4 duration-300">
+                   <div className="rounded-xl border border-amber-500/40 bg-amber-500/5 p-4 flex items-start gap-3">
+                    <AlertCircle className="h-5 w-5 text-amber-500 shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="font-bold text-sm text-amber-700 dark:text-amber-400">{t("orders.tracking.momoCodTitle", { defaultMessage: "Payment Pending Upon Delivery" })}</h4>
+                      <p className="text-xs text-amber-700/80 dark:text-amber-400/80 mt-1">{t("orders.tracking.momoCodDesc", { defaultMessage: "Please have exact cash or Mobile Money (MoMo) ready." })} Total: {formatPrice(order.total)}</p>
+                    </div>
+                    <Button size="sm" className="rounded-xl bg-amber-500 text-amber-950 hover:bg-amber-600">
+                      {t("orders.tracking.momoCodAction", { defaultMessage: "Pay via MoMo Now" })}
+                    </Button>
+                  </div>
+                </div>
+              )}
             </section>
 
             {/* Interactive Timeline Stepper */}
             <section className={cn("p-6 sm:p-8", tc.sectionCard)}>
               <div className="flex items-center justify-between mb-8">
                 <div>
-                  <h3 className="text-lg font-bold text-foreground">Delivery Milestones</h3>
-                  <p className="text-xs text-muted-foreground mt-0.5">Step-by-step parcel movement and scan history</p>
+                  <h3 className="text-lg font-bold text-foreground">{t("orders.tracking.deliveryMilestones")}</h3>
+                  <p className="text-xs text-muted-foreground mt-0.5">{t("orders.tracking.milestonesDescription")}</p>
                 </div>
                 <div className="flex items-center gap-1.5 text-xs text-muted-foreground font-medium">
                   <Clock className="h-3.5 w-3.5 text-[#77CDCC]" />
-                  <span>Real-time status</span>
+                  <span>{t("orders.tracking.realTimeStatus")}</span>
                 </div>
               </div>
 
-              {/* Progress Bar & Steps */}
-              <div
-                className="grid gap-6 md:px-6 md:[grid-template-columns:repeat(var(--step-count),minmax(0,1fr))]"
-                style={
-                  {
-                    "--step-count": order.timeline.length,
-                  } as CSSProperties
-                }
-              >
-                {order.timeline.map((event, index) => {
-                  const isActive = index === activeIndex;
-                  const isComplete = event.completed;
-                  const hasNextStep = index < order.timeline.length - 1;
-
-                  return (
-                    <div
-                      key={event.key}
-                      className="relative flex items-start gap-4 md:flex-col md:items-center md:text-center"
-                    >
-                      {hasNextStep ? (
-                        <div
-                          className={cn(
-                            "absolute left-4 top-8 -ml-px h-full w-0.5 md:left-1/2 md:top-4 md:h-0.5 md:w-full",
-                            isComplete
-                              ? "bg-[#77CDCC]"
-                              : "bg-border/70",
-                          )}
-                          aria-hidden="true"
-                        />
-                      ) : null}
-
-                      <div
-                        className={cn(
-                          "relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 text-sm font-bold transition-all duration-300",
-                          isComplete
-                            ? "border-[#77CDCC] bg-[#77CDCC] text-[#001a45] shadow-[0_0_12px_rgba(119,205,204,0.5)]"
-                            : isActive
-                              ? "border-[#77CDCC] bg-card text-[#77CDCC] ring-4 ring-[#77CDCC]/30 shadow-[0_0_16px_rgba(119,205,204,0.4)]"
-                              : "border-border/80 bg-muted text-muted-foreground",
-                        )}
-                      >
-                        {isComplete ? (
-                          <Check className="h-4 w-4 stroke-[3]" />
-                        ) : (
-                          <span>{index + 1}</span>
-                        )}
-                      </div>
-
-                      <div className="min-w-0 pt-0.5 md:pt-2">
-                        <p className="text-sm font-semibold text-foreground leading-tight">
-                          {event.title}
-                        </p>
-                        <p className="mt-1 text-xs text-muted-foreground line-clamp-2">
-                          {event.description}
-                        </p>
-                        <p className="mt-1 font-mono text-[11px] text-muted-foreground/80">
-                          {formatEventDate(event)}
-                        </p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
+              {/* Replaced with Custom Animated Timeline */}
+              <TrackOrderTimeline 
+                timeline={order.timeline} 
+                activeIndex={activeIndex} 
+                scanEvents={order.trackingEvents}
+                themeClasses={tc} 
+              />
 
               {/* Exception alert if present */}
               {order.trackingException ? (
                 <div className="mt-6">
                   <DeliveryException exception={order.trackingException} />
-                </div>
-              ) : null}
-
-              {/* Detailed Scan History if present */}
-              {order.trackingEvents && order.trackingEvents.length > 0 ? (
-                <div className="mt-6 border-t border-border/60 pt-4">
-                  <ScanHistory events={order.trackingEvents} />
                 </div>
               ) : null}
             </section>

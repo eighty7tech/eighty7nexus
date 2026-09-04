@@ -79,6 +79,15 @@ export function FloatingTabsSettingsTab({
   const handleUpdateItem = (groupIndex: number, itemIndex: number, updates: any) => {
     const newTabs = [...floatingTabs];
     const items = [...(newTabs[groupIndex].items || [])];
+    
+    if (updates.type === "ai_assistant") {
+      updates.name = "AI Assistant";
+      updates.icon = "sparkles";
+    } else if (updates.type === "back_to_top") {
+      updates.name = "Back to Top";
+      updates.icon = "arrow-up";
+    }
+    
     items[itemIndex] = { ...items[itemIndex], ...updates };
     newTabs[groupIndex] = { ...newTabs[groupIndex], items };
     updateNestedField("onlineStore.floatingTabs", newTabs);
@@ -114,8 +123,8 @@ export function FloatingTabsSettingsTab({
   return (
     <div className="space-y-6 pb-24">
       <SettingsTabHeader
-        title={t("floatingTabs.title")}
-        description={t("floatingTabs.description")}
+        title={t("title")}
+        description={t("description")}
       />
 
       <Card>
@@ -231,6 +240,7 @@ export function FloatingTabsSettingsTab({
                         <Input 
                           value={item.name || ""} 
                           onChange={(e) => handleUpdateItem(groupIndex, itemIndex, { name: e.target.value })}
+                          disabled={item.type === "ai_assistant" || item.type === "back_to_top"}
                         />
                       </div>
                       <div className="space-y-2">

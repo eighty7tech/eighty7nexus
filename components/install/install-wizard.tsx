@@ -61,13 +61,13 @@ type StorageDraft = Record<StorageField["key"], string> & {
 
 interface StorageField {
   key:
-    | "accountId"
-    | "endpoint"
-    | "region"
-    | "bucketName"
-    | "accessKeyId"
-    | "secretAccessKey"
-    | "publicUrl";
+  | "accountId"
+  | "endpoint"
+  | "region"
+  | "bucketName"
+  | "accessKeyId"
+  | "secretAccessKey"
+  | "publicUrl";
   /** Suffix under `install.storageField.*`. */
   labelKey: string;
   label: string;
@@ -187,8 +187,10 @@ export function InstallWizard({
   const [store, setStore] = useState({
     name: "",
     language: locale,
-    currency: "USD",
+    currency: "GHS",
     multiVendor: true,
+    multiBranch: false,
+    wholesale: false,
     pos: false,
   });
   const [storage, setStorage] = useState<StorageDraft>({
@@ -251,9 +253,9 @@ export function InstallWizard({
           err instanceof ApiClientError
             ? err.message
             : tSafe(
-                "install.storageTestFailed",
-                "The connection test could not be completed",
-              ),
+              "install.storageTestFailed",
+              "The connection test could not be completed",
+            ),
       });
     } finally {
       setTestingStorage(false);
@@ -333,8 +335,8 @@ export function InstallWizard({
       ? Boolean(status && !status.installed && !blocked)
       : step === "admin"
         ? admin.name.trim().length > 0 &&
-          /.+@.+\..+/.test(admin.email) &&
-          admin.password.length >= 8
+        /.+@.+\..+/.test(admin.email) &&
+        admin.password.length >= 8
         : step === "store"
           ? store.name.trim().length > 0 && /^[A-Za-z]{3}$/.test(store.currency)
           : step === "storage"
@@ -401,9 +403,9 @@ export function InstallWizard({
                       preflight?.databaseOk
                         ? ""
                         : tSafe(
-                            "install.databaseHint",
-                            "Check MONGODB_URI and MONGODB_DB_NAME in .env, and that the database accepts connections from this server",
-                          )
+                          "install.databaseHint",
+                          "Check MONGODB_URI and MONGODB_DB_NAME in .env, and that the database accepts connections from this server",
+                        )
                     }
                   />
                   <CheckRow
@@ -418,9 +420,9 @@ export function InstallWizard({
                       preflight?.appUrlSet
                         ? ""
                         : tSafe(
-                            "install.appUrlHint",
-                            "Set NEXT_PUBLIC_APP_URL in .env to your store's URL",
-                          )
+                          "install.appUrlHint",
+                          "Set NEXT_PUBLIC_APP_URL in .env to your store's URL",
+                        )
                     }
                   />
                   {blocked ? (
@@ -597,6 +599,46 @@ export function InstallWizard({
                       {tSafe(
                         "install.posHint",
                         "Sell in person and take payments at the counter. You can change this later in Settings.",
+                      )}
+                    </span>
+                  </span>
+                </label>
+                <label className="flex cursor-pointer items-start gap-2.5 rounded-md border border-border p-3">
+                  <Checkbox
+                    checked={store.multiBranch}
+                    onCheckedChange={(value) =>
+                      setStore((current) => ({ ...current, multiBranch: value === true }))
+                    }
+                    className="mt-0.5"
+                  />
+                  <span>
+                    <span className="block text-sm font-medium">
+                      {tSafe("install.multiBranch", "Multi-Branch")}
+                    </span>
+                    <span className="block text-xs text-muted-foreground">
+                      {tSafe(
+                        "install.multiBranchHint",
+                        "Manage multiple physical store locations and inventory.",
+                      )}
+                    </span>
+                  </span>
+                </label>
+                <label className="flex cursor-pointer items-start gap-2.5 rounded-md border border-border p-3">
+                  <Checkbox
+                    checked={store.wholesale}
+                    onCheckedChange={(value) =>
+                      setStore((current) => ({ ...current, wholesale: value === true }))
+                    }
+                    className="mt-0.5"
+                  />
+                  <span>
+                    <span className="block text-sm font-medium">
+                      {tSafe("install.wholesale", "Wholesale & B2B")}
+                    </span>
+                    <span className="block text-xs text-muted-foreground">
+                      {tSafe(
+                        "install.wholesaleHint",
+                        "Enable wholesale pricing tiers and B2B ordering.",
                       )}
                     </span>
                   </span>

@@ -96,6 +96,8 @@ export const installPayloadSchema = z.object({
       .toUpperCase()
       .regex(/^[A-Z]{3}$/, "Currency must be a 3-letter code"),
     multiVendor: z.boolean(),
+    multiBranch: z.boolean().default(false),
+    wholesale: z.boolean().default(false),
     /** Master switch for in-person selling; `pos.enabled` in settings. */
     pos: z.boolean(),
   }),

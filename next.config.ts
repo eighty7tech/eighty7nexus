@@ -38,6 +38,7 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  serverExternalPackages: ["sharp"],
   experimental: {
     // Cap the build's parallelism on memory-constrained servers. Static
     // generation spawns one Node worker per CPU by default; on a busy

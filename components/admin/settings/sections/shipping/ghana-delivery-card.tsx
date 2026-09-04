@@ -1,6 +1,6 @@
 "use client";
 
-import { Plus, Trash2, Edit2 } from "lucide-react";
+import { Plus, Trash2, Edit2, CheckSquare } from "lucide-react";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Separator } from "@/components/ui/separator";
+import { Checkbox } from "@/components/ui/checkbox";
 import type { IGhanaDeliveryMethod } from "@/types";
 import { RegionMultiSelect } from "@/components/common/region-multi-select";
 
@@ -26,6 +27,7 @@ function newId() {
 
 export function GhanaDeliveryCard({ methods, onChange }: GhanaDeliveryCardProps) {
   const t = useTranslations();
+  const [selectedIds, setSelectedIds] = useState<string[]>([]);
   
   const addMethod = () => {
     onChange([
@@ -48,6 +50,28 @@ export function GhanaDeliveryCard({ methods, onChange }: GhanaDeliveryCardProps)
 
   const removeMethod = (id: string) => {
     onChange(methods.filter((m) => m.id !== id));
+    setSelectedIds(prev => prev.filter(selectedId => selectedId !== id));
+  };
+
+  const removeSelected = () => {
+    onChange(methods.filter((m) => !selectedIds.includes(m.id)));
+    setSelectedIds([]);
+  };
+
+  const toggleSelectAll = (checked: boolean) => {
+    if (checked) {
+      setSelectedIds(methods.map(m => m.id));
+    } else {
+      setSelectedIds([]);
+    }
+  };
+
+  const toggleSelect = (id: string, checked: boolean) => {
+    if (checked) {
+      setSelectedIds(prev => [...prev, id]);
+    } else {
+      setSelectedIds(prev => prev.filter(selectedId => selectedId !== id));
+    }
   };
 
   return (
@@ -73,15 +97,38 @@ export function GhanaDeliveryCard({ methods, onChange }: GhanaDeliveryCardProps)
           </div>
         ) : (
           <div className="space-y-4">
+            <div className="flex items-center justify-between pb-2">
+              <div className="flex items-center gap-2">
+                <Checkbox 
+                  checked={methods.length > 0 && selectedIds.length === methods.length}
+                  onCheckedChange={toggleSelectAll}
+                  id="select-all-methods"
+                />
+                <Label htmlFor="select-all-methods" className="text-sm font-medium cursor-pointer">Select All</Label>
+              </div>
+              {selectedIds.length > 0 && (
+                <Button variant="destructive" size="sm" onClick={removeSelected} className="h-8">
+                  <Trash2 className="mr-2 h-3.5 w-3.5" />
+                  Delete Selected ({selectedIds.length})
+                </Button>
+              )}
+            </div>
+            
             {methods.map((method, index) => (
               <div key={method.id} className="rounded-lg border p-4">
                 <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-2">
-                    <Switch
-                      checked={method.active}
-                      onCheckedChange={(checked) => updateMethod(method.id, { active: checked })}
+                  <div className="flex items-center gap-4">
+                    <Checkbox 
+                      checked={selectedIds.includes(method.id)}
+                      onCheckedChange={(checked) => toggleSelect(method.id, checked as boolean)}
                     />
-                    <Label className="font-semibold text-base">{method.name}</Label>
+                    <div className="flex items-center gap-2">
+                      <Switch
+                        checked={method.active}
+                        onCheckedChange={(checked) => updateMethod(method.id, { active: checked })}
+                      />
+                      <Label className="font-semibold text-base">{method.name}</Label>
+                    </div>
                   </div>
                   <Button
                     type="button"

@@ -1646,6 +1646,13 @@ export interface IDeliveryMethod {
   isInternational: boolean;
   availableRegions: string[];
   availableCities?: string[];
+  operatingDays?: string[];
+  dispatchTimes?: string[];
+  terminalLocations?: {
+    name: string;
+    address?: string;
+    coordinates?: { lat: number; lng: number };
+  }[];
   createdAt?: Date;
   updatedAt?: Date;
 }

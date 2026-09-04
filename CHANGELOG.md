@@ -1,5 +1,38 @@
 # Changelog
 
+## [2026-09-04] - Ghana Delivery Methods Multi-Select
+
+### Added:
+- **Bulk Delete Capabilities**: Added multi-select checkboxes to the `GhanaDeliveryCard` in the Shipping Settings. Merchants can now easily select multiple delivery methods or "Select All" to bulk delete them, streamlining the process of resetting or overhauling regional delivery configurations.
+
+## [2026-09-04] - Premium Track Order Redesign & Admin Settings
+
+### Added:
+- **Track Order Admin Page**: Redesigned the Track Order settings tab (`track-order-settings-tab.tsx`) to feature visual theme cards and toggles for Ghana-specific delivery options (GhanaPostGPS, Dispatch Rider Info, MoMo/COD Tracking).
+- **Track Order UI Components**: Added `components/store/track-order-timeline.tsx` to isolate and handle a highly animated, horizontal/vertical delivery progress timeline.
+- **Ghana Delivery Integrations**: Order tracking now renders conditional blocks for map verification, rider details, and MoMo payment warnings based on the active tracking status and admin settings.
+- **Translations**: Added all text strings related to the new track order redesign and admin settings to `locales/en.json`.
+
+### Improvements:
+- **Premium Order Tracking UI**: Rebuilt the track order page to completely eliminate generic components. Introduced glassmorphic layouts, animated pulses, and sleek progress milestones.
+- **Scan History Integration**: Integrated the detailed courier `ScanHistory` directly into the main tracking timeline milestones rather than appending it to the bottom of the page.
+- **Localization**: Removed all hardcoded english text from `track-order-content.tsx`, fully migrating to `next-intl`.
+
+### fixes:
+- None
+
+## [2026-09-04] - Fix Vercel Serverless Upload Issue
+
+### Added:
+- None
+
+### Improvements:
+- **Floating Tabs UI**: Enforced default uneditable labels and icons for "AI Assistant" and "Back to Top" special tab types.
+
+### fixes:
+- **Floating Tabs Translations**: Fixed incorrect translation keys (`admin.settings.floatingTabs.floatingTabs.title` -> `title` and `description`) so that the header title and description render correctly.
+- **Vercel Image Upload**: Added `sharp` to `serverExternalPackages` in `next.config.ts` so that Next.js correctly preserves native binaries when deployed to Vercel, preventing 'upload failed' errors when optimizing pictures using Cloudflare R2 on Vercel.
+
 ## [2026-09-03] - Dashboard Templates, Product Styles, Checkout Layout, and Bug Fixes
 
 ### Added:

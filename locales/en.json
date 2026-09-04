@@ -974,7 +974,39 @@
     "browseProducts": "Browse Products",
     "shipments": "Shipments",
     "shipmentsDescription": "Items from different sellers ship and are paid for separately.",
-    "tracking": "Tracking",
+    "tracking": {
+      "0": "T",
+      "1": "r",
+      "2": "a",
+      "3": "c",
+      "4": "k",
+      "5": "i",
+      "6": "n",
+      "7": "g",
+      "livePackageTracker": "Real-time Live Package Tracker",
+      "heroTitle": "Track Your Order",
+      "heroDescription": "Enter your order number and contact email or phone number to see real-time delivery status, courier telemetry, and dispatch milestones.",
+      "orderNumberLabel": "Order number",
+      "orderNumberPlaceholder": "e.g. ORD-123456",
+      "identifierLabel": "Email or phone number",
+      "identifierPlaceholder": "customer@email.com or +233...",
+      "trackButton": "Track Order",
+      "carrierPartner": "Carrier & Dispatch Partner",
+      "trackingId": "Tracking ID",
+      "liveRouteActive": "Live Route Active",
+      "carrierTracking": "Carrier Tracking",
+      "ghanaPostGpsTitle": "Digital Address Required",
+      "ghanaPostGpsDesc": "Please verify your GhanaPostGPS address or drop a precise map pin for accurate last-mile delivery.",
+      "ghanaPostGpsAction": "Update Address",
+      "riderName": "Your Dispatch Rider: Kwame",
+      "riderContact": "WhatsApp Rider",
+      "momoCodTitle": "Payment Pending Upon Delivery",
+      "momoCodDesc": "Please have exact cash or Mobile Money (MoMo) ready.",
+      "momoCodAction": "Pay via MoMo Now",
+      "deliveryMilestones": "Delivery Milestones",
+      "milestonesDescription": "Step-by-step parcel movement and scan history",
+      "realTimeStatus": "Real-time status"
+    },
     "carrier": "Carrier",
     "trackWithCarrier": "Track with carrier",
     "carrierPending": "Carrier pending",
@@ -3017,7 +3049,7 @@
       },
       "trackOrder": {
         "title": "Track Order Page",
-        "description": "Customize the appearance and advanced features of the order tracking portal."
+        "description": "Configure the layout, theme, and delivery tracking features."
       },
       "floatingTabs": {
         "title": "Floating Tab Groups",
@@ -8564,4 +8596,3 @@
     "unsupportedBrowser": "Web Serial API is not supported in this browser. Use Chrome, Edge, or enter weight manually."
   }
 }
-
