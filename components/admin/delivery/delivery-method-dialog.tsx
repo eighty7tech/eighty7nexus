@@ -182,15 +182,28 @@ function MultiSelectDropdown({
                 <span className="text-xs font-medium text-muted-foreground">
                   {selected.length} selected
                 </span>
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="sm"
-                  className="h-6 px-2 text-xs"
-                  onClick={handleSelectAll}
-                >
-                  {selected.length === options.length ? "Deselect All" : "Select All"}
-                </Button>
+                <div className="flex items-center gap-1">
+                  {selected.length > 0 && (
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="sm"
+                      className="h-6 px-2 text-xs text-destructive hover:bg-destructive/10 hover:text-destructive"
+                      onClick={() => onChange([])}
+                    >
+                      Clear
+                    </Button>
+                  )}
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    className="h-6 px-2 text-xs"
+                    onClick={handleSelectAll}
+                  >
+                    {selected.length === options.length ? "Deselect All" : "Select All"}
+                  </Button>
+                </div>
               </div>
               {options.map((option) => {
                 const isSelected = selected.includes(option.value);
