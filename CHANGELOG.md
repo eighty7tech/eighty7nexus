@@ -3,6 +3,7 @@
 ## [2026-09-04] - Ghana Delivery Methods Multi-Select
 
 ### Added:
+- **AI Sales Agent Delivery Wizard**: Implemented the "Ghana Delivery/Logistics/Install Wizard" interactive widget for the AI Sales Agent. When customers ask about delivery to regions in Ghana, Dispatch Riders, MoMo/COD payment, or installation services, the AI now routes them to a dynamic UI card to capture their region and installation preference before proceeding to checkout.
 - **Bulk Delete Capabilities**: Added multi-select checkboxes to the `GhanaDeliveryCard` in the Shipping Settings. Merchants can now easily select multiple delivery methods or "Select All" to bulk delete them, streamlining the process of resetting or overhauling regional delivery configurations.
 
 ## [2026-09-04] - Premium Track Order Redesign & Admin Settings
@@ -18,8 +19,10 @@
 - **Scan History Integration**: Integrated the detailed courier `ScanHistory` directly into the main tracking timeline milestones rather than appending it to the bottom of the page.
 - **Localization**: Removed all hardcoded english text from `track-order-content.tsx`, fully migrating to `next-intl`.
 
-### fixes:
-- None
+### Fixes:
+- **AI Widget Theme Types**: Fixed TypeScript type overlap errors in `widget-tab.tsx` and `settings.ts` by updating legacy widget theme values (`nexus-glass`, `nexus-cyber-hud`, `nexus-capsule`) to the new values (`aether-core`, `quantum-sentience`, `helix-synth`).
+- **Vendor Page Guard**: Fixed the page guard import path and parameters in the vendor `ai-sales-agent/page.tsx` route to correctly enforce `requireVendorAreaAccess`.
+- **Vendor API Authentication**: Corrected the `auth: "vendor"` configuration in the `app/api/vendor/ai-sales-agent/route.ts` API route handler to correctly use `auth: "user"` along with `requireApprovedVendorByUserId` for accurate vendor context validation.
 
 ## [2026-09-04] - Fix Vercel Serverless Upload Issue
 

@@ -37,6 +37,20 @@ export type AISalesChatAction =
       type: "checkout";
       label: string;
       href: string;
+    }
+  | {
+      type: "capture_lead";
+      label?: string;
+    }
+  | {
+      type: "handoff";
+      label: string;
+      channel: "whatsapp" | "email" | "phone" | "custom";
+      url?: string;
+    }
+  | {
+      type: "ghana_delivery_wizard";
+      label?: string;
     };
 
 export type AISalesChatMessage = {
@@ -46,6 +60,7 @@ export type AISalesChatMessage = {
   productCards?: AISalesProductCard[];
   orderCards?: AISalesOrderStatusCard[];
   actions?: AISalesChatAction[];
+  requiresCsat?: boolean;
 };
 
 export type AISalesChatResponse = {
@@ -84,4 +99,5 @@ export type AISalesToolResult = {
   checkoutUrl?: string;
   cartSessionId?: string;
   recommendedProductIds?: string[];
+  requiresCsat?: boolean;
 };

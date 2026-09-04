@@ -10,6 +10,7 @@ import {
   type VendorPermissionPack,
 } from "@/config/permissions.config";
 import mongoose, { Schema, Document, Model } from "mongoose";
+import { AISalesAgentSchema } from "./schemas/ai-sales-agent.schema";
 import { COD_COLLECTED_BY, type CodCollectedBy } from "@/config/app.config";
 import {
   getDefaultContentPagesSettings,
@@ -1048,9 +1049,10 @@ export interface IAISalesAgentCapabilities {
 
 export type AISalesAgentWidgetTheme =
   | "nexus-modern"
-  | "nexus-glass"
-  | "nexus-cyber-hud"
-  | "nexus-capsule";
+  | "genetic-neural"
+  | "helix-synth"
+  | "quantum-sentience"
+  | "aether-core";
 
 export interface IAISalesAgentWidgetSettings {
   position: "bottom-right" | "bottom-left";
@@ -1063,6 +1065,13 @@ export interface IAISalesAgentWidgetSettings {
   width: number;
   height: number;
   showFooterText: boolean;
+  mobile?: {
+    mode: "hidden" | "floating_pill" | "floating_circle" | "bottom_bar_tab";
+    tabLabel: string;
+    tabIcon: string;
+    position: "bottom-right" | "bottom-left" | "bottom-center";
+    autoOpen: boolean;
+  };
 }
 
 export interface IAISalesAgentFaqEntry {
@@ -3071,100 +3080,7 @@ const SettingsSchema = new Schema<ISettings>(
     },
 
     aiSalesAgent: {
-      type: new Schema(
-        {
-          enabled: { type: Boolean, default: false },
-          provider: {
-            type: String,
-            enum: ["openai", "custom"],
-            default: "openai",
-          },
-          customBaseUrl: String,
-          customApiKey: String,
-          customModel: String,
-          model: {
-            type: String,
-            enum: ["gpt-5", "gpt-5-mini", "gpt-5-nano", "gpt-4.1-mini"],
-            default: "gpt-5-mini",
-          },
-          temperature: { type: Number, default: 0.3, min: 0, max: 1 },
-          reasoningEffort: {
-            type: String,
-            enum: ["minimal", "low", "medium", "high"],
-            default: "minimal",
-          },
-          maxRecommendations: { type: Number, default: 4, min: 1, max: 8 },
-          agentName: { type: String, default: "Sales AI" },
-          greeting: {
-            type: String,
-            default: "Hi! I can help you find products, compare options, add items to your cart, and check order status.",
-          },
-          tone: {
-            type: String,
-            enum: ["friendly", "professional", "playful", "luxury"],
-            default: "friendly",
-          },
-          instructions: { type: String, default: "" },
-          escalationMessage: {
-            type: String,
-            default:
-              "I can connect you with the store team for anything that needs a human review.",
-          },
-          widget: {
-            type: new Schema(
-              {
-                position: {
-                  type: String,
-                  enum: ["bottom-right", "bottom-left"],
-                  default: "bottom-right",
-                },
-                primaryColor: { type: String, default: "#7c3aed" },
-                accentColor: { type: String, default: "#a855f7" },
-                widgetTheme: {
-                  type: String,
-                  enum: ["nexus-modern", "nexus-glass", "nexus-cyber-hud", "nexus-capsule"],
-                  default: "nexus-modern",
-                },
-                avatarUrl: String,
-                footerText: { type: String, default: "Powered by AI" },
-                headerTitle: { type: String, default: "" },
-                width: { type: Number, default: 400, min: 320, max: 640 },
-                height: { type: Number, default: 680, min: 420, max: 900 },
-                showFooterText: { type: Boolean, default: true },
-              },
-              { _id: false },
-            ),
-            default: () => ({}),
-          },
-          capabilities: {
-            type: new Schema(
-              {
-                productQA: { type: Boolean, default: true },
-                recommendations: { type: Boolean, default: true },
-                cartActions: { type: Boolean, default: true },
-                checkoutHandoff: { type: Boolean, default: true },
-                orderStatus: { type: Boolean, default: true },
-              },
-              { _id: false },
-            ),
-            default: () => ({}),
-          },
-          faq: {
-            type: [
-              new Schema(
-                {
-                  question: { type: String, default: "" },
-                  answer: { type: String, default: "" },
-                  tags: { type: [String], default: [] },
-                },
-                { _id: false },
-              ),
-            ],
-            default: () => [],
-          },
-        },
-        { _id: false },
-      ),
+      type: AISalesAgentSchema,
       default: () => ({}),
     },
 

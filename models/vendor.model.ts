@@ -14,6 +14,7 @@ import {
 } from "@/lib/vendor-address";
 import { SOCIAL_PLATFORMS } from "@/lib/social-profiles";
 import type { VendorMessagingSettings } from "@/lib/vendor-messaging";
+import { AISalesAgentSchema } from "./schemas/ai-sales-agent.schema";
 
 const { Schema, models, model } = mongoose;
 const existingVendorModel = models.Vendor as typeof models.Vendor | undefined;
@@ -713,6 +714,10 @@ const VendorSchema = new Schema<IVendor>(
     shipping: {
       type: VendorShippingSchema,
       default: undefined,
+    },
+    aiSalesAgent: {
+      type: AISalesAgentSchema,
+      default: () => ({}),
     },
   },
   {

@@ -121,9 +121,10 @@ export function normalizeAISalesAgentSettings(
       ...widgetIncoming,
       widgetTheme:
         widgetIncoming.widgetTheme === "nexus-modern" ||
-        widgetIncoming.widgetTheme === "nexus-glass" ||
-        widgetIncoming.widgetTheme === "nexus-cyber-hud" ||
-        widgetIncoming.widgetTheme === "nexus-capsule"
+        widgetIncoming.widgetTheme === "genetic-neural" ||
+        widgetIncoming.widgetTheme === "helix-synth" ||
+        widgetIncoming.widgetTheme === "quantum-sentience" ||
+        widgetIncoming.widgetTheme === "aether-core"
           ? widgetIncoming.widgetTheme
           : DEFAULT_AI_SALES_AGENT_SETTINGS.widget.widgetTheme,
     },

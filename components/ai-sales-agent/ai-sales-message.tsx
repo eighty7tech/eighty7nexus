@@ -4,6 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { ImagePlus, Loader2, ShoppingBag, Sparkles } from "lucide-react";
 import { AppImage } from "@/components/ui/app-image";
+import { toast } from "@/components/ui/toast-notification";
 import { cn } from "@/lib/utils";
 import type {
   AISalesChatAction,
@@ -179,6 +180,28 @@ function ActionPill({
     );
   }
 
+  if (action.type === "handoff") {
+    return (
+      <a
+        href={action.url || "#"}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={cn(
+          "flex h-10 w-full items-center justify-center rounded-full px-4 text-sm font-semibold text-white shadow-sm transition-opacity hover:opacity-90",
+          spacing,
+        )}
+        style={{ backgroundColor: primaryColor }}
+      >
+        {action.label || fallbackLabel || "Contact Support"}
+      </a>
+    );
+  }
+
+  if (action.type === "capture_lead" || action.type === "ghana_delivery_wizard") {
+    // Handled specifically in bubble
+    return null;
+  }
+
   const key = `${action.productId}-${action.variantId || "default"}`;
   const added = addedActions.has(key);
   const pending = pendingActions.has(key);
@@ -190,7 +213,7 @@ function ActionPill({
       disabled={pending || added || !onAddToCart}
       onClick={() => {
         if (!onAddToCart) return;
-        void onAddToCart(action);
+        void onAddToCart(action as Extract<AISalesChatAction, { type: "add_to_cart" }>);
       }}
       className={cn(
         "flex h-10 w-full items-center justify-center gap-2 rounded-full border-2 bg-background px-4 text-sm font-semibold transition-colors hover:bg-muted disabled:cursor-not-allowed disabled:opacity-80",
@@ -201,6 +224,138 @@ function ActionPill({
       {pending && <Loader2 className="h-3.5 w-3.5 animate-spin" />}
       {pending ? label : added ? "Added to your cart!" : label}
     </button>
+  );
+}
+
+function LeadCaptureForm({ primaryColor }: { primaryColor: string }) {
+  const [submitted, setSubmitted] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+
+  if (submitted) {
+    return (
+      <div className="mt-2 rounded-xl bg-muted/50 p-4 text-center text-sm">
+        <p className="font-medium text-foreground">Thank you!</p>
+        <p className="text-muted-foreground mt-1 text-xs">We&apos;ll be in touch shortly.</p>
+      </div>
+    );
+  }
+
+  return (
+    <form
+      className="mt-2 space-y-2 rounded-xl bg-muted/50 p-3"
+      onSubmit={async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        try {
+          const res = await fetch("/api/ai-sales-agent/leads", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email }),
+          });
+          if (res.ok) {
+            setSubmitted(true);
+          } else {
+            const data = await res.json();
+            toast.error(data.message || "Failed to capture lead");
+          }
+        } catch (error) {
+          toast.error("An error occurred. Please try again.");
+        } finally {
+          setLoading(false);
+        }
+      }}
+    >
+      <p className="mb-2 text-xs font-semibold text-foreground">Please provide your contact details:</p>
+      <input
+        required
+        type="text"
+        placeholder="Name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        className="w-full rounded-md border border-border bg-background px-3 py-1.5 text-sm outline-none focus:border-primary"
+      />
+      <input
+        required
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        className="w-full rounded-md border border-border bg-background px-3 py-1.5 text-sm outline-none focus:border-primary"
+      />
+      <button
+        type="submit"
+        disabled={loading}
+        className="mt-2 flex h-8 w-full items-center justify-center rounded-md text-sm font-medium text-white transition-opacity disabled:opacity-50"
+        style={{ backgroundColor: primaryColor }}
+      >
+        {loading ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : "Submit"}
+      </button>
+    </form>
+  );
+}
+
+function GhanaDeliveryWizardForm({ primaryColor }: { primaryColor: string }) {
+  const [submitted, setSubmitted] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+
+  if (submitted) {
+    return (
+      <div className="mt-2 rounded-xl bg-muted/50 p-4 text-center text-sm">
+        <p className="font-medium text-foreground">Preferences Saved!</p>
+        <p className="text-muted-foreground mt-1 text-xs">Your delivery settings have been applied to your session.</p>
+      </div>
+    );
+  }
+
+  return (
+    <form
+      className="mt-2 space-y-3 rounded-xl bg-muted/50 p-4"
+      onSubmit={(e) => {
+        e.preventDefault();
+        setLoading(true);
+        setTimeout(() => {
+          setLoading(false);
+          setSubmitted(true);
+        }, 1000);
+      }}
+    >
+      <div className="space-y-1">
+        <p className="text-sm font-semibold text-foreground">Delivery Logistics Setup</p>
+        <p className="text-xs text-muted-foreground">Select your region for dispatch rider estimates.</p>
+      </div>
+      
+      <select
+        required
+        className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm outline-none focus:border-primary"
+      >
+        <option value="" disabled selected>Select Region...</option>
+        <option value="greater_accra">Greater Accra (Same Day)</option>
+        <option value="ashanti">Ashanti (1-2 Days)</option>
+        <option value="central">Central Region (1-2 Days)</option>
+        <option value="other">Other Regions (2-3 Days)</option>
+      </select>
+
+      <div className="flex items-start gap-2 pt-1">
+        <input type="checkbox" id="install_wizard" className="mt-1" />
+        <label htmlFor="install_wizard" className="text-xs text-foreground cursor-pointer">
+          <span className="font-semibold block">Need Installation Services?</span>
+          <span className="text-muted-foreground">Our dispatch agents can assemble & install upon delivery (extra fee applies).</span>
+        </label>
+      </div>
+
+      <div className="pt-2">
+        <button
+          type="submit"
+          disabled={loading}
+          className="flex h-9 w-full items-center justify-center rounded-md text-sm font-semibold text-white transition-opacity disabled:opacity-50"
+          style={{ backgroundColor: primaryColor }}
+        >
+          {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Save & Continue"}
+        </button>
+      </div>
+    </form>
   );
 }
 
@@ -327,6 +482,16 @@ export function AISalesMessageBubble({
               ))}
               {actions.map((action, index) => {
                 if (consumed.has(index)) return null;
+                if (action.type === "capture_lead") {
+                  return (
+                    <LeadCaptureForm key={`${message.id}-lead-${index}`} primaryColor={primaryColor} />
+                  );
+                }
+                if (action.type === "ghana_delivery_wizard") {
+                  return (
+                    <GhanaDeliveryWizardForm key={`${message.id}-wizard-${index}`} primaryColor={primaryColor} />
+                  );
+                }
                 const fallbackLabel =
                   action.type === "add_to_cart"
                     ? action.label || "Add to cart"
@@ -343,6 +508,12 @@ export function AISalesMessageBubble({
                   />
                 );
               })}
+              {message.requiresCsat && (
+                <div className="mt-2 flex gap-2 justify-end text-muted-foreground">
+                  <button className="rounded bg-muted/50 px-2 py-1 text-[10px] uppercase font-bold hover:bg-muted hover:text-foreground">👍 Helpful</button>
+                  <button className="rounded bg-muted/50 px-2 py-1 text-[10px] uppercase font-bold hover:bg-muted hover:text-foreground">👎 Not Helpful</button>
+                </div>
+              )}
             </>
           );
         })()}

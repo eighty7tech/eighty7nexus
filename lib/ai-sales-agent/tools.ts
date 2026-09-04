@@ -601,6 +601,65 @@ export async function getCustomerHistoryTool(
   };
 }
 
+export async function captureLeadTool(
+  _args: Record<string, unknown>,
+  ctx: AISalesToolContext,
+): Promise<AISalesToolResult> {
+  return {
+    content: "I've asked the customer for their contact information. Wait for them to submit it. Do not ask for their email or name yourself, the UI will collect it securely.",
+    actions: [{ type: "capture_lead" }]
+  };
+}
+
+export async function triggerHandoffTool(
+  _args: Record<string, unknown>,
+  ctx: AISalesToolContext,
+): Promise<AISalesToolResult> {
+  const { handoff } = ctx.settings;
+  if (!handoff?.enabled) {
+    return { content: "Human handoff is currently disabled for this store. Apologize and try to help them with the AI." };
+  }
+
+  let channel: "whatsapp" | "email" | "phone" | "custom" = "email";
+  let url = "";
+
+  if (handoff.whatsapp) {
+    channel = "whatsapp";
+    const text = handoff.whatsappMessage ? encodeURIComponent(handoff.whatsappMessage) : "";
+    url = `https://wa.me/${handoff.whatsapp.replace(/\D/g, "")}${text ? `?text=${text}` : ""}`;
+  } else if (handoff.phone) {
+    channel = "phone";
+    url = `tel:${handoff.phone.replace(/\D/g, "")}`;
+  } else if (handoff.customChannelUrl) {
+    channel = "custom";
+    url = handoff.customChannelUrl;
+  } else if (handoff.email) {
+    channel = "email";
+    const subject = handoff.emailSubject ? encodeURIComponent(handoff.emailSubject) : "";
+    url = `mailto:${handoff.email}${subject ? `?subject=${subject}` : ""}`;
+  }
+
+  return {
+    content: `Triggered handoff via ${channel}. Tell the customer to click the button below to connect with a human.`,
+    actions: [{
+      type: "handoff",
+      label: handoff.customChannelLabel || "Contact Support",
+      channel,
+      url
+    }]
+  };
+}
+
+export async function triggerGhanaDeliveryWizardTool(
+  _args: Record<string, unknown>,
+  ctx: AISalesToolContext,
+): Promise<AISalesToolResult> {
+  return {
+    content: "I've shown the customer the Ghana Delivery and Installation Wizard. Do not ask for their region or installation preference, the UI will collect it and update their checkout settings.",
+    actions: [{ type: "ghana_delivery_wizard", label: "View Delivery & Install Options" }]
+  };
+}
+
 export const aiSalesToolHandlers = {
   search_products: searchProductsTool,
   get_product_details: getProductDetailsTool,
@@ -611,4 +670,7 @@ export const aiSalesToolHandlers = {
   start_checkout: startCheckoutTool,
   get_order_status: getOrderStatusTool,
   get_customer_history: getCustomerHistoryTool,
+  capture_lead: captureLeadTool,
+  trigger_handoff: triggerHandoffTool,
+  trigger_ghana_delivery_wizard: triggerGhanaDeliveryWizardTool,
 };

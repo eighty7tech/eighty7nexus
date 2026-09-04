@@ -1,4 +1,5 @@
-import type { Types } from "mongoose";
+import type { Types, Document } from "mongoose";
+import type { IAISalesAgentSettings } from "@/models/settings.model";
 import type {
   UserRole,
   UserAccountStatus,
@@ -316,6 +317,7 @@ export interface IVendor {
   /** Buyer-facing direct messaging channels configured by this vendor. */
   messaging?: VendorMessagingSettings;
   shipping?: VendorShippingProfile;
+  aiSalesAgent?: IAISalesAgentSettings;
   createdAt: Date;
   updatedAt: Date;
 }

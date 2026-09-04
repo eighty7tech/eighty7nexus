@@ -247,13 +247,13 @@ export function AISalesAgentWidget({ locale, hideToggleButton }: { locale: Local
         <div
           className={cn(
             "mb-3 flex w-[calc(100vw-2rem)] flex-col overflow-hidden transition-all duration-300",
-            currentTheme === "nexus-glass" &&
+            currentTheme === "helix-synth" &&
               "rounded-[32px] border border-white/30 bg-card/65 backdrop-blur-2xl text-foreground shadow-2xl",
-            currentTheme === "nexus-cyber-hud" &&
+            currentTheme === "genetic-neural" &&
               "rounded-2xl border-2 border-[#77CDCC] bg-[#000d24] text-emerald-100 shadow-[0_0_25px_rgba(119,205,204,0.3)]",
-            currentTheme === "nexus-capsule" &&
+            currentTheme === "quantum-sentience" &&
               "rounded-[36px] border border-border bg-card text-foreground shadow-2xl",
-            currentTheme === "nexus-modern" &&
+            (currentTheme === "nexus-modern" || currentTheme === "aether-core") &&
               "rounded-[28px] border border-border bg-background text-foreground shadow-2xl"
           )}
           style={{
@@ -265,25 +265,25 @@ export function AISalesAgentWidget({ locale, hideToggleButton }: { locale: Local
             <div
               className={cn(
                 "flex h-12 items-center justify-between px-5 text-white transition-all",
-                currentTheme === "nexus-cyber-hud"
+                currentTheme === "genetic-neural"
                   ? "rounded-xl border border-[#77CDCC]/40 bg-[#001a45] shadow-xs font-mono"
-                  : currentTheme === "nexus-capsule"
+                  : currentTheme === "quantum-sentience"
                   ? "rounded-full shadow-md"
-                  : currentTheme === "nexus-glass"
+                  : currentTheme === "helix-synth"
                   ? "rounded-full border border-white/20 bg-white/20 dark:bg-white/10 backdrop-blur-xl"
                   : "rounded-2xl shadow-sm"
               )}
               style={{
                 background:
-                  currentTheme === "nexus-cyber-hud"
+                  currentTheme === "genetic-neural"
                     ? "#001a45"
-                    : currentTheme === "nexus-glass"
+                    : currentTheme === "helix-synth"
                     ? undefined
                     : headerGradient,
               }}
             >
               <div className="flex items-center gap-2">
-                {currentTheme === "nexus-cyber-hud" && (
+                {currentTheme === "genetic-neural" && (
                   <span className="h-2 w-2 rounded-full bg-[#77CDCC] animate-pulse" />
                 )}
                 <span className="text-sm font-semibold tracking-wide">
@@ -319,9 +319,9 @@ export function AISalesAgentWidget({ locale, hideToggleButton }: { locale: Local
               <div
                 className={cn(
                   "w-fit max-w-[85%] px-4 py-2.5 text-sm leading-relaxed",
-                  currentTheme === "nexus-cyber-hud"
+                  currentTheme === "genetic-neural"
                     ? "rounded-xl border border-[#77CDCC]/30 bg-[#001a45]/80 text-[#77CDCC] font-mono"
-                    : currentTheme === "nexus-glass"
+                    : currentTheme === "helix-synth"
                     ? "rounded-3xl border border-white/20 bg-card/70 backdrop-blur-md text-foreground"
                     : "rounded-3xl bg-muted text-foreground"
                 )}
@@ -368,15 +368,15 @@ export function AISalesAgentWidget({ locale, hideToggleButton }: { locale: Local
             <div
               className={cn(
                 "flex items-center gap-2 py-1.5 pl-4 pr-1.5 text-foreground transition-all",
-                currentTheme === "nexus-cyber-hud"
+                currentTheme === "genetic-neural"
                   ? "rounded-xl border border-[#77CDCC] bg-[#001a45]/90 font-mono text-xs"
-                  : currentTheme === "nexus-glass"
+                  : currentTheme === "helix-synth"
                   ? "rounded-full border border-white/30 bg-card/60 backdrop-blur-xl"
                   : "rounded-full border-2 bg-card"
               )}
               style={{
                 borderColor:
-                  currentTheme === "nexus-cyber-hud"
+                  currentTheme === "genetic-neural"
                     ? "#77CDCC"
                     : config.widget.primaryColor,
               }}
@@ -388,7 +388,7 @@ export function AISalesAgentWidget({ locale, hideToggleButton }: { locale: Local
                   if (event.key === "Enter") void sendMessage();
                 }}
                 placeholder={
-                  currentTheme === "nexus-cyber-hud"
+                  currentTheme === "genetic-neural"
                     ? ">> Input command or prompt..."
                     : t("typeMessage")
                 }
@@ -402,11 +402,11 @@ export function AISalesAgentWidget({ locale, hideToggleButton }: { locale: Local
                 aria-label={t("send")}
                 className={cn(
                   "flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white transition-opacity disabled:opacity-40",
-                  currentTheme === "nexus-cyber-hud" && "rounded-lg text-[#001a45]"
+                  currentTheme === "genetic-neural" && "rounded-lg text-[#001a45]"
                 )}
                 style={{
                   backgroundColor:
-                    currentTheme === "nexus-cyber-hud"
+                    currentTheme === "genetic-neural"
                       ? "#77CDCC"
                       : config.widget.primaryColor,
                 }}
@@ -422,7 +422,7 @@ export function AISalesAgentWidget({ locale, hideToggleButton }: { locale: Local
               <p
                 className={cn(
                   "mt-2 text-center text-[11px] text-muted-foreground",
-                  currentTheme === "nexus-cyber-hud" && "font-mono text-[#77CDCC]/80"
+                  currentTheme === "genetic-neural" && "font-mono text-[#77CDCC]/80"
                 )}
               >
                 {config.widget.footerText}
@@ -432,17 +432,36 @@ export function AISalesAgentWidget({ locale, hideToggleButton }: { locale: Local
         </div>
       )}
 
-      {!open && !hideToggleButton && (
-        <Button
-          size="icon"
-          className="h-14 w-14 rounded-full shadow-xl"
-          onClick={() => setOpen(true)}
-          style={{ background: headerGradient }}
-        >
-          <MessageCircle className="h-6 w-6" />
-          <span className="sr-only">{t("open")}</span>
-        </Button>
-      )}
+      {!open && !hideToggleButton && (() => {
+        const mobileMode = config.widget.mobile?.mode || "floating_circle";
+        const isMobile = typeof window !== "undefined" && window.innerWidth < 1024;
+        if (isMobile && mobileMode === "hidden") return null;
+
+        if (isMobile && mobileMode === "floating_pill") {
+          return (
+            <Button
+              className="h-12 rounded-full shadow-xl px-4 flex items-center gap-2"
+              onClick={() => setOpen(true)}
+              style={{ background: headerGradient }}
+            >
+              <MessageCircle className="h-5 w-5" />
+              <span className="text-sm font-semibold">{config.widget.mobile?.tabLabel || "AI Help"}</span>
+            </Button>
+          );
+        }
+
+        return (
+          <Button
+            size="icon"
+            className="h-14 w-14 rounded-full shadow-xl"
+            onClick={() => setOpen(true)}
+            style={{ background: headerGradient }}
+          >
+            <MessageCircle className="h-6 w-6" />
+            <span className="sr-only">{t("open")}</span>
+          </Button>
+        );
+      })()}
     </div>
   );
 }

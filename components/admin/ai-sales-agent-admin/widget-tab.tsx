@@ -497,11 +497,11 @@ export function WidgetTab({ settings, setSettings, faviconUrl }: WidgetTabProps)
               <div
                 className={cn(
                   "flex flex-col overflow-hidden transition-all duration-300",
-                  currentWidgetTheme === "nexus-glass" &&
+                  currentWidgetTheme === "aether-core" &&
                     "rounded-[32px] border border-white/30 bg-card/65 backdrop-blur-2xl text-foreground shadow-2xl",
-                  currentWidgetTheme === "nexus-cyber-hud" &&
+                  currentWidgetTheme === "quantum-sentience" &&
                     "rounded-2xl border-2 border-[#77CDCC] bg-[#000d24] text-emerald-100 shadow-[0_0_25px_rgba(119,205,204,0.3)]",
-                  currentWidgetTheme === "nexus-capsule" &&
+                  currentWidgetTheme === "helix-synth" &&
                     "rounded-[36px] border border-border bg-card text-foreground shadow-2xl",
                   currentWidgetTheme === "nexus-modern" &&
                     "rounded-[28px] border border-border bg-background text-foreground shadow-xl"
@@ -516,25 +516,25 @@ export function WidgetTab({ settings, setSettings, faviconUrl }: WidgetTabProps)
                   <div
                     className={cn(
                       "flex h-12 items-center justify-between px-5 text-white transition-all",
-                      currentWidgetTheme === "nexus-cyber-hud"
+                      currentWidgetTheme === "quantum-sentience"
                         ? "rounded-xl border border-[#77CDCC]/40 bg-[#001a45] shadow-xs font-mono"
-                        : currentWidgetTheme === "nexus-capsule"
+                        : currentWidgetTheme === "helix-synth"
                         ? "rounded-full shadow-md"
-                        : currentWidgetTheme === "nexus-glass"
+                        : currentWidgetTheme === "aether-core"
                         ? "rounded-full border border-white/20 bg-white/20 dark:bg-white/10 backdrop-blur-xl"
                         : "rounded-2xl shadow-sm"
                     )}
                     style={{
                       background:
-                        currentWidgetTheme === "nexus-cyber-hud"
+                        currentWidgetTheme === "quantum-sentience"
                           ? "#001a45"
-                          : currentWidgetTheme === "nexus-glass"
+                          : currentWidgetTheme === "aether-core"
                           ? undefined
                           : `linear-gradient(135deg, ${settings.widget.primaryColor}, ${settings.widget.accentColor})`,
                     }}
                   >
                     <div className="flex items-center gap-2">
-                      {currentWidgetTheme === "nexus-cyber-hud" && (
+                      {currentWidgetTheme === "quantum-sentience" && (
                         <span className="h-2 w-2 rounded-full bg-[#77CDCC] animate-pulse" />
                       )}
                       <span className="text-sm font-semibold tracking-wide">
@@ -563,9 +563,9 @@ export function WidgetTab({ settings, setSettings, faviconUrl }: WidgetTabProps)
                     <div
                       className={cn(
                         "w-fit max-w-[85%] px-4 py-2.5 text-sm leading-relaxed",
-                        currentWidgetTheme === "nexus-cyber-hud"
+                        currentWidgetTheme === "quantum-sentience"
                           ? "rounded-xl border border-[#77CDCC]/30 bg-[#001a45]/80 text-[#77CDCC] font-mono"
-                          : currentWidgetTheme === "nexus-glass"
+                          : currentWidgetTheme === "aether-core"
                           ? "rounded-3xl border border-white/20 bg-card/70 backdrop-blur-md text-foreground"
                           : "rounded-3xl bg-muted text-foreground"
                       )}
@@ -578,32 +578,32 @@ export function WidgetTab({ settings, setSettings, faviconUrl }: WidgetTabProps)
                   <div
                     className={cn(
                       "flex items-center gap-2 py-1.5 pl-4 pr-1.5 text-foreground transition-all",
-                      currentWidgetTheme === "nexus-cyber-hud"
+                      currentWidgetTheme === "quantum-sentience"
                         ? "rounded-xl border border-[#77CDCC] bg-[#001a45]/90 font-mono text-xs"
-                        : currentWidgetTheme === "nexus-glass"
+                        : currentWidgetTheme === "aether-core"
                         ? "rounded-full border border-white/30 bg-card/60 backdrop-blur-xl"
                         : "rounded-full border-2 bg-card"
                     )}
                     style={{
                       borderColor:
-                        currentWidgetTheme === "nexus-cyber-hud"
+                        currentWidgetTheme === "quantum-sentience"
                           ? "#77CDCC"
                           : settings.widget.primaryColor,
                     }}
                   >
                     <span className="flex h-9 flex-1 items-center text-sm text-muted-foreground">
-                      {currentWidgetTheme === "nexus-cyber-hud"
+                      {currentWidgetTheme === "quantum-sentience"
                         ? ">> Input command or prompt..."
                         : t("widget.preview.typeMessage")}
                     </span>
                     <span
                       className={cn(
                         "flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white",
-                        currentWidgetTheme === "nexus-cyber-hud" && "rounded-lg text-[#001a45]"
+                        currentWidgetTheme === "quantum-sentience" && "rounded-lg text-[#001a45]"
                       )}
                       style={{
                         backgroundColor:
-                          currentWidgetTheme === "nexus-cyber-hud"
+                          currentWidgetTheme === "quantum-sentience"
                             ? "#77CDCC"
                             : settings.widget.primaryColor,
                       }}
@@ -616,7 +616,7 @@ export function WidgetTab({ settings, setSettings, faviconUrl }: WidgetTabProps)
                       <p
                         className={cn(
                           "mt-2 text-center text-[11px] text-muted-foreground",
-                          currentWidgetTheme === "nexus-cyber-hud" && "font-mono text-[#77CDCC]/80"
+                          currentWidgetTheme === "quantum-sentience" && "font-mono text-[#77CDCC]/80"
                         )}
                       >
                         {settings.widget.footerText}

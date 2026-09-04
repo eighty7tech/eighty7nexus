@@ -22,8 +22,9 @@ import {
   Settings2,
   Sliders,
   Sparkles,
-  Trash2,
   Wrench,
+  Users,
+  Trash2,
   X,
   Zap,
 } from "lucide-react";
@@ -193,7 +194,7 @@ function formatFullDate(value?: string) {
   return date.toLocaleString();
 }
 
-export function AISalesAgentAdmin({ locale }: { locale: string }) {
+export function AISalesAgentAdmin({ locale, mode = "admin" }: { locale: string, mode?: "admin" | "vendor" }) {
   const { confirm } = useConfirmation();
   const t = useTranslations("aiSalesAgentAdmin");
   // The widget preview shows real product prices, so it formats them exactly as
@@ -250,7 +251,7 @@ export function AISalesAgentAdmin({ locale }: { locale: string }) {
   const load = React.useCallback(async () => {
     setLoading(true);
     try {
-      const res = await fetch("/api/admin/ai-sales-agent", {
+      const res = await fetch(`/api/${mode}/ai-sales-agent`, {
         cache: "no-store",
       });
       const json = await res.json();
@@ -381,7 +382,7 @@ export function AISalesAgentAdmin({ locale }: { locale: string }) {
   const save = async () => {
     setSaving(true);
     try {
-      const res = await fetch("/api/admin/ai-sales-agent", {
+      const res = await fetch(`/api/${mode}/ai-sales-agent`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ settings }),
