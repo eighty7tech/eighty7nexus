@@ -1209,6 +1209,9 @@ export interface ITrackOrderSettings {
   showItemList: boolean;
   accentColor?: string;
   enableGlassmorphism: boolean;
+  ghanaPostGps?: boolean;
+  dispatchRiderInfo?: boolean;
+  momoCodTracking?: boolean;
 }
 
 export interface IOnlineStoreSettings {
@@ -1696,6 +1699,9 @@ const SettingsSchema = new Schema<ISettings>(
                 showItemList: { type: Boolean, default: true },
                 accentColor: { type: String, default: "#10b981" },
                 enableGlassmorphism: { type: Boolean, default: true },
+                ghanaPostGps: { type: Boolean, default: false },
+                dispatchRiderInfo: { type: Boolean, default: false },
+                momoCodTracking: { type: Boolean, default: false },
               },
               { _id: false },
             ),
