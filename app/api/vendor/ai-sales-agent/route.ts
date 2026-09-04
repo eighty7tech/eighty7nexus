@@ -278,7 +278,7 @@ export const PUT = withApi(
     const data = isPlainObject(body) && "settings" in body ? body.settings : body;
     const update = sanitizeUpdate(data);
 
-    let vendor = await requireApprovedVendorByUserId(session.user.id);
+    const vendor = await requireApprovedVendorByUserId(session.user.id);
     if (!vendor) throw new ValidationError("Vendor not found");
     
     const current = vendor.aiSalesAgent || {};

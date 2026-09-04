@@ -2,7 +2,27 @@ import { defineConfig, globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
 
-const relaxedNextVitals = nextVitals.map((config) => {
+// eslint-config-next hardcodes `settings.react.version: "detect"` which calls
+// context.getFilename() — removed in ESLint v10 — and crashes the linter.
+// Patch all configs in the array, replacing "detect" with the real version so
+// the broken auto-detection code is never reached.
+function patchReactVersion(configs) {
+  return configs.map((config) => {
+    if (!config.settings?.react?.version) return config;
+    return {
+      ...config,
+      settings: {
+        ...config.settings,
+        react: {
+          ...config.settings.react,
+          version: "19.2.6",
+        },
+      },
+    };
+  });
+}
+
+const relaxedNextVitals = patchReactVersion(nextVitals).map((config) => {
   if (!config.plugins?.["react-hooks"]) return config;
 
   return {
@@ -17,7 +37,7 @@ const relaxedNextVitals = nextVitals.map((config) => {
   };
 });
 
-const relaxedNextTs = nextTs.map((config) => {
+const relaxedNextTs = patchReactVersion(nextTs).map((config) => {
   if (!config.rules?.["@typescript-eslint/no-explicit-any"]) return config;
 
   return {
@@ -55,6 +75,8 @@ const eslintConfig = defineConfig([
     "public/sw.js",
     "public/workbox-*.js",
     "public/swe-worker*.js",
+    // Scratch/temp scripts — not part of the project source
+    "scratch/**",
   ]),
 ]);
 
