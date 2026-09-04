@@ -9,7 +9,7 @@ export default function Page() {
     isSaving,
     dirtySections,
     updateFieldInSection,
-    saveSection,
+    saveSections,
   } = useAdminSettingsContext();
 
   return (
@@ -18,11 +18,17 @@ export default function Page() {
         <OtpSettingsTab
           settings={loadedSettings}
           isSaving={isSaving}
-          isDirty={dirtySections.has("otp")}
-          updateField={(path, value) => updateFieldInSection("otp", path, value)}
-          updateNestedField={(path, value) => updateFieldInSection("otp", path, value)}
+          isDirty={dirtySections.has("otp") || dirtySections.has("sms")}
+          updateField={(path, value) => {
+            const section = path.startsWith("sms.") ? "sms" : "otp";
+            updateFieldInSection(section, path, value);
+          }}
+          updateNestedField={(path, value) => {
+            const section = path.startsWith("sms.") ? "sms" : "otp";
+            updateFieldInSection(section, path, value);
+          }}
           onSave={() =>
-            saveSection("otp", {
+            saveSections({
               otp: loadedSettings.otp,
               sms: loadedSettings.sms,
             })
