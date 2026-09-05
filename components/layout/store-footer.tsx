@@ -705,418 +705,46 @@ export function StoreFooter({ locale, columns, footerSettings }: StoreFooterProp
   );
 
 
-  const renderModernCard = () => (
+  const renderCleanCorporate = () => (
     <>
-      <div className={`${contentClass} py-12`}>
-        <div className="rounded-2xl border bg-card/60 backdrop-blur-md p-8 md:p-10 shadow-xl border-border/80">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-            <div className="md:col-span-4 flex flex-col gap-6">
-              {brandNode}
-              {socialNode}
-            </div>
-            <div className="md:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-8">
-              {finalColumns.slice(0, 3).map((column, idx) => (
-                <div key={`${column.title}-${idx}`}>
-                  <h4 className="mb-4 font-bold text-sm" style={headingStyle}>{column.title}</h4>
-                  <ul className="space-y-2.5">
-                    {column.links.map((link, linkIdx) => (
-                      <li key={`${link.href}-${linkIdx}`}>
-                        <Link href={link.href} target={link.target} className="text-sm text-muted-foreground transition-colors hover:text-primary" style={mutedStyle}>{link.label}</Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-      {renderBottomBar()}
-    </>
-  );
-
-  const renderNewsletterHero = () => (
-    <>
-      {/* Top Newsletter Hero Banner */}
-      {nlConfig.enabled && (
-        <div className="border-b bg-primary/5 py-10 px-4">
-          <div className={`${contentClass} flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left`}>
-            <div>
-              <div className="flex items-center gap-2 justify-center md:justify-start mb-1">
-                <h3 className="text-2xl font-bold tracking-tight" style={headingStyle}>
-                  {nlConfig.title}
-                </h3>
-                {nlConfig.discountBadge && (
-                  <span className="inline-flex items-center rounded-full bg-primary/10 border border-primary/20 px-2.5 py-0.5 text-xs font-semibold text-primary">
-                    {nlConfig.discountBadge}
-                  </span>
-                )}
-              </div>
-              <p className="text-sm text-muted-foreground" style={mutedStyle}>
-                {nlConfig.subtitle}
-              </p>
-            </div>
-            <form onSubmit={handleNewsletterSubmit} className="flex w-full max-w-md items-center gap-2">
-              {newsletterSubscribed ? (
-                <div className="flex items-center gap-2 rounded-md border border-emerald-500/40 bg-emerald-500/10 px-4 py-2.5 text-sm font-semibold text-emerald-600 dark:text-emerald-400 w-full">
-                  <Check className="h-4 w-4 shrink-0" />
-                  <span>{nlConfig.successMessage}</span>
-                </div>
-              ) : (
-                <>
+      <div className={`${contentClass} py-16`}>
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
+          {/* Brand & Newsletter Column */}
+          <div className="md:col-span-4 flex flex-col gap-6">
+            {brandNode}
+            {nlConfig.enabled && (
+              <div className="mt-4">
+                <h4 className="text-sm font-semibold mb-2">{nlConfig.title}</h4>
+                <p className="text-sm text-muted-foreground mb-4">{nlConfig.subtitle}</p>
+                <form onSubmit={handleNewsletterSubmit} className="flex gap-2">
                   <input
                     type="email"
                     value={newsletterEmail}
                     onChange={(e) => setNewsletterEmail(e.target.value)}
                     placeholder={nlConfig.placeholder}
-                    className="h-10 flex-1 rounded-md border border-input bg-background px-3 py-2 text-sm shadow-xs focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
                     required
                   />
-                  <button
-                    type="submit"
-                    className="h-10 px-5 rounded-md bg-primary text-primary-foreground font-medium text-sm shadow-xs hover:bg-primary/90 transition-colors shrink-0"
-                  >
+                  <button type="submit" className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2">
                     {nlConfig.buttonText}
                   </button>
-                </>
-              )}
-            </form>
-          </div>
-        </div>
-      )}
-
-      <div className={`${contentClass} py-12`}>
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-6">
-          <div className="col-span-2">{brandNode}</div>
-          {finalColumns.map((column, idx) => (
-            <div key={`${column.title}-${idx}`}>
-              <h4 className="mb-4 font-semibold text-sm" style={headingStyle}>
-                {column.title}
-              </h4>
-              <ul className="space-y-2">
-                {column.links.map((link, linkIdx) => (
-                  <li key={`${link.href}-${linkIdx}`}>
-                    <Link
-                      href={link.href}
-                      target={link.target}
-                      className="text-sm text-muted-foreground transition-colors hover:text-primary"
-                      style={mutedStyle}
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </div>
-      {renderBottomBar()}
-    </>
-  );
-
-  const renderNexusFlagship = () => (
-    <>
-      <div 
-        className="relative overflow-hidden py-16 text-white border-t border-[#77CDCC]/30"
-        style={{
-          background: "linear-gradient(145deg, #001a45 0%, #172554 45%, #001a45 100%)",
-        }}
-      >
-        {/* Ambient Cyan Aura */}
-        <div className="absolute -top-24 right-10 h-96 w-96 rounded-full bg-[#77CDCC]/15 blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-24 left-10 h-96 w-96 rounded-full bg-[#324071]/40 blur-3xl pointer-events-none" />
-
-        <div className={`${contentClass} relative z-10 space-y-12`}>
-          {/* Top Tier: Brand Manifesto & VIP Newsletter Card */}
-          {nlConfig.enabled && (
-            <div className="rounded-2xl border border-[#77CDCC]/30 bg-white/5 backdrop-blur-md p-6 sm:p-8 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8">
-              <div className="max-w-xl text-center lg:text-left space-y-2">
-                <div className="inline-flex items-center gap-2 rounded-full border border-[#77CDCC]/40 bg-[#77CDCC]/10 px-3 py-1 text-xs font-semibold text-[#77CDCC]">
-                  <Sparkles className="h-3.5 w-3.5" />
-                  <span>{nlConfig.discountBadge || "EXCLUSIVE VIP ACCESS"}</span>
-                </div>
-                <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
-                  {nlConfig.title}
-                </h3>
-                <p className="text-sm text-white/70 leading-relaxed">
-                  {nlConfig.subtitle}
-                </p>
-              </div>
-
-              <form onSubmit={handleNewsletterSubmit} className="w-full max-w-md">
-                {newsletterSubscribed ? (
-                  <div className="flex items-center gap-2 rounded-xl border border-emerald-500/40 bg-emerald-500/20 px-4 py-3 text-sm font-semibold text-emerald-300">
-                    <Check className="h-4 w-4" />
-                    <span>{nlConfig.successMessage}</span>
-                  </div>
-                ) : (
-                  <div className="flex flex-col sm:flex-row gap-2">
-                    <input
-                      type="email"
-                      value={newsletterEmail}
-                      onChange={(e) => setNewsletterEmail(e.target.value)}
-                      placeholder={nlConfig.placeholder}
-                      className="h-11 flex-1 rounded-xl border border-white/20 bg-white/10 px-4 text-sm text-white placeholder:text-white/40 focus:border-[#77CDCC] focus:outline-none focus:ring-2 focus:ring-[#77CDCC]/40 backdrop-blur-xs"
-                      required
-                    />
-                    <button
-                      type="submit"
-                      className="h-11 px-6 rounded-xl bg-[#77CDCC] font-bold text-sm text-[#001a45] shadow-[0_0_15px_rgba(119,205,204,0.4)] hover:bg-[#77CDCC]/90 transition-all active:scale-95 shrink-0"
-                    >
-                      {nlConfig.buttonText}
-                    </button>
-                  </div>
-                )}
-              </form>
-            </div>
-          )}
-
-          {/* Middle Tier: Catalog Directory & Store Identity */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pt-4">
-            <div className="md:col-span-4 space-y-4">
-              <div className="flex items-center gap-3">
-                {currentLogoUrl ? (
-                  <img src={currentLogoUrl} alt={resolvedStoreName} className="h-9 w-auto object-contain brightness-110" />
-                ) : (
-                  <span className="text-2xl font-black tracking-wider text-white">
-                    {resolvedStoreName}
-                  </span>
-                )}
-              </div>
-              <p className="text-sm text-white/70 leading-relaxed pr-6">
-                {resolvedFooterDescription}
-              </p>
-              <div className="pt-2">{socialNode}</div>
-            </div>
-
-            <div className="md:col-span-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-              {finalColumns.map((col, idx) => (
-                <div key={`${col.title}-${idx}`} className="space-y-3">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#77CDCC]">
-                    {col.title}
-                  </h4>
-                  <ul className="space-y-2 text-sm">
-                    {col.links.map((link, lIdx) => (
-                      <li key={`${link.href}-${lIdx}`}>
-                        <Link
-                          href={link.href}
-                          target={link.target}
-                          className="text-white/70 hover:text-[#77CDCC] transition-colors inline-flex items-center gap-1.5 group"
-                        >
-                          <span className="h-1 w-1 rounded-full bg-[#77CDCC]/40 group-hover:bg-[#77CDCC] group-hover:w-2 transition-all" />
-                          <span>{link.label}</span>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-      {renderBottomBar()}
-    </>
-  );
-
-  const renderNexusCyberGrid = () => (
-    <>
-      <div className="relative overflow-hidden py-14 bg-[#000d24] text-white border-t border-[#77CDCC]/40 font-mono">
-        {/* Subtle grid background */}
-        <div 
-          className="absolute inset-0 pointer-events-none opacity-10"
-          style={{
-            backgroundImage: "radial-gradient(#77CDCC 1px, transparent 1px)",
-            backgroundSize: "24px 24px"
-          }}
-        />
-
-        <div className={`${contentClass} relative z-10 space-y-10`}>
-          {/* Top HUD Telemetry Strip */}
-          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#77CDCC]/20 pb-4 text-xs text-[#77CDCC]">
-            <div className="flex items-center gap-3">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
-              </span>
-              <span>NODE: NEXUS_CORE_V4</span>
-              <span className="hidden sm:inline-block text-white/30">|</span>
-              <span className="hidden sm:inline-block">{"PROTOCOL: SECURE // TLS 1.3"}</span>
-            </div>
-            <div className="flex items-center gap-4 text-[11px] text-white/60">
-              <span>LATENCY: 14MS</span>
-              <span>UPTIME: 99.98%</span>
-            </div>
-          </div>
-
-          {/* Cyber Newsletter Terminal */}
-          {nlConfig.enabled && (
-            <div className="rounded-xl border border-[#77CDCC]/30 bg-black/40 p-5 backdrop-blur-md shadow-[0_0_25px_rgba(119,205,204,0.1)]">
-              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2 text-xs text-[#77CDCC]">
-                    <Terminal className="h-4 w-4" />
-                    <span>{"SYS_BROADCAST // NEWSLETTER_DAEMON"}</span>
-                  </div>
-                  <h3 className="text-lg font-bold text-white tracking-wide">
-                    {nlConfig.title}
-                  </h3>
-                  <p className="text-xs text-white/60">
-                    {nlConfig.subtitle}
-                  </p>
-                </div>
-
-                <form onSubmit={handleNewsletterSubmit} className="w-full max-w-md">
-                  {newsletterSubscribed ? (
-                    <div className="rounded-lg border border-emerald-500/40 bg-emerald-500/10 px-4 py-2.5 text-xs text-emerald-400">
-                      {"\u003e [SUCCESS]: "}{nlConfig.successMessage}
-                    </div>
-                  ) : (
-                    <div className="flex rounded-lg border border-[#77CDCC]/40 bg-[#001a45]/60 overflow-hidden focus-within:ring-2 focus-within:ring-[#77CDCC]/50">
-                      <span className="flex items-center px-3 text-xs text-[#77CDCC] font-bold select-none border-r border-[#77CDCC]/30 bg-black/30">
-                        {"$\u003e"}
-                      </span>
-                      <input
-                        type="email"
-                        value={newsletterEmail}
-                        onChange={(e) => setNewsletterEmail(e.target.value)}
-                        placeholder={nlConfig.placeholder}
-                        className="h-10 flex-1 bg-transparent px-3 text-xs text-white placeholder:text-white/30 focus:outline-none"
-                        required
-                      />
-                      <button
-                        type="submit"
-                        className="h-10 px-4 bg-[#77CDCC] text-[#000d24] text-xs font-bold uppercase tracking-wider hover:bg-[#77CDCC]/90 transition-all shrink-0"
-                      >
-                        {nlConfig.buttonText}
-                      </button>
-                    </div>
-                  )}
                 </form>
-              </div>
-            </div>
-          )}
-
-          {/* Cyber Navigation Columns */}
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 pt-2">
-            <div className="col-span-2 lg:col-span-2 space-y-4">
-              <span className="text-xl font-bold tracking-tight text-[#77CDCC] flex items-center gap-2">
-                <Terminal className="h-5 w-5" />
-                {resolvedStoreName}
-              </span>
-              <p className="text-xs text-white/60 leading-relaxed max-w-md font-sans">
-                {resolvedFooterDescription}
-              </p>
-              <div className="pt-2">{socialNode}</div>
-            </div>
-
-            {finalColumns.map((col, idx) => (
-              <div key={`${col.title}-${idx}`} className="space-y-3">
-                <h4 className="text-xs font-bold uppercase text-[#77CDCC] border-b border-[#77CDCC]/20 pb-1">
-                  {"// "}{col.title}
-                </h4>
-                <ul className="space-y-2 text-xs">
-                  {col.links.map((link, lIdx) => (
-                    <li key={`${link.href}-${lIdx}`}>
-                      <Link
-                        href={link.href}
-                        target={link.target}
-                        className="text-white/70 hover:text-[#77CDCC] transition-colors flex items-center gap-1.5"
-                      >
-                        <span className="text-[#77CDCC]/40">&gt;</span>
-                        <span>{link.label}</span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-      {renderBottomBar()}
-    </>
-  );
-
-  const renderNexusEditorialMinimal = () => (
-    <>
-      <div className="relative py-16 border-t border-border/80 bg-background text-foreground font-serif">
-        <div className={`${contentClass} space-y-12`}>
-          {/* Editorial Top Masthead */}
-          <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 border-b border-border/60 pb-8">
-            <div className="space-y-2 max-w-lg">
-              <span className="text-[11px] font-sans font-semibold uppercase tracking-[0.25em] text-primary">
-                THE ARCHIVE COLLECTION
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
-                {resolvedStoreName}
-              </h2>
-              <p className="text-sm font-sans text-muted-foreground leading-relaxed">
-                {resolvedFooterDescription}
-              </p>
-            </div>
-
-            {/* Understated Editorial Newsletter Invite */}
-            {nlConfig.enabled && (
-              <div className="w-full max-w-md space-y-2 font-sans">
-                <div className="flex items-center justify-between text-xs font-medium">
-                  <span>{nlConfig.title}</span>
-                  {nlConfig.discountBadge && (
-                    <span className="text-[10px] font-bold text-primary">{nlConfig.discountBadge}</span>
-                  )}
-                </div>
-                <form onSubmit={handleNewsletterSubmit}>
-                  {newsletterSubscribed ? (
-                    <div className="text-xs font-medium text-emerald-600 dark:text-emerald-400 py-2">
-                      ✓ {nlConfig.successMessage}
-                    </div>
-                  ) : (
-                    <div className="flex items-center border-b border-foreground/40 pb-1.5 focus-within:border-primary transition-colors">
-                      <input
-                        type="email"
-                        value={newsletterEmail}
-                        onChange={(e) => setNewsletterEmail(e.target.value)}
-                        placeholder={nlConfig.placeholder}
-                        className="w-full bg-transparent text-sm placeholder:text-muted-foreground focus:outline-none"
-                        required
-                      />
-                      <button
-                        type="submit"
-                        className="ml-2 p-1 text-foreground hover:text-primary transition-colors shrink-0"
-                        title={nlConfig.buttonText}
-                      >
-                        <ArrowUpRight className="h-4 w-4" />
-                      </button>
-                    </div>
-                  )}
-                </form>
+                {newsletterSubscribed && <p className="text-xs text-green-600 mt-2">{nlConfig.successMessage}</p>}
               </div>
             )}
-          </div>
-
-          {/* Directory Links Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 font-sans">
-            <div className="col-span-2 sm:col-span-1 space-y-3">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-foreground">
-                Follow Along
-              </h4>
-              <div className="pt-1">{socialNode}</div>
+            <div className="mt-2">
+              {socialNode}
             </div>
-
-            {finalColumns.map((col, idx) => (
-              <div key={`${col.title}-${idx}`} className="space-y-3">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-foreground">
-                  {col.title}
-                </h4>
-                <ul className="space-y-2 text-sm">
+          </div>
+          {/* Link Columns */}
+          <div className="md:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-8">
+            {finalColumns.slice(0, 4).map((col, idx) => (
+              <div key={idx}>
+                <h4 className="font-semibold text-sm mb-4">{col.title}</h4>
+                <ul className="space-y-3">
                   {col.links.map((link, lIdx) => (
-                    <li key={`${link.href}-${lIdx}`}>
-                      <Link
-                        href={link.href}
-                        target={link.target}
-                        className="text-muted-foreground hover:text-foreground transition-colors"
-                      >
+                    <li key={lIdx}>
+                      <Link href={link.href} target={link.target} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                         {link.label}
                       </Link>
                     </li>
@@ -1131,30 +759,156 @@ export function StoreFooter({ locale, columns, footerSettings }: StoreFooterProp
     </>
   );
 
-  const renderGlassmorphicDock = () => (
+  const renderElegantSerif = () => (
     <>
-      <div className={`${contentClass} py-14`}>
-        <div 
-          className="rounded-3xl border border-white/20 p-8 md:p-12 shadow-2xl relative overflow-hidden backdrop-blur-xl"
-          style={{
-            background: isDark
-              ? "linear-gradient(135deg, rgba(30, 27, 75, 0.7) 0%, rgba(49, 46, 129, 0.6) 50%, rgba(76, 29, 149, 0.5) 100%)"
-              : "linear-gradient(135deg, rgba(243, 232, 255, 0.7) 0%, rgba(224, 231, 255, 0.6) 50%, rgba(253, 242, 248, 0.7) 100%)"
-          }}
-        >
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-            <div className="md:col-span-5 flex flex-col gap-6">
-              {brandNode}
-              {socialNode}
+      <div className={`${contentClass} py-20 bg-[#faf9f8] dark:bg-zinc-950`}>
+        <div className="flex flex-col items-center text-center max-w-2xl mx-auto mb-16">
+          {brandNode}
+          {nlConfig.enabled && (
+            <div className="w-full mt-10">
+              <h4 className="font-serif text-2xl mb-3">{nlConfig.title}</h4>
+              <p className="text-muted-foreground mb-6 font-serif">{nlConfig.subtitle}</p>
+              <form onSubmit={handleNewsletterSubmit} className="flex max-w-sm mx-auto border-b border-zinc-300 dark:border-zinc-700 pb-2">
+                <input
+                  type="email"
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
+                  placeholder={nlConfig.placeholder}
+                  className="w-full bg-transparent border-none outline-none focus:ring-0 text-center font-serif placeholder:text-zinc-400"
+                  required
+                />
+                <button type="submit" className="text-sm font-semibold tracking-wider uppercase text-zinc-900 dark:text-zinc-100 hover:text-primary transition-colors">
+                  {nlConfig.buttonText}
+                </button>
+              </form>
+              {newsletterSubscribed && <p className="text-sm text-green-600 mt-3 font-serif">{nlConfig.successMessage}</p>}
             </div>
-            <div className="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
-              {finalColumns.slice(0, 3).map((column, idx) => (
-                <div key={`${column.title}-${idx}`}>
-                  <h4 className="mb-4 font-bold text-sm" style={headingStyle}>{column.title}</h4>
-                  <ul className="space-y-2.5">
-                    {column.links.map((link, linkIdx) => (
-                      <li key={`${link.href}-${linkIdx}`}>
-                        <Link href={link.href} target={link.target} className="text-sm text-muted-foreground transition-colors hover:text-primary" style={mutedStyle}>{link.label}</Link>
+          )}
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16 max-w-4xl mx-auto">
+          {finalColumns.slice(0, 4).map((col, idx) => (
+            <div key={idx} className="text-center">
+              <h4 className="font-serif text-sm tracking-widest uppercase mb-6">{col.title}</h4>
+              <ul className="space-y-4">
+                {col.links.map((link, lIdx) => (
+                  <li key={lIdx}>
+                    <Link href={link.href} target={link.target} className="text-sm text-muted-foreground hover:text-foreground transition-colors font-serif">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <div className="flex justify-center mb-10">
+          {socialNode}
+        </div>
+      </div>
+      {renderBottomBar()}
+    </>
+  );
+
+  const renderBoldMinimalist = () => (
+    <>
+      <div className="border-y border-border">
+        <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border">
+          {/* Left: Newsletter & Brand */}
+          <div className="p-8 md:p-16 lg:p-24 flex flex-col justify-between min-h-[400px]">
+            {nlConfig.enabled && (
+              <div>
+                <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold uppercase tracking-tighter mb-4">
+                  {nlConfig.title}
+                </h2>
+                <form onSubmit={handleNewsletterSubmit} className="mt-8 flex items-end gap-4">
+                  <div className="flex-1 border-b-2 border-foreground pb-2">
+                    <input
+                      type="email"
+                      value={newsletterEmail}
+                      onChange={(e) => setNewsletterEmail(e.target.value)}
+                      placeholder={nlConfig.placeholder}
+                      className="w-full bg-transparent text-xl md:text-2xl outline-none placeholder:text-muted-foreground font-medium"
+                      required
+                    />
+                  </div>
+                  <button type="submit" className="h-12 w-12 md:h-16 md:w-16 rounded-full bg-foreground text-background flex items-center justify-center hover:scale-105 transition-transform">
+                    <ArrowUpRight className="h-6 w-6 md:h-8 md:w-8" />
+                  </button>
+                </form>
+                {newsletterSubscribed && <p className="text-sm text-green-600 mt-4">{nlConfig.successMessage}</p>}
+              </div>
+            )}
+            <div className="mt-16 md:mt-24">
+              {brandNode}
+            </div>
+          </div>
+          {/* Right: Links */}
+          <div className="p-8 md:p-16 lg:p-24 grid grid-cols-2 gap-12">
+            {finalColumns.slice(0, 4).map((col, idx) => (
+              <div key={idx}>
+                <h4 className="text-lg font-bold mb-6">{col.title}</h4>
+                <ul className="space-y-4">
+                  {col.links.map((link, lIdx) => (
+                    <li key={lIdx}>
+                      <Link href={link.href} target={link.target} className="text-lg text-muted-foreground hover:text-foreground transition-colors font-medium">
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className={`${contentClass} py-6 flex flex-col md:flex-row justify-between items-center gap-4`}>
+        {renderBottomBar()}
+        {socialNode}
+      </div>
+    </>
+  );
+
+  const renderEcommercePro = () => (
+    <>
+      <div className="bg-muted/10 border-y border-border">
+        <div className={`${contentClass} py-8 md:py-12`}>
+          {/* Top highlight bar */}
+          {nlConfig.enabled && (
+            <div className="bg-background border border-border p-6 rounded-xl shadow-sm mb-12 flex flex-col md:flex-row items-center justify-between gap-6">
+              <div>
+                <h4 className="font-semibold text-lg">{nlConfig.title}</h4>
+                <p className="text-sm text-muted-foreground">{nlConfig.subtitle}</p>
+              </div>
+              <form onSubmit={handleNewsletterSubmit} className="flex w-full md:w-auto gap-2">
+                <input
+                  type="email"
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
+                  placeholder={nlConfig.placeholder}
+                  className="flex h-10 w-full md:w-[300px] rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                  required
+                />
+                <button type="submit" className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring bg-primary text-primary-foreground shadow hover:bg-primary/90 h-10 px-4 py-2 shrink-0">
+                  {nlConfig.buttonText}
+                </button>
+              </form>
+            </div>
+          )}
+          {/* Main Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <div className="lg:col-span-3 flex flex-col gap-6">
+              {brandNode}
+            </div>
+            <div className="lg:col-span-9 grid grid-cols-2 md:grid-cols-4 gap-8">
+              {finalColumns.slice(0, 4).map((col, idx) => (
+                <div key={idx}>
+                  <h4 className="font-semibold text-sm uppercase tracking-wider mb-4">{col.title}</h4>
+                  <ul className="space-y-3">
+                    {col.links.map((link, lIdx) => (
+                      <li key={lIdx}>
+                        <Link href={link.href} target={link.target} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                          {link.label}
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -1164,7 +918,67 @@ export function StoreFooter({ locale, columns, footerSettings }: StoreFooterProp
           </div>
         </div>
       </div>
-      {renderBottomBar()}
+      <div className={`${contentClass} py-8 flex flex-col lg:flex-row justify-between items-center gap-6`}>
+        <div className="flex items-center gap-6">
+          {socialNode}
+        </div>
+        <div className="w-full lg:w-auto">
+          {renderBottomBar()}
+        </div>
+      </div>
+    </>
+  );
+
+  const renderTechStartup = () => (
+    <>
+      <div className={`${contentClass} py-16 lg:py-24`}>
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-8">
+          <div className="lg:col-span-2 flex flex-col gap-8">
+            {brandNode}
+            {nlConfig.enabled && (
+              <div className="max-w-md mt-4">
+                <p className="text-sm font-medium mb-3">{nlConfig.title}</p>
+                <form onSubmit={handleNewsletterSubmit} className="relative">
+                  <input
+                    type="email"
+                    value={newsletterEmail}
+                    onChange={(e) => setNewsletterEmail(e.target.value)}
+                    placeholder={nlConfig.placeholder}
+                    className="w-full h-11 bg-muted/30 border border-border rounded-lg pl-4 pr-32 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
+                    required
+                  />
+                  <button type="submit" className="absolute right-1.5 top-1.5 bottom-1.5 px-4 bg-foreground text-background text-xs font-semibold rounded-md hover:bg-foreground/90 transition-colors">
+                    {nlConfig.buttonText}
+                  </button>
+                </form>
+                {newsletterSubscribed && <p className="text-xs text-green-600 mt-2">{nlConfig.successMessage}</p>}
+              </div>
+            )}
+          </div>
+          <div className="lg:col-span-3 grid grid-cols-2 sm:grid-cols-3 gap-8">
+            {finalColumns.slice(0, 3).map((col, idx) => (
+              <div key={idx}>
+                <h4 className="font-medium text-sm mb-5 text-foreground/80">{col.title}</h4>
+                <ul className="space-y-3.5">
+                  {col.links.map((link, lIdx) => (
+                    <li key={lIdx}>
+                      <Link href={link.href} target={link.target} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className="border-t border-border">
+        <div className={`${contentClass} py-6 flex flex-col-reverse md:flex-row justify-between items-center gap-4 text-muted-foreground`}>
+          {renderBottomBar()}
+          {socialNode}
+        </div>
+      </div>
     </>
   );
 
@@ -1187,12 +1001,11 @@ export function StoreFooter({ locale, columns, footerSettings }: StoreFooterProp
       {footerStyleType === "split" && renderSplit()}
       {footerStyleType === "compact" && renderCompact()}
       {footerStyleType === "mega" && renderMega()}
-      {footerStyleType === "modern-card" && renderModernCard()}
-      {footerStyleType === "newsletter-hero" && renderNewsletterHero()}
-      {footerStyleType === "glassmorphic-dock" && renderGlassmorphicDock()}
-      {footerStyleType === "nexus-flagship" && renderNexusFlagship()}
-      {footerStyleType === "nexus-cyber-grid" && renderNexusCyberGrid()}
-      {footerStyleType === "nexus-editorial-minimal" && renderNexusEditorialMinimal()}
+      {footerStyleType === "clean-corporate" && renderCleanCorporate()}
+        {footerStyleType === "elegant-serif" && renderElegantSerif()}
+        {footerStyleType === "bold-minimalist" && renderBoldMinimalist()}
+        {footerStyleType === "ecommerce-pro" && renderEcommercePro()}
+        {footerStyleType === "tech-startup" && renderTechStartup()}
     </footer>
   );
 }

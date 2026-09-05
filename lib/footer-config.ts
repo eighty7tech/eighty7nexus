@@ -7,12 +7,11 @@ export const FOOTER_STYLE_VARIANTS = [
   "split",
   "compact",
   "mega",
-  "modern-card",
-  "newsletter-hero",
-  "glassmorphic-dock",
-  "nexus-flagship",
-  "nexus-cyber-grid",
-  "nexus-editorial-minimal",
+  "clean-corporate",
+  "elegant-serif",
+  "bold-minimalist",
+  "ecommerce-pro",
+  "tech-startup",
 ] as const;
 export type FooterStyleVariant = (typeof FOOTER_STYLE_VARIANTS)[number];
 

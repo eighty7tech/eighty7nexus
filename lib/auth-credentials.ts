@@ -37,6 +37,7 @@ export async function upsertCredentialPassword(
     return;
   }
 
+  // @ts-expect-error better-auth 1.7.x typing bug for credential accounts
   await ctx.internalAdapter.linkAccount({
     userId: userId.toString(),
     providerId: "credential",

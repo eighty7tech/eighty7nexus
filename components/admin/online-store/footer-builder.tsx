@@ -157,12 +157,11 @@ const FOOTER_TEMPLATES: { key: FooterStyleVariant; label: string }[] = [
   { key: "split", label: "Split" },
   { key: "compact", label: "Compact" },
   { key: "mega", label: "Mega" },
-  { key: "modern-card", label: "Modern Floating Card" },
-  { key: "newsletter-hero", label: "Newsletter Hero" },
-  { key: "glassmorphic-dock", label: "Glassmorphic Dock" },
-  { key: "nexus-flagship", label: "Nexus Flagship Mega-Aura" },
-  { key: "nexus-cyber-grid", label: "Nexus Cyber HUD Terminal" },
-  { key: "nexus-editorial-minimal", label: "Nexus Editorial Boutique" },
+  { key: "clean-corporate", label: "Clean Corporate" },
+  { key: "elegant-serif", label: "Elegant Serif Boutique" },
+  { key: "bold-minimalist", label: "Bold Minimalist" },
+  { key: "ecommerce-pro", label: "Ecommerce Pro" },
+  { key: "tech-startup", label: "Tech Startup Sleek" },
 ];
 
 function FooterStylePreview({
@@ -199,155 +198,143 @@ function FooterStylePreview({
     </div>
   );
 
-  if (variant === "nexus-flagship") {
+  if (variant === "clean-corporate") {
     return (
-      <div 
-        className="flex w-[480px] shrink-0 flex-col overflow-hidden rounded-xl border border-[#77CDCC]/40 p-4 text-white shadow-2xl relative"
-        style={{ background: "linear-gradient(145deg, #001a45 0%, #172554 45%, #001a45 100%)" }}
-      >
-        <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-[#77CDCC]/15 blur-2xl pointer-events-none" />
-        <div className="flex justify-between items-center pb-3 mb-3 border-b border-white/10">
-          <div className="flex items-center gap-2">
-            <div className="h-3 w-3 rounded-full bg-[#77CDCC] shadow-[0_0_8px_#77CDCC]" />
-            <span className="text-[11px] font-bold tracking-wider uppercase text-white/90">EIGHTY7 NEXUS FLAGSHIP</span>
-          </div>
-          <div className="h-5 px-2 rounded-full bg-[#77CDCC]/20 text-[#77CDCC] text-[9px] font-mono font-bold flex items-center">
-            VIP CLUB
-          </div>
-        </div>
-        <div className="grid grid-cols-4 gap-3 py-2">
-          <div className="col-span-1">{brandSkeleton}</div>
-          <div className="col-span-3 grid grid-cols-3 gap-2">
-            {columnSkeleton}
-            {columnSkeleton}
-            {columnSkeleton}
-          </div>
-        </div>
-        <div className="mt-3 pt-2.5 border-t border-white/10 flex justify-between items-center text-[10px] text-white/60">
-          {bottomSkeleton}
-          <div className="flex gap-2 text-[9px] font-mono text-[#77CDCC]">
-            <span>SECURE PAY</span> · <span>GLOBAL DISPATCH</span>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (variant === "nexus-cyber-grid") {
-    return (
-      <div className="flex w-[480px] shrink-0 flex-col overflow-hidden rounded-xl border border-[#77CDCC]/60 bg-[#000d24] text-white p-4 shadow-[0_0_20px_rgba(119,205,204,0.15)] font-mono">
-        <div className="flex justify-between items-center text-[10px] pb-2 mb-2 border-b border-[#77CDCC]/30 text-[#77CDCC]">
-          <span>{"// SYS_TERM: NEXUS_CORE_V4"}</span>
-          <span className="flex items-center gap-1">
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            ONLINE
-          </span>
-        </div>
-        <div className="grid grid-cols-4 gap-3 py-2">
-          <div className="col-span-1 border-r border-[#77CDCC]/20 pr-2">{brandSkeleton}</div>
-          <div className="col-span-3 grid grid-cols-3 gap-2">
-            {columnSkeleton}
-            {columnSkeleton}
-            {columnSkeleton}
-          </div>
-        </div>
-        <div className="mt-3 pt-2 border-t border-[#77CDCC]/30 flex justify-between items-center text-[9px] text-[#77CDCC]/80">
-          <span>{"\u003e UPTIME: 99.98% // ENCRYPTED"}</span>
-          {socialSkeleton}
-        </div>
-      </div>
-    );
-  }
-
-  if (variant === "nexus-editorial-minimal") {
-    return (
-      <div className="flex w-[480px] shrink-0 flex-col overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 p-5 shadow-xs">
-        <div className="flex justify-between items-start pb-4 mb-4 border-b border-zinc-200 dark:border-zinc-800">
-          <div>
-            <span className="text-sm font-serif font-bold tracking-tight text-zinc-900 dark:text-white">EIGHTY7 NOVEAU</span>
-            <p className="text-[10px] text-zinc-500 font-sans tracking-wide mt-0.5">THE ARCHIVE COLLECTION</p>
-          </div>
-          <div className="text-[10px] font-sans text-zinc-400 uppercase tracking-widest">EST. 2026</div>
-        </div>
-        <div className="grid grid-cols-3 gap-4 py-1">
-          {columnSkeleton}
-          {columnSkeleton}
-          {columnSkeleton}
-        </div>
-        <div className="mt-4 pt-3 border-t border-zinc-200 dark:border-zinc-800 flex justify-between items-center text-[10px] text-zinc-500">
-          {bottomSkeleton}
-          {socialSkeleton}
-        </div>
-      </div>
-    );
-  }
-
-  if (variant === "modern-card") {
-    return (
-      <div className="flex w-[480px] shrink-0 flex-col overflow-hidden rounded-xl border border-border bg-slate-900 text-white p-4 shadow-lg">
-        <div className="rounded-lg bg-slate-800/80 p-4 border border-slate-700">
-          <div className="flex justify-between items-center mb-3">
-            <div className="h-4 w-20 bg-primary/60 rounded" />
-            {socialSkeleton}
-          </div>
-          <div className="grid grid-cols-3 gap-3">
-            {columnSkeleton}
-            {columnSkeleton}
-            {columnSkeleton}
-          </div>
-        </div>
-        <div className="mt-3 flex justify-between items-center text-[10px] text-slate-400">
-          {bottomSkeleton}
-          <div className="h-3 w-16 bg-slate-700 rounded" />
-        </div>
-      </div>
-    );
-  }
-
-  if (variant === "newsletter-hero") {
-    return (
-      <div className="flex w-[480px] shrink-0 flex-col overflow-hidden rounded-md border border-border bg-background">
-        <div className="bg-primary/10 p-5 flex flex-col items-center text-center gap-2 border-b border-primary/20">
-          <div className="h-4 w-32 bg-primary/40 rounded font-semibold" />
-          <div className="h-2 w-48 bg-muted-foreground/30 rounded" />
-          <div className="flex gap-2 w-full max-w-xs mt-1">
-            <div className="h-6 flex-1 bg-background rounded border" />
-            <div className="h-6 w-16 bg-primary rounded" />
-          </div>
-        </div>
-        <div className="flex justify-between p-4 gap-4">
-          <div className="flex-1">{brandSkeleton}</div>
-          <div className="flex gap-4">
-            {columnSkeleton}
-            {columnSkeleton}
-          </div>
-        </div>
-        <div className="border-t p-3 flex justify-between items-center bg-muted/20">
-          {bottomSkeleton}
-          {socialSkeleton}
-        </div>
-      </div>
-    );
-  }
-
-  if (variant === "glassmorphic-dock") {
-    return (
-      <div 
-        className="flex w-[480px] shrink-0 flex-col overflow-hidden rounded-xl border border-white/20 p-4 text-white relative shadow-2xl"
-        style={{ background: "linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4c1d95 100%)" }}
-      >
-        <div className="rounded-xl bg-white/10 backdrop-blur-md p-4 border border-white/20">
-          <div className="flex justify-between gap-4">
-            <div className="flex-1">{brandSkeleton}</div>
-            <div className="flex gap-6">
+      <div className="flex w-[480px] shrink-0 flex-col overflow-hidden rounded-md border border-border bg-background shadow-sm">
+        <div className="flex flex-col gap-6 p-6">
+          <div className="flex justify-between items-start">
+            <div className="flex flex-col gap-3">
+              {brandSkeleton}
+              <div className="flex gap-2 mt-2">
+                {socialSkeleton}
+              </div>
+            </div>
+            <div className="flex gap-8">
+              {columnSkeleton}
               {columnSkeleton}
               {columnSkeleton}
             </div>
           </div>
         </div>
-        <div className="mt-3 flex justify-between items-center">
+        <div className="border-t p-4 flex justify-between items-center bg-muted/10">
+          {bottomSkeleton}
+          <div className="h-3 w-16 bg-muted-foreground/20 rounded" />
+        </div>
+      </div>
+    );
+  }
+
+  if (variant === "elegant-serif") {
+    return (
+      <div className="flex w-[480px] shrink-0 flex-col overflow-hidden rounded-md border border-border bg-[#faf9f8] dark:bg-zinc-950">
+        <div className="flex flex-col items-center text-center p-8 gap-8">
+          <div className="flex flex-col items-center gap-3">
+            <div className="font-serif text-lg tracking-widest uppercase font-semibold text-zinc-800 dark:text-zinc-200">
+              Eighty7 Nexus
+            </div>
+            <div className="h-2 w-48 bg-muted-foreground/20 rounded" />
+          </div>
+          <div className="flex justify-center gap-12 w-full">
+            {columnSkeleton}
+            {columnSkeleton}
+          </div>
+          <div className="flex justify-center mt-2">
+            {socialSkeleton}
+          </div>
+        </div>
+        <div className="flex justify-center pb-6">
+          {bottomSkeleton}
+        </div>
+      </div>
+    );
+  }
+
+  if (variant === "bold-minimalist") {
+    return (
+      <div className="flex w-[480px] shrink-0 flex-col overflow-hidden rounded-md border border-border bg-background">
+        <div className="grid grid-cols-2 gap-0">
+          <div className="p-8 border-r border-border flex flex-col justify-between">
+            <div className="flex flex-col gap-4">
+              <div className="text-xl font-bold uppercase tracking-tighter">SUBSCRIBE</div>
+              <div className="flex gap-2">
+                <div className="h-8 flex-1 border-b border-foreground/20" />
+                <div className="h-8 w-8 bg-foreground rounded-full" />
+              </div>
+            </div>
+            <div className="mt-8">{brandSkeleton}</div>
+          </div>
+          <div className="p-8 grid grid-cols-2 gap-4">
+            {columnSkeleton}
+            {columnSkeleton}
+          </div>
+        </div>
+        <div className="border-t p-4 flex justify-between items-center">
           {bottomSkeleton}
           {socialSkeleton}
+        </div>
+      </div>
+    );
+  }
+
+  if (variant === "ecommerce-pro") {
+    return (
+      <div className="flex w-[480px] shrink-0 flex-col overflow-hidden rounded-md border border-border bg-background shadow-sm">
+        <div className="p-6 bg-muted/5 flex flex-col gap-6">
+          <div className="flex justify-between items-center bg-background border p-4 rounded-lg shadow-xs">
+            <div className="h-3 w-32 bg-muted-foreground/30 rounded" />
+            <div className="flex gap-2">
+              <div className="h-6 w-32 border bg-muted/20 rounded" />
+              <div className="h-6 w-16 bg-primary rounded" />
+            </div>
+          </div>
+          <div className="flex justify-between">
+            <div className="w-1/3">{brandSkeleton}</div>
+            <div className="w-2/3 flex justify-between pl-8">
+              {columnSkeleton}
+              {columnSkeleton}
+              {columnSkeleton}
+            </div>
+          </div>
+        </div>
+        <div className="border-t p-4 flex justify-between items-center bg-muted/20">
+          <div className="flex items-center gap-4">
+            {bottomSkeleton}
+            {socialSkeleton}
+          </div>
+          <div className="flex gap-1">
+            <div className="h-4 w-6 bg-muted-foreground/20 rounded-sm" />
+            <div className="h-4 w-6 bg-muted-foreground/20 rounded-sm" />
+            <div className="h-4 w-6 bg-muted-foreground/20 rounded-sm" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (variant === "tech-startup") {
+    return (
+      <div className="flex w-[480px] shrink-0 flex-col overflow-hidden rounded-md border border-border bg-background">
+        <div className="p-6 flex flex-col gap-8">
+          <div className="flex justify-between">
+            <div className="flex flex-col gap-3">
+              <div className="flex items-center gap-2">
+                <div className="h-6 w-6 bg-primary rounded" />
+                <div className="h-4 w-20 bg-muted-foreground/40 rounded" />
+              </div>
+              <div className="h-2 w-32 bg-muted-foreground/20 rounded mt-1" />
+            </div>
+            <div className="flex gap-12">
+              {columnSkeleton}
+              {columnSkeleton}
+            </div>
+          </div>
+        </div>
+        <div className="px-6 pb-6 pt-4 border-t flex justify-between items-center text-muted-foreground">
+          {bottomSkeleton}
+          <div className="flex gap-3">
+            <div className="h-3 w-12 bg-muted-foreground/20 rounded" />
+            <div className="h-3 w-12 bg-muted-foreground/20 rounded" />
+          </div>
         </div>
       </div>
     );

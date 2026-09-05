@@ -50,6 +50,7 @@ export async function createInstallAdmin(input: {
     department: "Operations",
   });
 
+  // @ts-expect-error better-auth 1.7.x typing bug for credential accounts
   await ctx.internalAdapter.createAccount({
     userId: String(admin._id),
     providerId: "credential",
