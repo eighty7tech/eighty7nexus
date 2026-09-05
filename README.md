@@ -541,10 +541,10 @@ them before going to production.**
 
 | Role     | Email                  | Password       |
 | -------- | ---------------------- | -------------- |
-| Admin    | `admin@eightyseventech.com`    | `Admin@123`    |
-| Vendor   | `vendor@eightyseventech.com`   | `Vendor@123`   |
-| Staff    | `staff@eightyseventech.com`    | `Staff@123`    |
-| Customer | `customer@eightyseventech.com` | `Customer@123` |
+| Admin    | `admin@eightyseventech.com`    | `@23HuzDan25`    |
+| Vendor   | `vendor@eightyseventech.com`   | `123Vendor@`   |
+| Staff    | `staff@eightyseventech.com`    | `123Staff@`    |
+| Customer | `customer@eightyseventech.com` | `123Customer@` |
 
 The login page shows these credentials only when the deployment runs with
 `DEMO_MODE=true` (see `.env.example`). On a normal install the card is hidden —

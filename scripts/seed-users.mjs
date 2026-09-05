@@ -1,3 +1,6 @@
+import dns from "node:dns";
+dns.setServers(["1.1.1.1", "8.8.8.8"]);
+
 import mongoose from "mongoose";
 import { betterAuth } from "better-auth";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
@@ -26,19 +29,19 @@ const USER_SEED = {
   vendor: {
     name: "Eighty7Nexus Vendor",
     email: "vendor@eightyseventech.com",
-    password: "Vendor@123",
+    password: "123Vendor@",
     phone: "+233 24 555 0200",
   },
   staff: {
     name: "Eighty7Nexus Staff",
     email: "staff@eightyseventech.com",
-    password: "Staff@123",
+    password: "123Staff@",
     phone: "+233 24 555 0300",
   },
   customer: {
     name: "Eighty7Nexus Customer",
     email: "customer@eightyseventech.com",
-    password: "Customer@123",
+    password: "123Customer@",
     phone: "+233 24 555 0400",
   },
 };

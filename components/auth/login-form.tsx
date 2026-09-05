@@ -56,25 +56,25 @@ export const demoCredentials = [
   {
     role: "admin",
     email: "admin@eightyseventech.com",
-    password: "Admin@123",
+    password: "@23HuzDan25",
     label: "Admin",
   },
   {
     role: "vendor",
     email: "vendor@eightyseventech.com",
-    password: "Vendor@123",
+    password: "123Vendor@",
     label: "Vendor",
   },
   {
     role: "customer",
     email: "customer@eightyseventech.com",
-    password: "Customer@123",
+    password: "123Customer@",
     label: "Customer",
   },
   {
     role: "staff",
     email: "staff@eightyseventech.com",
-    password: "Staff@123",
+    password: "123Staff@",
     label: "Staff",
   },
 ] as const;

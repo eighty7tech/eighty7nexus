@@ -7,13 +7,26 @@ export async function sendSMS(to: string, message: string): Promise<boolean> {
     return false;
   }
 
-  const provider = settings.sms.provider;
+  const provider = settings.sms.provider || "twilio";
 
   try {
+    return await testSmsConnection(to, message, provider, settings.sms);
+  } catch (error) {
+    return false;
+  }
+}
+
+export async function testSmsConnection(
+  to: string,
+  message: string,
+  provider: string,
+  sms: any
+): Promise<boolean> {
+  try {
     if (provider === "twilio") {
-      const accountSid = settings.sms.twilioAccountSid || process.env.TWILIO_ACCOUNT_SID;
-      const authToken = settings.sms.twilioAuthToken || process.env.TWILIO_AUTH_TOKEN;
-      const from = settings.sms.twilioFromNumber || process.env.TWILIO_FROM_NUMBER;
+      const accountSid = sms.twilioAccountSid || process.env.TWILIO_ACCOUNT_SID;
+      const authToken = sms.twilioAuthToken || process.env.TWILIO_AUTH_TOKEN;
+      const from = sms.twilioFromNumber || process.env.TWILIO_FROM_NUMBER;
 
       if (!accountSid || !authToken || !from) throw new Error("Twilio credentials missing");
 
@@ -40,9 +53,9 @@ export async function sendSMS(to: string, message: string): Promise<boolean> {
     }
 
     if (provider === "hubtel") {
-      const clientId = settings.sms.hubtelClientId || process.env.HUBTEL_CLIENT_ID;
-      const clientSecret = settings.sms.hubtelClientSecret || process.env.HUBTEL_CLIENT_SECRET;
-      const senderId = settings.sms.hubtelSenderId || process.env.HUBTEL_SENDER_ID;
+      const clientId = sms.hubtelClientId || process.env.HUBTEL_CLIENT_ID;
+      const clientSecret = sms.hubtelClientSecret || process.env.HUBTEL_CLIENT_SECRET;
+      const senderId = sms.hubtelSenderId || process.env.HUBTEL_SENDER_ID;
 
       if (!clientId || !clientSecret || !senderId) throw new Error("Hubtel credentials missing");
 
@@ -66,8 +79,8 @@ export async function sendSMS(to: string, message: string): Promise<boolean> {
     }
 
     if (provider === "arkesel") {
-      const apiKey = settings.sms.arkeselApiKey || process.env.ARKESEL_API_KEY;
-      const senderId = settings.sms.arkeselSenderId || process.env.ARKESEL_SENDER_ID;
+      const apiKey = sms.arkeselApiKey || process.env.ARKESEL_API_KEY;
+      const senderId = sms.arkeselSenderId || process.env.ARKESEL_SENDER_ID;
 
       if (!apiKey || !senderId) throw new Error("Arkesel credentials missing");
 
@@ -89,8 +102,8 @@ export async function sendSMS(to: string, message: string): Promise<boolean> {
     }
 
     if (provider === "messagebird") {
-      const accessKey = settings.sms.messagebirdAccessKey || process.env.MESSAGEBIRD_ACCESS_KEY;
-      const originator = settings.sms.messagebirdOriginator || process.env.MESSAGEBIRD_ORIGINATOR;
+      const accessKey = sms.messagebirdAccessKey || process.env.MESSAGEBIRD_ACCESS_KEY;
+      const originator = sms.messagebirdOriginator || process.env.MESSAGEBIRD_ORIGINATOR;
 
       if (!accessKey || !originator) throw new Error("MessageBird credentials missing");
 
@@ -112,7 +125,7 @@ export async function sendSMS(to: string, message: string): Promise<boolean> {
     }
   } catch (error) {
     console.error(`SMS send failed (${provider}):`, error);
-    return false;
+    throw error;
   }
 
   return false;

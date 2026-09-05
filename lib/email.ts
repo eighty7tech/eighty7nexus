@@ -142,20 +142,28 @@ async function deliverEmailJob(
       attachments: job.attachments,
     });
 
-    job.status = "sent";
-    job.sentAt = new Date();
-    job.providerMessageId = info.messageId;
-    job.lastError = undefined;
-    job.nextAttemptAt = undefined;
     const retentionDays = resolvedSettings.email?.logRetentionDays ?? 30;
-    job.expiresAt = new Date(
-      job.sentAt.getTime() + retentionDays * 24 * 60 * 60 * 1000,
+    const sentAt = new Date();
+    const expiresAt = new Date(sentAt.getTime() + retentionDays * 24 * 60 * 60 * 1000);
+    
+    await EmailDelivery.updateOne(
+      { _id: job._id },
+      {
+        $set: {
+          status: "sent",
+          sentAt: sentAt,
+          providerMessageId: info.messageId,
+          expiresAt,
+        },
+        $unset: {
+          lastError: 1,
+          nextAttemptAt: 1,
+          html: 1,
+          text: 1,
+          attachments: 1,
+        }
+      }
     );
-    // A sent message cannot be retried, so retain metadata only.
-    job.html = undefined;
-    job.text = undefined;
-    job.attachments = undefined;
-    await job.save();
     console.log("Email sent:", info.messageId);
     return true;
   } catch (error) {
@@ -201,15 +209,20 @@ export async function processPendingEmailDeliveries(limit = 20) {
     .select("_id")
     .lean();
 
-  const results = await Promise.allSettled(
-    jobs.map((job) => deliverEmailJob(String(job._id))),
-  );
-  return {
-    processed: results.length,
-    sent: results.filter(
-      (result) => result.status === "fulfilled" && result.value,
-    ).length,
-  };
+  let processed = 0;
+  let sent = 0;
+
+  for (const job of jobs) {
+    try {
+      const success = await deliverEmailJob(String(job._id));
+      processed++;
+      if (success) sent++;
+    } catch (error) {
+      console.error(`Failed to process job ${job._id}:`, error);
+    }
+  }
+
+  return { processed, sent };
 }
 
 export async function retryEmailDelivery(jobId: string) {

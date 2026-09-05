@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { processPendingEmailDeliveries } from "@/lib/email";
 import { withCronRun } from "@/lib/cron/health";
 
+export const maxDuration = 300; // 5 minutes
+
 export const GET = withCronRun("email-deliveries", async (request) => {
   const secret = process.env.CRON_SECRET;
   const authorization = request.headers.get("authorization");

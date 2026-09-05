@@ -222,11 +222,13 @@ export function useAdminSettings(initialData?: unknown) {
   const [isLoading, setIsLoading] = useState(!seededSettings);
   const [isSaving, setIsSaving] = useState(false);
   const [isTestingEmail, setIsTestingEmail] = useState(false);
+  const [isTestingSms, setIsTestingSms] = useState(false);
   const [isTestingPayment, setIsTestingPayment] = useState(false);
   const [isTestingOAuth, setIsTestingOAuth] = useState(false);
   const [isRegisteringPesapalIpn, setIsRegisteringPesapalIpn] = useState(false);
   const [isCarrierBusy, setIsCarrierBusy] = useState(false);
   const [testEmail, setTestEmail] = useState("");
+  const [testPhoneNumber, setTestPhoneNumber] = useState("");
   const [dirtySectionHints, setDirtySectionHints] = useState<Set<string>>(
     () => new Set(),
   );
@@ -525,6 +527,37 @@ export function useAdminSettings(initialData?: unknown) {
     }
   };
 
+  const testSms = async () => {
+    if (isDemoMode) {
+      notifyDemoMode();
+      return;
+    }
+    if (!testPhoneNumber) {
+      toast.error("Please enter a test phone number");
+      return;
+    }
+    try {
+      setIsTestingSms(true);
+      const result = await apiClient.request<unknown>(
+        "POST",
+        "/api/admin/settings/sms/test",
+        { 
+          phone: testPhoneNumber,
+          smsSettings: settings?.sms
+        },
+      );
+      toast.success(result.message || "Test SMS sent");
+    } catch (error) {
+      toast.error(
+        error instanceof Error && error.message
+          ? error.message
+          : "Failed to send test SMS",
+      );
+    } finally {
+      setIsTestingSms(false);
+    }
+  };
+
   const testPaymentConnection = async (
     provider:
       | "stripe"
@@ -736,11 +769,14 @@ export function useAdminSettings(initialData?: unknown) {
     isLoading,
     isSaving,
     isTestingEmail,
+    isTestingSms,
     isTestingPayment,
     isTestingOAuth,
     isRegisteringPesapalIpn,
     testEmail,
     setTestEmail,
+    testPhoneNumber,
+    setTestPhoneNumber,
     dirtySections,
     markSectionDirty,
     updateNestedField,
@@ -748,6 +784,7 @@ export function useAdminSettings(initialData?: unknown) {
     saveSection,
     saveSections,
     testSmtp,
+    testSms,
     testPaymentConnection,
     testOAuthConnection,
     registerPesapalIpn,

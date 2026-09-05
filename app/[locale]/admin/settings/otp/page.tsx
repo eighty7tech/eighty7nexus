@@ -10,6 +10,10 @@ export default function Page() {
     dirtySections,
     updateFieldInSection,
     saveSections,
+    isTestingSms,
+    testPhoneNumber,
+    setTestPhoneNumber,
+    testSms,
   } = useAdminSettingsContext();
 
   return (
@@ -19,6 +23,9 @@ export default function Page() {
           settings={loadedSettings}
           isSaving={isSaving}
           isDirty={dirtySections.has("otp") || dirtySections.has("sms")}
+          isTestingSms={isTestingSms}
+          testPhoneNumber={testPhoneNumber}
+          setTestPhoneNumber={setTestPhoneNumber}
           updateField={(path, value) => {
             const section = path.startsWith("sms.") ? "sms" : "otp";
             updateFieldInSection(section, path, value);
@@ -33,6 +40,7 @@ export default function Page() {
               sms: loadedSettings.sms,
             })
           }
+          onTestSms={() => testSms()}
         />
       )}
     </SectionLoader>

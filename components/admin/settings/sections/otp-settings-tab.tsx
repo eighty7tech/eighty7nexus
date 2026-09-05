@@ -16,15 +16,22 @@ import type { Settings } from "@/components/admin/settings/types";
 import { SettingsTabHeader } from "./settings-tab-header";
 import { StickySaveFooter } from "./sticky-save-footer";
 import { SecretInput } from "@/components/admin/settings/fields/secret-input";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { Loader2, MessageSquare } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 export function OtpSettingsTab(props: {
   settings: Settings;
   isSaving: boolean;
   isDirty: boolean;
+  isTestingSms: boolean;
+  testPhoneNumber: string;
+  setTestPhoneNumber: (v: string) => void;
   updateField: (path: string, value: unknown) => void;
   updateNestedField: (path: string, value: unknown) => void;
   onSave: () => void | Promise<unknown>;
+  onTestSms: () => void | Promise<unknown>;
 }) {
   const t = useTranslations();
   const otp = props.settings.otp;
@@ -275,6 +282,38 @@ export function OtpSettingsTab(props: {
                 />
               </div>
             </div>
+          )}
+
+          {sms.enabled && (
+            <>
+              <Separator />
+              <div className="flex items-end gap-4">
+                <div className="flex-1 space-y-2">
+                  <Label htmlFor="testPhoneNumber">
+                    Test Phone Number
+                  </Label>
+                  <Input
+                    id="testPhoneNumber"
+                    type="tel"
+                    value={props.testPhoneNumber}
+                    onChange={(e) => props.setTestPhoneNumber(e.target.value)}
+                    placeholder="+1234567890"
+                  />
+                </div>
+                <Button
+                  variant="outline"
+                  onClick={() => props.onTestSms()}
+                  disabled={props.isTestingSms || !props.testPhoneNumber}
+                >
+                  {props.isTestingSms ? (
+                    <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                  ) : (
+                    <MessageSquare className="h-4 w-4 mr-2" />
+                  )}
+                  Test Connection
+                </Button>
+              </div>
+            </>
           )}
         </CardContent>
       </Card>
