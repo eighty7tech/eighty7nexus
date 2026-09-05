@@ -56,3 +56,8 @@ next-env.d.ts
 
 # Private local-storage files (digital product deliverables, never public)
 /private-uploads/
+
+# Playwright
+playwright-report/
+test-results/
+

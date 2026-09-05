@@ -9,6 +9,7 @@ export function SecretInput(props: {
   id: string;
   label?: string;
   value: string;
+  disabled?: boolean;
   onChange: (value: string) => void;
   /**
    * Clear the stored secret.
@@ -43,7 +44,7 @@ export function SecretInput(props: {
     ? props.maskedHint || props.placeholderWhenSet
     : props.placeholderWhenUnset;
 
-  const canClear = Boolean(props.onClear && props.secretSet);
+  const canClear = Boolean(props.onClear && props.secretSet && !props.disabled);
 
   return (
     <div className="space-y-2">
@@ -66,6 +67,7 @@ export function SecretInput(props: {
       <Input
         id={props.id}
         type="text"
+        disabled={props.disabled}
         value={props.value}
         onChange={(e) => props.onChange(e.target.value)}
         placeholder={placeholder}

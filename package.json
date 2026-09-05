@@ -9,6 +9,8 @@
     "start": "next start",
     "lint": "eslint --quiet",
     "test": "vitest",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
     "typecheck": "tsc --noEmit",
     "create-admin": "node --env-file=.env scripts/create-admin.mjs",
     "link-credential": "node --env-file=.env scripts/link-credential.mjs",
@@ -186,6 +188,7 @@
     "zustand": "^5.0.12"
   },
   "devDependencies": {
+    "@playwright/test": "^1.63.0",
     "@tailwindcss/postcss": "^4.2.2",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^7.0.1",
@@ -202,6 +205,7 @@
     "@vitejs/plugin-react": "^6.1.1",
     "babel-plugin-react-compiler": "^1.0.0",
     "cross-env": "^10.1.0",
+    "dotenv": "^17.4.2",
     "eslint": "^9.39.2",
     "eslint-config-next": "16.2.6",
     "jsdom": "^30.0.1",

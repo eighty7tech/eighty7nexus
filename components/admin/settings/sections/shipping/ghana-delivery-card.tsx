@@ -10,8 +10,21 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Separator } from "@/components/ui/separator";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Download } from "lucide-react";
 import type { IGhanaDeliveryMethod } from "@/types";
 import { RegionMultiSelect } from "@/components/common/region-multi-select";
+
+const GHANA_DELIVERY_PRESETS = [
+  { name: "VIP Transport (Intercity)", basePrice: 50, minDays: 1, maxDays: 2 },
+  { name: "STC Package Express", basePrice: 40, minDays: 1, maxDays: 3 },
+  { name: "Motorbike Delivery (Accra/Kumasi)", basePrice: 20, minDays: 0, maxDays: 1 },
+  { name: "Bolt Send", basePrice: 30, minDays: 0, maxDays: 1 },
+  { name: "Yango Delivery", basePrice: 25, minDays: 0, maxDays: 1 },
+  { name: "Uber Connect", basePrice: 35, minDays: 0, maxDays: 1 },
+  { name: "GIG Logistics", basePrice: 45, minDays: 1, maxDays: 3 },
+  { name: "FedEx Ghana", basePrice: 80, minDays: 1, maxDays: 4 },
+];
 
 type GhanaDeliveryCardProps = {
   methods: IGhanaDeliveryMethod[];
@@ -28,6 +41,8 @@ function newId() {
 export function GhanaDeliveryCard({ methods, onChange }: GhanaDeliveryCardProps) {
   const t = useTranslations();
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
+  const [importDialogOpen, setImportDialogOpen] = useState(false);
+  const [selectedPresets, setSelectedPresets] = useState<number[]>([]);
   
   const addMethod = () => {
     onChange([
@@ -74,6 +89,25 @@ export function GhanaDeliveryCard({ methods, onChange }: GhanaDeliveryCardProps)
     }
   };
 
+  const handleImport = () => {
+    const methodsToAdd = selectedPresets.map(index => {
+      const preset = GHANA_DELIVERY_PRESETS[index];
+      return {
+        id: newId(),
+        name: preset.name,
+        active: true,
+        basePrice: preset.basePrice,
+        coverageRegions: [],
+        minDays: preset.minDays,
+        maxDays: preset.maxDays,
+      };
+    });
+    
+    onChange([...methods, ...methodsToAdd]);
+    setImportDialogOpen(false);
+    setSelectedPresets([]);
+  };
+
   return (
     <Card>
       <CardHeader>
@@ -84,10 +118,55 @@ export function GhanaDeliveryCard({ methods, onChange }: GhanaDeliveryCardProps)
               Configure local delivery options for Ghana checkout. Assign specific regions or leave blank for nationwide coverage.
             </CardDescription>
           </div>
-          <Button type="button" variant="outline" size="sm" onClick={addMethod}>
-            <Plus className="mr-2 h-4 w-4" />
-            Add Method
-          </Button>
+          <div className="flex items-center gap-2">
+            <Dialog open={importDialogOpen} onOpenChange={setImportDialogOpen}>
+              <DialogTrigger asChild>
+                <Button type="button" variant="outline" size="sm">
+                  <Download className="mr-2 h-4 w-4" />
+                  Import
+                </Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Import Delivery Methods</DialogTitle>
+                  <DialogDescription>
+                    Select predefined Ghana delivery methods to import into your store.
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="py-4 max-h-[300px] overflow-y-auto space-y-3">
+                  {GHANA_DELIVERY_PRESETS.map((preset, i) => (
+                    <div key={preset.name} className="flex items-center space-x-3 rounded-md border p-3">
+                      <Checkbox
+                        id={`preset-${i}`}
+                        checked={selectedPresets.includes(i)}
+                        onCheckedChange={(checked) => {
+                          if (checked) {
+                            setSelectedPresets(prev => [...prev, i]);
+                          } else {
+                            setSelectedPresets(prev => prev.filter(idx => idx !== i));
+                          }
+                        }}
+                      />
+                      <Label htmlFor={`preset-${i}`} className="flex-1 cursor-pointer flex justify-between">
+                        <span className="font-medium">{preset.name}</span>
+                        <span className="text-muted-foreground">GHS {preset.basePrice}</span>
+                      </Label>
+                    </div>
+                  ))}
+                </div>
+                <DialogFooter>
+                  <Button variant="outline" onClick={() => setImportDialogOpen(false)}>Cancel</Button>
+                  <Button onClick={handleImport} disabled={selectedPresets.length === 0}>
+                    Import Selected ({selectedPresets.length})
+                  </Button>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
+            <Button type="button" variant="default" size="sm" onClick={addMethod}>
+              <Plus className="mr-2 h-4 w-4" />
+              Add Method
+            </Button>
+          </div>
         </div>
       </CardHeader>
       <CardContent className="space-y-6">

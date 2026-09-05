@@ -525,7 +525,8 @@ function resolveSecretUpdates(section: string, data: Record<string, unknown>) {
   const paths = credentialPathsForSection(section);
 
   for (const path of paths) {
-    const keys = path.split(".");
+    const relativePath = path.substring(section.length + 1);
+    const keys = relativePath.split(".");
     let current: unknown = data;
     for (const key of keys) {
       if (!isPlainObject(current)) {
@@ -535,9 +536,9 @@ function resolveSecretUpdates(section: string, data: Record<string, unknown>) {
       current = (current as Record<string, unknown>)[key];
     }
     if (current === "") {
-      deleteNestedKey(data, path);
+      deleteNestedKey(data, relativePath);
     } else if (current === null) {
-      setNestedKey(data, path, undefined);
+      setNestedKey(data, relativePath, undefined);
     }
   }
 }

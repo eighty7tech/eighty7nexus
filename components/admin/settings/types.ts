@@ -533,6 +533,7 @@ export interface Settings {
       orderNumberPrefix: string;
     };
     receipt?: {
+      useDefaultLogo?: boolean;
       logoUrl?: string;
       headerText?: string;
       footerText?: string;

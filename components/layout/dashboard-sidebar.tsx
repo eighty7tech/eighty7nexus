@@ -5,6 +5,7 @@ import * as React from "react";
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import {
+  LayoutGrid,
   ListOrdered,
   LayoutDashboard,
   Users,
@@ -90,8 +91,8 @@ import { DEFAULT_STORE_NAME } from "@/config/branding.config";
 import { AppImage } from "@/components/ui/app-image";
 import { useAppTheme } from "@/providers/theme-provider";
 
-// Icon mapping
 const iconMap: Record<string, LucideIcon> = {
+  LayoutGrid,
   LayoutDashboard,
   PanelsTopLeft,
   ListOrdered,
@@ -700,44 +701,51 @@ const adminNavGroups: {
             icon: "ShoppingCart",
           },
           {
-            label: "admin.sidebar.posKds",
-            href: "/pos/kds",
-            icon: "ChefHat",
-          },
-          {
-            label: "admin.sidebar.customerDisplay",
-            href: "/pos/customer-display",
-            icon: "Monitor",
-          },
-          {
-            label: "stockAudit.title",
-            href: "/pos/cycle-count",
-            icon: "ClipboardCheck",
-          },
-          {
-            label: "kiosk.title",
-            href: "/pos/kiosk",
-            icon: "Store",
-          },
-          {
-            label: "offlineSync.viewOutbox",
-            href: "/pos/sync",
-            icon: "CloudOff",
-          },
-          {
-            label: "bopis.title",
-            href: "/pos/bopis",
-            icon: "ShoppingBag",
-          },
-          {
-            label: "transfers.title",
-            href: "/pos/transfers",
-            icon: "ArrowLeftRight",
-          },
-          {
-            label: "posReports.title",
-            href: "/pos/reports",
-            icon: "BarChart3",
+            label: "admin.settings.pos.workstations",
+            href: "#pos-sub-systems",
+            icon: "LayoutGrid",
+            items: [
+              {
+                label: "admin.sidebar.posKds",
+                href: "/pos/kds",
+                icon: "ChefHat",
+              },
+              {
+                label: "admin.sidebar.customerDisplay",
+                href: "/pos/customer-display",
+                icon: "Monitor",
+              },
+              {
+                label: "stockAudit.title",
+                href: "/pos/cycle-count",
+                icon: "ClipboardCheck",
+              },
+              {
+                label: "kiosk.title",
+                href: "/pos/kiosk",
+                icon: "Store",
+              },
+              {
+                label: "offlineSync.viewOutbox",
+                href: "/pos/sync",
+                icon: "CloudOff",
+              },
+              {
+                label: "bopis.title",
+                href: "/pos/bopis",
+                icon: "ShoppingBag",
+              },
+              {
+                label: "transfers.title",
+                href: "/pos/transfers",
+                icon: "ArrowLeftRight",
+              },
+              {
+                label: "posReports.title",
+                href: "/pos/reports",
+                icon: "BarChart3",
+              },
+            ]
           },
           {
             label: "admin.sidebar.posStaff",

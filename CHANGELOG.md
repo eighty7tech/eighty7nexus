@@ -1,10 +1,21 @@
 # Changelog
 
-## [2026-09-04] - Ghana Delivery Methods Multi-Select
+## [2026-09-05] - POS Receipt, Mobile Sticky Bar, and Bug Fixes
 
 ### Added:
+- **POS Receipt Image Logo**: Added an option in the POS receipt configuration to insert a custom image link or to fall back to the default site logo, making receipts highly customizable.
+- **Mobile Sticky Action Bar**: Implemented floating mobile sticky action bar settings in the Product Page Builder (Online Store settings).
 - **Delivery Methods Bulk Delete**: Added multi-select checkboxes to the Global "Configured Delivery Methods" table in the Delivery Admin UI, along with a "Delete Selected" bulk action.
 - **Unified Delivery Presets & Speedaf Support**: Redesigned the Delivery Methods Presets UI, replacing multiple cards with a sleek, unified banner. Introduced a single "Import All Popular Methods" button that imports STC Cargo, VIPX, Zara Express, Standard Dispatch, and newly added **Speedaf Logistics** presets simultaneously.
+
+### Improvements:
+- **Product Page Layout Settings**: Added explicit toggles and descriptive texts to the mobile sticky action bar in the product page builder for better UI/UX.
+
+### Fixed:
+- **SMS Secrets Clearing**: Fixed a bug where saving from the SMS/OTP admin settings tab would unintentionally clear the SMS provider's API secrets (like `twilioAuthToken` or `messagebirdAccessKey`). The settings route's credential handling algorithm (`resolveSecretUpdates`) now properly resolves the nested keys.
+- **Syntax Errors**: Fixed multiple TypeScript syntax and formatting issues (`TS1127`, `TS1005`, and `TS2322`) across `dashboard-sidebar.tsx`, `product-page-builder.tsx`, and `secret-input.tsx`.
+
+## [2026-09-04] - Ghana Delivery Methods Multi-Select
 - **Distinct AI Agent Chat Themes**: Completely redesigned the styling logic for the AI Sales Agent storefront widget so that the 4 predefined themes (`nexus-modern`, `nexus-glass`, `nexus-cyber-hud`, and `nexus-capsule`) are now strictly distinct from each other. 
   - **Modern**: Clean e-commerce aesthetic with soft rounded corners.
   - **Glass**: Highly premium glassmorphism with frosted borders and backdrop blurs.

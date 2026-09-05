@@ -241,6 +241,20 @@ export function ProductPageBuilder({ locale }: ProductPageBuilderProps) {
               })
             }
           />
+          <div className="space-y-0.5">
+            <SwitchRow
+              label={tf("options.showMobileStickyBar", "Mobile Sticky Action Bar")}
+              checked={settings.layout.showMobileStickyBar ?? true}
+              onChange={(value) =>
+                update((draft) => {
+                  draft.layout.showMobileStickyBar = value;
+                })
+              }
+            />
+            <p className="text-[13px] text-muted-foreground mt-1 ml-1">
+              {tf("options.showMobileStickyBarDesc", "Show a floating Add to Cart button at the bottom of the screen on mobile devices.")}
+            </p>
+          </div>
         </CardContent>
       </Card>
 

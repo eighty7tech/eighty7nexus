@@ -768,6 +768,7 @@ export interface IPOSOrdersSettings {
 }
 
 export interface IPOSReceiptSettings {
+  useDefaultLogo?: boolean;
   logoUrl?: string;
   headerText?: string;
   footerText?: string;
@@ -2608,6 +2609,7 @@ const SettingsSchema = new Schema<ISettings>(
           receipt: {
             type: new Schema(
               {
+                useDefaultLogo: { type: Boolean, default: true },
                 logoUrl: { type: String },
                 headerText: { type: String },
                 footerText: { type: String },

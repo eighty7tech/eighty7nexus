@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import type { Settings } from "@/components/admin/settings/types";
 import { SettingsTabHeader } from "./settings-tab-header";
 import { StickySaveFooter } from "./sticky-save-footer";
+import { SecretInput } from "@/components/admin/settings/fields/secret-input";
 
 export function WhatsAppSettingsTab(props: {
   settings: Settings;
@@ -19,6 +20,9 @@ export function WhatsAppSettingsTab(props: {
 }) {
   const { settings, isSaving, isDirty, updateNestedField, onSave } = props;
   const whatsapp = settings.whatsapp;
+
+  const cred = (path: string) =>
+    settings._meta?.credentials?.[path] || { set: false };
 
   return (
     <div className="space-y-4">
@@ -72,12 +76,16 @@ export function WhatsAppSettingsTab(props: {
                 />
               </div>
               <div className="space-y-2">
-                <Label>Access Token</Label>
-                <Input
+                <SecretInput
+                  id="metaAccessToken"
+                  label="Access Token"
                   value={whatsapp.metaAccessToken || ""}
-                  type="password"
-                  onChange={(e) => updateNestedField("whatsapp.metaAccessToken", e.target.value)}
-                  placeholder="EAA..."
+                  onChange={(v) => updateNestedField("whatsapp.metaAccessToken", v)}
+                  onClear={() => updateNestedField("whatsapp.metaAccessToken", null)}
+                  secretSet={cred("whatsapp.metaAccessToken").set}
+                  maskedHint={cred("whatsapp.metaAccessToken").hint}
+                  placeholderWhenSet="Saved (leave blank to keep)"
+                  placeholderWhenUnset="EAA..."
                 />
               </div>
             </div>
@@ -93,11 +101,16 @@ export function WhatsAppSettingsTab(props: {
                 />
               </div>
               <div className="space-y-2">
-                <Label>Auth Token</Label>
-                <Input
+                <SecretInput
+                  id="twilioAuthToken"
+                  label="Auth Token"
                   value={whatsapp.twilioAuthToken || ""}
-                  type="password"
-                  onChange={(e) => updateNestedField("whatsapp.twilioAuthToken", e.target.value)}
+                  onChange={(v) => updateNestedField("whatsapp.twilioAuthToken", v)}
+                  onClear={() => updateNestedField("whatsapp.twilioAuthToken", null)}
+                  secretSet={cred("whatsapp.twilioAuthToken").set}
+                  maskedHint={cred("whatsapp.twilioAuthToken").hint}
+                  placeholderWhenSet="Saved (leave blank to keep)"
+                  placeholderWhenUnset="Twilio Auth Token"
                 />
               </div>
               <div className="space-y-2">
@@ -114,11 +127,16 @@ export function WhatsAppSettingsTab(props: {
           {whatsapp?.provider === "messagebird" && (
             <div className="space-y-4">
               <div className="space-y-2">
-                <Label>Access Key</Label>
-                <Input
+                <SecretInput
+                  id="messagebirdAccessKey"
+                  label="Access Key"
                   value={whatsapp.messagebirdAccessKey || ""}
-                  type="password"
-                  onChange={(e) => updateNestedField("whatsapp.messagebirdAccessKey", e.target.value)}
+                  onChange={(v) => updateNestedField("whatsapp.messagebirdAccessKey", v)}
+                  onClear={() => updateNestedField("whatsapp.messagebirdAccessKey", null)}
+                  secretSet={cred("whatsapp.messagebirdAccessKey").set}
+                  maskedHint={cred("whatsapp.messagebirdAccessKey").hint}
+                  placeholderWhenSet="Saved (leave blank to keep)"
+                  placeholderWhenUnset="MessageBird Access Key"
                 />
               </div>
               <div className="space-y-2">

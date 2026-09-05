@@ -15,6 +15,7 @@ import {
 import type { Settings } from "@/components/admin/settings/types";
 import { SettingsTabHeader } from "./settings-tab-header";
 import { StickySaveFooter } from "./sticky-save-footer";
+import { SecretInput } from "@/components/admin/settings/fields/secret-input";
 import { useTranslations } from "next-intl";
 
 export function OtpSettingsTab(props: {
@@ -28,6 +29,9 @@ export function OtpSettingsTab(props: {
   const t = useTranslations();
   const otp = props.settings.otp;
   const sms = props.settings.sms;
+
+  const cred = (path: string) =>
+    props.settings._meta?.credentials?.[path] || { set: false };
 
   const handleMethodChange = (method: "email" | "sms", checked: boolean) => {
     const methods = new Set(otp.methods || ["email"]);
@@ -160,11 +164,16 @@ export function OtpSettingsTab(props: {
                 />
               </div>
               <div className="space-y-2">
-                <Label>Auth Token</Label>
-                <Input
-                  type="password"
+                <SecretInput
+                  id="twilioAuthToken"
+                  label="Auth Token"
                   value={sms.twilioAuthToken || ""}
-                  onChange={(e) => props.updateNestedField("sms.twilioAuthToken", e.target.value)}
+                  onChange={(v) => props.updateNestedField("sms.twilioAuthToken", v)}
+                  onClear={() => props.updateNestedField("sms.twilioAuthToken", null)}
+                  secretSet={cred("sms.twilioAuthToken").set}
+                  maskedHint={cred("sms.twilioAuthToken").hint}
+                  placeholderWhenSet="Saved (leave blank to keep)"
+                  placeholderWhenUnset="Twilio Auth Token"
                   disabled={!sms.enabled}
                 />
               </div>
@@ -182,11 +191,16 @@ export function OtpSettingsTab(props: {
           {sms.provider === "messagebird" && (
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-2">
-                <Label>Access Key</Label>
-                <Input
-                  type="password"
+                <SecretInput
+                  id="messagebirdAccessKey"
+                  label="Access Key"
                   value={sms.messagebirdAccessKey || ""}
-                  onChange={(e) => props.updateNestedField("sms.messagebirdAccessKey", e.target.value)}
+                  onChange={(v) => props.updateNestedField("sms.messagebirdAccessKey", v)}
+                  onClear={() => props.updateNestedField("sms.messagebirdAccessKey", null)}
+                  secretSet={cred("sms.messagebirdAccessKey").set}
+                  maskedHint={cred("sms.messagebirdAccessKey").hint}
+                  placeholderWhenSet="Saved (leave blank to keep)"
+                  placeholderWhenUnset="MessageBird Access Key"
                   disabled={!sms.enabled}
                 />
               </div>
@@ -212,11 +226,16 @@ export function OtpSettingsTab(props: {
                 />
               </div>
               <div className="space-y-2">
-                <Label>Client Secret</Label>
-                <Input
-                  type="password"
+                <SecretInput
+                  id="hubtelClientSecret"
+                  label="Client Secret"
                   value={sms.hubtelClientSecret || ""}
-                  onChange={(e) => props.updateNestedField("sms.hubtelClientSecret", e.target.value)}
+                  onChange={(v) => props.updateNestedField("sms.hubtelClientSecret", v)}
+                  onClear={() => props.updateNestedField("sms.hubtelClientSecret", null)}
+                  secretSet={cred("sms.hubtelClientSecret").set}
+                  maskedHint={cred("sms.hubtelClientSecret").hint}
+                  placeholderWhenSet="Saved (leave blank to keep)"
+                  placeholderWhenUnset="Hubtel Client Secret"
                   disabled={!sms.enabled}
                 />
               </div>
@@ -234,11 +253,16 @@ export function OtpSettingsTab(props: {
           {sms.provider === "arkesel" && (
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-2">
-                <Label>API Key</Label>
-                <Input
-                  type="password"
+                <SecretInput
+                  id="arkeselApiKey"
+                  label="API Key"
                   value={sms.arkeselApiKey || ""}
-                  onChange={(e) => props.updateNestedField("sms.arkeselApiKey", e.target.value)}
+                  onChange={(v) => props.updateNestedField("sms.arkeselApiKey", v)}
+                  onClear={() => props.updateNestedField("sms.arkeselApiKey", null)}
+                  secretSet={cred("sms.arkeselApiKey").set}
+                  maskedHint={cred("sms.arkeselApiKey").hint}
+                  placeholderWhenSet="Saved (leave blank to keep)"
+                  placeholderWhenUnset="Arkesel API Key"
                   disabled={!sms.enabled}
                 />
               </div>

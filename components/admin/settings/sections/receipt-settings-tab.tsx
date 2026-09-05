@@ -65,18 +65,41 @@ export function ReceiptSettingsTab(props: ReceiptSettingsTabProps) {
             description="Customize the header and footer of your POS receipts."
           >
             <div className="grid gap-6 sm:grid-cols-2">
-              <div className="space-y-2 sm:col-span-2">
-                <Label htmlFor="logoUrl">Logo URL</Label>
-                <FileUploadField
-                  id="logoUrl"
-                  value={receipt.logoUrl || ""}
-                  onChange={(val) => props.updateField("pos.receipt.logoUrl", val)}
-                  accept="image/png,image/jpeg,image/webp"
-                  maxSizeMb={5}
-                />
-                <p className="text-[13px] text-muted-foreground">
-                  URL to a monochrome logo image optimized for thermal printers.
-                </p>
+              <div className="space-y-4 sm:col-span-2">
+                <div className="flex items-center justify-between rounded-lg border p-4">
+                  <div className="space-y-0.5">
+                    <Label className="text-base">Use Site Logo</Label>
+                    <p className="text-sm text-muted-foreground">
+                      Use the default site logo for the receipt header.
+                    </p>
+                  </div>
+                  <Switch
+                    checked={receipt.useDefaultLogo ?? true}
+                    onCheckedChange={(val) => props.updateField("pos.receipt.useDefaultLogo", val)}
+                  />
+                </div>
+
+                {!(receipt.useDefaultLogo ?? true) && (
+                  <div className="space-y-2">
+                    <Label htmlFor="logoUrl">Custom Logo URL / Image Link</Label>
+                    <Input
+                      id="logoUrl"
+                      placeholder="https://example.com/logo.png"
+                      value={receipt.logoUrl || ""}
+                      onChange={(e) => props.updateField("pos.receipt.logoUrl", e.target.value)}
+                    />
+                    <FileUploadField
+                      id="logoUpload"
+                      value={receipt.logoUrl || ""}
+                      onChange={(val) => props.updateField("pos.receipt.logoUrl", val)}
+                      accept="image/png,image/jpeg,image/webp"
+                      maxSizeMb={5}
+                    />
+                    <p className="text-[13px] text-muted-foreground">
+                      Enter an image link or upload a monochrome logo image optimized for thermal printers.
+                    </p>
+                  </div>
+                )}
               </div>
 
               <div className="space-y-2 sm:col-span-2">
