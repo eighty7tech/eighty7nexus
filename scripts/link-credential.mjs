@@ -101,6 +101,7 @@ async function setCredentialPasswordForUser(auth, db, userObjectId, newPassword)
       {
         $set: {
           password: passwordHash,
+          issuer: "local:credential",
           updatedAt: new Date(),
         },
       },
@@ -110,6 +111,7 @@ async function setCredentialPasswordForUser(auth, db, userObjectId, newPassword)
       userId: userObjectId.toString(),
       providerId: "credential",
       accountId: userObjectId.toString(),
+      issuer: "local:credential",
       password: passwordHash,
     });
   }

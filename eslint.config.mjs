@@ -71,6 +71,7 @@ const eslintConfig = defineConfig([
     "_backup/**",
     "backups/**",
     "Storify-app/**",
+    "apps/**",
     "**/.worktrees/**",
     "public/sw.js",
     "public/workbox-*.js",

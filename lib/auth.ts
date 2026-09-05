@@ -507,6 +507,22 @@ function createAuth(
           },
         },
       },
+      account: {
+        create: {
+          before: async (account) => {
+            const providerId = (account as { providerId?: string }).providerId;
+            const issuer = (account as { issuer?: string }).issuer;
+            if (providerId === "credential" && !issuer) {
+              return {
+                data: {
+                  ...account,
+                  issuer: "local:credential",
+                },
+              };
+            }
+          },
+        },
+      },
     },
 
     // Trusted Origins (for CORS)
@@ -667,6 +683,16 @@ async function getAuthInstance(): Promise<AuthInstance> {
       const client = mongoose.connection.getClient() as unknown as
         | MongoClient
         | undefined;
+
+      // Ensure all credential accounts have the issuer field required by Better Auth 1.1+
+      try {
+        await db.collection("account").updateMany(
+          { providerId: "credential", issuer: { $ne: "local:credential" } },
+          { $set: { issuer: "local:credential" } },
+        );
+      } catch (error) {
+        console.warn("Could not repair credential account issuer:", error);
+      }
 
       // Try to load security settings from database
       let securitySettings: AuthSecuritySettings | undefined;

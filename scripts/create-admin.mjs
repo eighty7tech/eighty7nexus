@@ -37,6 +37,38 @@ function parseObjectId(value) {
   }
 }
 
+async function ensureAdminProfile(db, userObjectId) {
+  const existing = await db
+    .collection("adminprofiles")
+    .findOne({ userId: userObjectId });
+  if (!existing) {
+    const permissions = [
+      "manage_users",
+      "view_users",
+      "approve_vendors",
+      "manage_vendors",
+      "manage_all_products",
+      "view_all_orders",
+      "manage_all_orders",
+      "manage_categories",
+      "manage_settings",
+      "view_analytics",
+      "view_payments",
+      "manage_refunds",
+      "manage_payouts",
+    ];
+    await db.collection("adminprofiles").insertOne({
+      userId: userObjectId,
+      permissions,
+      department: "Operations",
+      isSuperAdmin: true,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      __v: 0,
+    });
+  }
+}
+
 async function upgradeUserToAdminByEmail(db, email) {
   const emailQuery = { email: new RegExp(`^${escapeRegExp(email)}$`, "i") };
   const updateResult = await db
@@ -149,6 +181,7 @@ async function setCredentialPasswordForUser(
       {
         $set: {
           password: passwordHash,
+          issuer: "local:credential",
           updatedAt: new Date(),
         },
       },
@@ -158,6 +191,7 @@ async function setCredentialPasswordForUser(
       userId: userObjectId.toString(),
       providerId: "credential",
       accountId: userObjectId.toString(),
+      issuer: "local:credential",
       password: passwordHash,
     });
   }
@@ -216,18 +250,18 @@ async function createAdmin() {
       console.log(
         `Successfully upgraded ${upgraded.name || "user"} (${email}) to Admin.`,
       );
-      if (desiredPassword) {
-        const existingUser = await getUserByEmail(db, email);
-        if (!existingUser?._id) {
-          throw new Error("User document not found after upgrade.");
+      const existingUser = await getUserByEmail(db, email);
+      if (existingUser?._id) {
+        await ensureAdminProfile(db, existingUser._id);
+        if (desiredPassword) {
+          await setCredentialPasswordForUser(
+            auth,
+            db,
+            existingUser._id,
+            desiredPassword,
+          );
+          console.log("Password updated.");
         }
-        await setCredentialPasswordForUser(
-          auth,
-          db,
-          existingUser._id,
-          desiredPassword,
-        );
-        console.log("Password updated.");
       }
       return;
     }
@@ -267,16 +301,20 @@ async function createAdmin() {
           .collection("user")
           .updateOne(
             { _id: objectId },
-            // `status` is enforced for every role, so an account left inactive would
-      // be promoted to admin and still refused at sign-in. Granting admin means
-      // the account must work — this is the documented lockout recovery path.
-      { $set: { role: "admin", roles: ["admin"], status: "active" } },
+            { $set: { role: "admin", roles: ["admin"], status: "active" } },
           );
+        await ensureAdminProfile(db, objectId);
       } else {
-        await upgradeUserToAdminByEmail(db, email);
+        const finalUser = await upgradeUserToAdminByEmail(db, email);
+        if (finalUser?._id) {
+          await ensureAdminProfile(db, finalUser._id);
+        }
       }
     } else {
-      await upgradeUserToAdminByEmail(db, email);
+      const finalUser = await upgradeUserToAdminByEmail(db, email);
+      if (finalUser?._id) {
+        await ensureAdminProfile(db, finalUser._id);
+      }
     }
 
     console.log(`Successfully created and upgraded ${email} to Admin.`);

@@ -305,12 +305,22 @@ async function withTransaction(callback) {
 async function ensureCredentialAccount(auth, userId, password) {
   const ctx = await auth.$context;
   const accounts = await ctx.internalAdapter.findAccounts(String(userId));
-  if (accounts.some((account) => account.providerId === "credential")) return;
+  const existing = accounts.find((account) => account.providerId === "credential");
+  if (existing) {
+    if (!existing.issuer && mongoose.connection?.db) {
+      await mongoose.connection.db.collection("account").updateOne(
+        { _id: existing._id },
+        { $set: { issuer: "local:credential" } },
+      );
+    }
+    return;
+  }
 
   await ctx.internalAdapter.createAccount({
     userId: String(userId),
     providerId: "credential",
     accountId: String(userId),
+    issuer: "local:credential",
     password: await ctx.password.hash(password),
   });
 }

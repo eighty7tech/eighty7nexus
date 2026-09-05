@@ -1,9 +1,18 @@
 # Changelog
 
 ## [Unreleased]
-### Added
+### Added:
 - **SMS Test Connections**: Added a test connection interface for all SMS gateways in the admin dashboard. This allows administrators to verify SMS credentials (Twilio, Hubtel, Arkesel, MessageBird) before saving.
-### Fixed
+- **Credential Account Issuer Migration**: Added `scripts/migrate-credential-issuer.mjs` and npm scripts (`pnpm db:migrate:credential-issuer` and `--dry-run`) to backfill `issuer: "local:credential"` across all MongoDB credential accounts.
+
+### Improvements:
+- **Better Auth Account Healing**: Added automatic schema healing on startup in `lib/auth.ts` and a Better Auth `account.create.before` database hook to ensure all credential accounts automatically have `issuer: "local:credential"`.
+- **Admin Profile Provisioning**: Enhanced `scripts/create-admin.mjs` to automatically ensure that created or upgraded administrators receive an `AdminProfile` with SuperAdmin permissions in the `adminprofiles` collection.
+
+### Fixes:
+- **Admin Credentials Unauthorized Error**: Fixed an issue where admin accounts created via the installation wizard, `create-admin`, or seed scripts failed to sign in with an "Unauthorized" (`INVALID_EMAIL_OR_PASSWORD`) error while newly registered accounts worked. In Better Auth 1.1+, credential lookup strictly enforces `account.issuer === "local:credential"`, which was omitted in programmatic credential account creation. Added `issuer: "local:credential"` across `lib/install/create-admin.ts`, `lib/auth-credentials.ts`, `scripts/create-admin.mjs`, `scripts/link-credential.mjs`, `scripts/seed-users.mjs`, and `scripts/seed.mjs`.
+- **Admin Login Hydration Bug**: Fixed an issue where clicking "Sign in" before React hydration completed would trigger an unhandled native form `GET` submission, exposing credentials in the URL. The form now explicitly enforces `method="POST"` and securely disables the submit button until hydration allows `better-auth` to attach its handlers.
+- **Production Build DNS Resolution**: Fixed a critical build-time issue where Next.js production builds (`pnpm build`) run locally would crash with MongoDB `ECONNREFUSED` errors due to strict `NODE_ENV=production` overrides. The DNS resolution logic now accurately checks for hosting platform environments (like VERCEL) rather than solely relying on `NODE_ENV`.
 - **Email Delivery Cron**: Fixed a bug where the background job would timeout due to processing too many emails concurrently, causing emails stuck in the "sending" state to be retried and sent multiple times. The background job now processes emails sequentially and `maxDuration` has been extended to 5 minutes to ensure completion.
 ## [2026-09-05] - POS Receipt, Mobile Sticky Bar, and Bug Fixes
 

@@ -171,6 +171,7 @@ async function upsertCredentialAccount(
       {
         $set: {
           password: passwordHash,
+          issuer: "local:credential",
           updatedAt: new Date(),
         },
       },
@@ -181,6 +182,7 @@ async function upsertCredentialAccount(
       userId: userId.toString(),
       providerId: "credential",
       accountId: userId.toString(),
+      issuer: "local:credential",
       password: passwordHash,
       ...(session ? { session } : {}),
     });

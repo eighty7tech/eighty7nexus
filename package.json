@@ -5,7 +5,7 @@
   "packageManager": "pnpm@10.24.0",
   "scripts": {
     "dev": "next dev --webpack",
-    "build": "cross-env NODE_OPTIONS=--max-old-space-size=4096 next build",
+    "build": "cross-env NODE_OPTIONS=--max-old-space-size=4096 next build --webpack",
     "start": "next start",
     "lint": "eslint --quiet",
     "test": "vitest",
@@ -28,6 +28,8 @@
     "db:migrate:vendor-storefront-indexes:dry": "node --env-file=.env scripts/migrate-vendor-storefront-indexes.mjs --dry-run",
     "db:migrate:account-status": "node --env-file=.env scripts/migrate-account-status.mjs",
     "db:migrate:account-status:dry": "node --env-file=.env scripts/migrate-account-status.mjs --dry-run",
+    "db:migrate:credential-issuer": "node --env-file=.env scripts/migrate-credential-issuer.mjs",
+    "db:migrate:credential-issuer:dry": "node --env-file=.env scripts/migrate-credential-issuer.mjs --dry-run",
     "db:migrate:boosts": "node --env-file=.env scripts/migrate-boost-indexes.mjs",
     "db:migrate:boosts:dry": "node --env-file=.env scripts/migrate-boost-indexes.mjs --dry-run",
     "db:migrate:vendor-access": "node --env-file=.env scripts/migrate-vendor-permission-overrides.mjs",
