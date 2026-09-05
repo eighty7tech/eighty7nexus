@@ -14,6 +14,7 @@
 - **Admin Login Hydration Bug**: Fixed an issue where clicking "Sign in" before React hydration completed would trigger an unhandled native form `GET` submission, exposing credentials in the URL. The form now explicitly enforces `method="POST"` and securely disables the submit button until hydration allows `better-auth` to attach its handlers.
 - **Production Build DNS Resolution**: Fixed a critical build-time issue where Next.js production builds (`pnpm build`) run locally would crash with MongoDB `ECONNREFUSED` errors due to strict `NODE_ENV=production` overrides. The DNS resolution logic now accurately checks for hosting platform environments (like VERCEL) rather than solely relying on `NODE_ENV`.
 - **Email Delivery Cron**: Fixed a bug where the background job would timeout due to processing too many emails concurrently, causing emails stuck in the "sending" state to be retried and sent multiple times. The background job now processes emails sequentially and `maxDuration` has been extended to 5 minutes to ensure completion.
+- **Package.json Syntax**: Fixed a syntax error in package.json due to an extra closing brace in the scripts object.
 ## [2026-09-05] - POS Receipt, Mobile Sticky Bar, and Bug Fixes
 
 ### Added:

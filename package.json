@@ -107,8 +107,7 @@
     "db:migrate:store-pages": "tsx --env-file=.env scripts/migrate-store-pages.ts",
     "db:migrate:store-pages:dry": "tsx --env-file=.env scripts/migrate-store-pages.ts --dry-run",
     "push:keys": "web-push generate-vapid-keys",
-    "git:reset": "git rm -r --cached . && git add . && git commit -m \"Reset repository: remove all tracked files and recreate history\" && git push ${REMOTE:-origin} ${BRANCH:-main} --force",
-  },
+    "git:reset": "git rm -r --cached . && git add . && git commit -m \"Reset repository: remove all tracked files and recreate history\" && git push ${REMOTE:-origin} ${BRANCH:-main} --force"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.123.0",

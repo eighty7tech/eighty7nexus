@@ -5,6 +5,9 @@ async function checkAdminStatus() {
   try {
     await connectDB();
     const db = mongoose.connection.db;
+    if (!db) {
+      throw new Error("Database connection failed");
+    }
 
     console.log("🔍 Checking admin accounts...\n");
 
