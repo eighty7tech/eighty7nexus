@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useTranslations } from "next-intl";
@@ -111,6 +111,9 @@ export function useLoginForm({
   const [isFacebookLoading, setIsFacebookLoading] = useState(false);
   const [activeDemoRole, setActiveDemoRole] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => setIsMounted(true), []);
 
   // 2FA state
   const [requires2FA, setRequires2FA] = useState(false);
@@ -336,6 +339,7 @@ export function useLoginForm({
     error,
     setError,
     isLoading,
+    isMounted,
     isGoogleLoading,
     isFacebookLoading,
     /** Any auth request in flight — every trigger disables on this. */
@@ -447,7 +451,7 @@ export function LoginFields({
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(state.onSubmit)} className="space-y-4">
+      <form onSubmit={form.handleSubmit(state.onSubmit)} className="space-y-4" method="POST">
         {error && (
           <div className="p-3 text-sm text-destructive bg-destructive/10 rounded-md">
             {error}
@@ -545,7 +549,7 @@ export function LoginFields({
           </Link>
         </div>
 
-        <Button type="submit" className="w-full" disabled={isLoading}>
+        <Button type="submit" className="w-full" disabled={isLoading || !state.isMounted}>
           {isLoading ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
