@@ -15,6 +15,7 @@
 - **Production Build DNS Resolution**: Fixed a critical build-time issue where Next.js production builds (`pnpm build`) run locally would crash with MongoDB `ECONNREFUSED` errors due to strict `NODE_ENV=production` overrides. The DNS resolution logic now accurately checks for hosting platform environments (like VERCEL) rather than solely relying on `NODE_ENV`.
 - **Email Delivery Cron**: Fixed a bug where the background job would timeout due to processing too many emails concurrently, causing emails stuck in the "sending" state to be retried and sent multiple times. The background job now processes emails sequentially and `maxDuration` has been extended to 5 minutes to ensure completion.
 - **Package.json Syntax**: Fixed a syntax error in package.json due to an extra closing brace in the scripts object.
+- **Local Dev Server DNS**: Commented out the `dns.setServers` logic in `lib/db.ts` that was forcing DNS lookups to 1.1.1.1 and 8.8.8.8, which caused `ECONNREFUSED` during MongoDB Atlas SRV record resolution on restricted networks.
 ## [2026-09-05] - POS Receipt, Mobile Sticky Bar, and Bug Fixes
 
 ### Added:
