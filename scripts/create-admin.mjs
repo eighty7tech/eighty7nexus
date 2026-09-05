@@ -6,7 +6,7 @@ import { ObjectId } from "mongodb";
 import { randomBytes } from "crypto";
 import dns from "node:dns";
 
-if (process.env.NODE_ENV !== "production") {
+if (!process.env.VERCEL && !process.env.AWS_REGION && !process.env.FLY_APP_NAME) {
   dns.setServers(["1.1.1.1", "8.8.8.8"]);
 }
 

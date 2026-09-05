@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import * as dns from "node:dns";
 
 // Fix DNS resolution issues on local machine for MongoDB Atlas, but NOT in Vercel/Prod
-if (process.env.NODE_ENV !== "production") {
+if (!process.env.VERCEL && !process.env.AWS_REGION && !process.env.FLY_APP_NAME) {
   dns.setServers(["1.1.1.1", "8.8.8.8"]);
 }
 
