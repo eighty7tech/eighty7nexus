@@ -257,7 +257,7 @@ export function RegisterFields({ state }: { state: RegisterFormState }) {
               name="firstName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>{t("auth.firstName", { fallback: "First Name" })}</FormLabel>
+                  <FormLabel>{t("auth.firstName")}</FormLabel>
                   <FormControl>
                     <div className="relative">
                       <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -278,7 +278,7 @@ export function RegisterFields({ state }: { state: RegisterFormState }) {
               name="lastName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>{t("auth.lastName", { fallback: "Last Name" })}</FormLabel>
+                  <FormLabel>{t("auth.lastName")}</FormLabel>
                   <FormControl>
                     <div className="relative">
                       <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />

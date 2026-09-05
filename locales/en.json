@@ -513,6 +513,8 @@
     "hidePassword": "Hide password",
     "confirmPassword": "Confirm Password",
     "fullName": "Full Name",
+    "firstName": "First Name",
+    "lastName": "Last Name",
     "phoneNumber": "Phone Number",
     "forgotPassword": "Forgot password?",
     "resetPassword": "Reset Password",
