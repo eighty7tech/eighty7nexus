@@ -55,6 +55,7 @@ export async function createInstallAdmin(input: {
     providerId: "credential",
     accountId: String(admin._id),
     password: passwordHash,
+    issuer: "",
   });
 
   return { userId: String(admin._id) };
