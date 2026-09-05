@@ -445,6 +445,7 @@ export interface Settings {
     tiktokPixelId?: string;
     plausibleDomain?: string;
     plausibleApiKey?: string;
+    plausibleSharedLinkAuth?: string;
     plausibleSelfHosted?: boolean;
     plausibleBaseUrl?: string;
   };

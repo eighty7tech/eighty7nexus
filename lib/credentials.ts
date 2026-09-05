@@ -87,6 +87,7 @@ const ENV = {
   facebookPixelId: ["NEXT_PUBLIC_FACEBOOK_PIXEL_ID"],
   tiktokPixelId: ["NEXT_PUBLIC_TIKTOK_PIXEL_ID"],
   plausibleApiKey: ["PLAUSIBLE_API_KEY"],
+  plausibleSharedLinkAuth: ["PLAUSIBLE_SHARED_LINK_AUTH"],
 
   openaiApiKey: ["OPENAI_API_KEY"],
 
@@ -501,6 +502,7 @@ export interface ResolvedAnalyticsConfig {
   facebookPixelId?: string;
   tiktokPixelId?: string;
   plausibleApiKey?: string;
+  plausibleSharedLinkAuth?: string;
 }
 
 export function resolveAnalyticsConfig(
@@ -512,6 +514,7 @@ export function resolveAnalyticsConfig(
     facebookPixelId: pick(analytics?.facebookPixelId, ENV.facebookPixelId),
     tiktokPixelId: pick(analytics?.tiktokPixelId, ENV.tiktokPixelId),
     plausibleApiKey: pick(analytics?.plausibleApiKey, ENV.plausibleApiKey),
+    plausibleSharedLinkAuth: pick(analytics?.plausibleSharedLinkAuth, ENV.plausibleSharedLinkAuth),
   };
 }
 
@@ -585,6 +588,7 @@ export interface CredentialEnvSources {
     facebookPixelId: boolean;
     tiktokPixelId: boolean;
     plausibleApiKey: boolean;
+    plausibleSharedLinkAuth: boolean;
   };
   ai: {
     apiKey: boolean;
@@ -669,6 +673,7 @@ export function getCredentialEnvSources(): CredentialEnvSources {
       facebookPixelId: envSet(ENV.facebookPixelId),
       tiktokPixelId: envSet(ENV.tiktokPixelId),
       plausibleApiKey: envSet(ENV.plausibleApiKey),
+      plausibleSharedLinkAuth: envSet(ENV.plausibleSharedLinkAuth),
     },
     ai: {
       apiKey: envSet(ENV.openaiApiKey),

@@ -40,11 +40,22 @@ export async function GET(request: NextRequest) {
       : undefined;
     // DB value wins; PLAUSIBLE_API_KEY env is the fallback.
     const apiKey = resolveAnalyticsConfig(analyticsSettings).plausibleApiKey;
+    const sharedLinkAuth = resolveAnalyticsConfig(analyticsSettings).plausibleSharedLinkAuth;
 
-    if (!domain || !apiKey) {
+    const searchParams = request.nextUrl.searchParams;
+    const metric = searchParams.get("metric") || "aggregate";
+
+    if (!domain) {
       return successResponse({
         configured: false,
         message: "Plausible Analytics is not configured",
+      });
+    }
+
+    if (metric !== "embed" && !apiKey) {
+      return successResponse({
+        configured: false,
+        message: "Plausible Analytics API Key is not configured",
       });
     }
 
@@ -52,8 +63,6 @@ export async function GET(request: NextRequest) {
       ? analyticsSettings.plausibleBaseUrl.replace(/\/$/, "")
       : "https://plausible.io";
 
-    const searchParams = request.nextUrl.searchParams;
-    const metric = searchParams.get("metric") || "aggregate";
     const period = searchParams.get("period") || "30d";
     const from = searchParams.get("from");
     const to = searchParams.get("to");
@@ -63,6 +72,12 @@ export async function GET(request: NextRequest) {
     // Pass today's date explicitly so CE instances don't default to UTC date
     // which can cause rolling periods (7d, 30d) to miss same-day data
     const todayDate = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+
+    if (metric === "embed") {
+      const authParam = sharedLinkAuth ? `&auth=${encodeURIComponent(sharedLinkAuth)}` : "";
+      const embedUrl = `${baseUrl}/share/${encodeURIComponent(domain)}?embed=true&theme=system&background=transparent${authParam}`;
+      return successResponse({ configured: true, data: { embedUrl } });
+    }
 
     const plausibleHeaders = {
       Authorization: `Bearer ${apiKey}`,

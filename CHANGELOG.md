@@ -10,6 +10,7 @@
 - **Unified Delivery Presets & Speedaf Support**: Redesigned the Delivery Methods Presets UI, replacing multiple cards with a sleek, unified banner. Introduced a single "Import All Popular Methods" button that imports STC Cargo, VIPX, Zara Express, Standard Dispatch, and newly added **Speedaf Logistics** presets simultaneously.
 
 ### Improvements:
+- **Plausible Analytics Native Embed**: Completely replaced the heavy, slow-loading custom analytics dashboard (built with Recharts and multi-fetches) with a fast, native Plausible iframe embed. Added full configuration support in the Analytics Settings UI, including a dedicated `Shared Link Auth Key` parameter to securely embed private dashboards.
 - **Professional Footer Templates**: Replaced 6 highly complex/AI-generated storefront footer variants with 5 new clean, responsive, and professional designs (`clean-corporate`, `elegant-serif`, `bold-minimalist`, `ecommerce-pro`, and `tech-startup`). These new templates are rigorously designed using Tailwind CSS, contain zero hardcoded values, and dynamically map to the Store Footer Builder's settings.
 - **Product Page Layout Settings**: Added explicit toggles and descriptive texts to the mobile sticky action bar in the product page builder for better UI/UX.
 

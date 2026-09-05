@@ -646,6 +646,7 @@ export interface IAnalyticsSettings {
   tiktokPixelId?: string;
   plausibleDomain?: string;
   plausibleApiKey?: string;
+    plausibleSharedLinkAuth?: string;
   plausibleSelfHosted?: boolean;
   plausibleBaseUrl?: string;
 }
@@ -2423,6 +2424,7 @@ const SettingsSchema = new Schema<ISettings>(
           tiktokPixelId: String,
           plausibleDomain: String,
           plausibleApiKey: String,
+          plausibleSharedLinkAuth: String,
           plausibleSelfHosted: { type: Boolean, default: false },
           plausibleBaseUrl: String,
         },

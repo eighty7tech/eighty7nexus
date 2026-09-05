@@ -144,6 +144,37 @@ export function AnalyticsSettingsTab(props: {
             </div>
             <div className="space-y-2">
               <SecretInput
+                id="plausibleSharedLinkAuth"
+                label={tSafe(
+                  "admin.settings.analytics.plausibleSharedLinkAuth",
+                  "Shared Link Auth Key",
+                )}
+                value={settings.analytics?.plausibleSharedLinkAuth || ""}
+                onChange={(v) =>
+                  updateNestedField("analytics.plausibleSharedLinkAuth", v)
+                }
+                onClear={() => updateNestedField("analytics.plausibleSharedLinkAuth", null)}
+                secretSet={credentialMeta(settings, "analytics.plausibleSharedLinkAuth").set}
+                maskedHint={
+                  credentialMeta(settings, "analytics.plausibleSharedLinkAuth").hint
+                }
+                placeholderWhenSet="Saved (leave blank to keep)"
+                placeholderWhenUnset={tSafe(
+                  "admin.settings.analytics.plausibleSharedLinkAuthPlaceholder",
+                  "Enter your Plausible shared link auth param",
+                )}
+                revealTyped
+              />
+              <p className="text-xs text-muted-foreground">
+                {tSafe(
+                  "admin.settings.analytics.plausibleSharedLinkHelp",
+                  "Required if your dashboard is private. Found in your Shared Link URL (?auth=...).",
+                )}
+              </p>
+              <EnvSourceHint show={Boolean(envAnalytics?.plausibleSharedLinkAuth)} />
+            </div>
+            <div className="space-y-2">
+              <SecretInput
                 id="plausibleApiKey"
                 label={tSafe(
                   "admin.settings.analytics.plausibleApiKey",
