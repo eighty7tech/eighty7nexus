@@ -106,7 +106,9 @@
     "db:migrate:debrand:dry": "node --env-file=.env scripts/debrand-seeded-content.mjs --dry-run",
     "db:migrate:store-pages": "tsx --env-file=.env scripts/migrate-store-pages.ts",
     "db:migrate:store-pages:dry": "tsx --env-file=.env scripts/migrate-store-pages.ts --dry-run",
-    "push:keys": "web-push generate-vapid-keys"
+    "push:keys": "web-push generate-vapid-keys",
+    "git:reset": "git rm -r --cached . && git add . && git commit -m \"Reset repository: remove all tracked files and recreate history\" && git push ${REMOTE:-origin} ${BRANCH:-main} --force",
+  },
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.123.0",
