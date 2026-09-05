@@ -268,6 +268,14 @@ function createAuth(
     // User Configuration
     user: {
       additionalFields: {
+        firstName: {
+          type: "string",
+          required: false,
+        },
+        lastName: {
+          type: "string",
+          required: false,
+        },
         role: {
           type: "string",
           required: false,

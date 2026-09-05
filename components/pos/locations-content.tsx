@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useMemo } from "react";
+import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import {
   ArrowDown,
@@ -45,9 +46,11 @@ interface Location {
 
 interface LocationsContentProps {
   locale: string;
+  basePath?: string;
 }
 
-export function LocationsContent({ locale }: LocationsContentProps) {
+export function LocationsContent({ locale, basePath }: LocationsContentProps) {
+  const router = useRouter();
   const t = useTranslations();
   const { confirm } = useConfirmation();
 
@@ -245,14 +248,22 @@ export function LocationsContent({ locale }: LocationsContentProps) {
   );
 
   const handleEdit = useCallback((location: Location) => {
+    if (basePath) {
+      router.push(`/${locale}${basePath}/${location._id}`);
+      return;
+    }
     setEditingLocation(location);
     setDialogOpen(true);
-  }, []);
+  }, [basePath, locale, router]);
 
   const handleAdd = useCallback(() => {
+    if (basePath) {
+      router.push(`/${locale}${basePath}/new`);
+      return;
+    }
     setEditingLocation(null);
     setDialogOpen(true);
-  }, []);
+  }, [basePath, locale, router]);
 
   const handleDialogSuccess = useCallback(() => {
     setDialogOpen(false);
@@ -478,6 +489,7 @@ export function LocationsContent({ locale }: LocationsContentProps) {
         searchValue={searchValue}
         onSearchChange={setSearchValue}
         rowActions={rowActions}
+        onRowClick={basePath ? (row) => handleEdit(row) : undefined}
         rowActionsHeader={t("locations.actions")}
         emptyMessage={t("locations.empty")}
         emptyIcon={<MapPin className="h-10 w-10" />}

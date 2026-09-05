@@ -109,7 +109,8 @@ export const PaginationSchema = z.object({
  * counts.
  */
 export const RegisterSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
+  firstName: z.string().min(2, "First name must be at least 2 characters"),
+  lastName: z.string().min(2, "Last name must be at least 2 characters"),
   email: z
     .string()
     .trim()

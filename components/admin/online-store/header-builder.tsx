@@ -39,6 +39,8 @@ import {
   Smartphone,
   Trash2,
   User,
+  MapPin,
+  Store,
 } from "lucide-react";
 import { AdminFormStickyHeader } from "@/components/admin/admin-form-sticky-header";
 import { Badge } from "@/components/ui/badge";
@@ -1852,10 +1854,17 @@ export function HeaderBuilder({
                 onChange={(value) => updateField("widgets.showCart", value)}
               />
               <SwitchRow
-                label={t("fields.showLocationPicker")}
+                label={tf("fields.showLocationPicker", "Show Branch Selector")}
                 checked={header.widgets.showLocationPicker}
                 onChange={(value) =>
                   updateField("widgets.showLocationPicker", value)
+                }
+              />
+              <SwitchRow
+                label={tf("fields.showWholesaleToggle", "Show Wholesale Toggle")}
+                checked={header.widgets.showWholesaleToggle}
+                onChange={(value) =>
+                  updateField("widgets.showWholesaleToggle", value)
                 }
               />
               <SwitchRow
@@ -2357,6 +2366,12 @@ function HeaderPreview({
       ) : null}
       {header.widgets.showAccountMenu ? (
         <User className="h-5 w-5 opacity-80" />
+      ) : null}
+      {header.widgets.showLocationPicker ? (
+        <MapPin className="h-5 w-5 opacity-80" />
+      ) : null}
+      {header.widgets.showWholesaleToggle ? (
+        <Store className="h-5 w-5 opacity-80" />
       ) : null}
       {header.widgets.showWishlist ? (
         <Heart className="hidden h-5 w-5 opacity-80 sm:block" />

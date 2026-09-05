@@ -334,6 +334,8 @@ export function StoreHeader({
   const showAccountMenu = headerSettings?.widgets.showAccountMenu ?? true;
   const showWishlist = headerSettings?.widgets.showWishlist ?? true;
   const showCart = headerSettings?.widgets.showCart ?? true;
+  const showLocationPickerWidget = headerSettings?.widgets.showLocationPicker ?? false;
+  const showWholesaleToggleWidget = headerSettings?.widgets.showWholesaleToggle ?? false;
   const showContactButton = headerSettings?.widgets.showContact ?? false;
   const showCompareButton = headerSettings?.widgets.showCompare ?? false;
   const showActionLabels = headerSettings?.widgets.showLabels ?? false;
@@ -1848,8 +1850,8 @@ export function StoreHeader({
 
                 {/* Mode & Branch Pills */}
                 <div className="hidden lg:flex items-center gap-2 mr-2">
-                  {wholesaleEnabled && <HeaderModePill />}
-                  {multiBranchEnabled && <BranchSelectorPill />}
+                  {(wholesaleEnabled && showWholesaleToggleWidget) && <HeaderModePill />}
+                  {(multiBranchEnabled && showLocationPickerWidget) && <BranchSelectorPill />}
                 </div>
 
                 {/* Theme toggle */}

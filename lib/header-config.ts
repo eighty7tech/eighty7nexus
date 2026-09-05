@@ -207,16 +207,8 @@ export interface HeaderSettings {
     showAccountMenu: boolean;
     showWishlist: boolean;
     showCart: boolean;
-    /**
-     * Storefront location filter. Off by default: it only earns its place in a
-     * marketplace whose vendors are spread across cities — in a single-city
-     * store it would just narrow the catalogue to itself.
-     *
-     * Keyed under header widgets for historical reasons, but the header itself
-     * renders no picker any more — the flag is the master switch for the
-     * location controls on the listing pages (filter panels and pills).
-     */
     showLocationPicker: boolean;
+    showWholesaleToggle: boolean;
     /** A contact-page shortcut button in the actions cluster. */
     showContact: boolean;
     /** A product-compare shortcut button in the actions cluster. */
@@ -355,6 +347,7 @@ const DEFAULT_HEADER_SETTINGS: HeaderSettings = {
     showWishlist: true,
     showCart: true,
     showLocationPicker: false,
+    showWholesaleToggle: false,
     showContact: false,
     showCompare: false,
     showLabels: false,
@@ -790,6 +783,10 @@ export function normalizeHeaderSettings(value: unknown): HeaderSettings {
       showLocationPicker: normalizeBoolean(
         widgets.showLocationPicker,
         defaults.widgets.showLocationPicker,
+      ),
+      showWholesaleToggle: normalizeBoolean(
+        widgets.showWholesaleToggle,
+        defaults.widgets.showWholesaleToggle,
       ),
       showContact: normalizeBoolean(
         widgets.showContact,

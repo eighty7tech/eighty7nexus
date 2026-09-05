@@ -84,6 +84,14 @@ const UserSchema = new Schema<UserDoc>(
       trim: true,
       maxlength: [100, "Name cannot exceed 100 characters"],
     },
+    firstName: {
+      type: String,
+      trim: true,
+    },
+    lastName: {
+      type: String,
+      trim: true,
+    },
     email: {
       type: String,
       required: [true, "Email is required"],

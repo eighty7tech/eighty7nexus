@@ -71,12 +71,15 @@ export function StorefrontAnalytics({
     <>
       {googleTagManagerId && (
         <>
-          <Script id="eighty7nexus-gtm-init" strategy="afterInteractive">
-            {`
+          <script
+            id="eighty7nexus-gtm-init"
+            dangerouslySetInnerHTML={{
+              __html: `
               window.dataLayer = window.dataLayer || [];
               window.dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
-            `}
-          </Script>
+              `
+            }}
+          />
           <Script
             id="eighty7nexus-gtm"
             src={`https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(
@@ -89,6 +92,18 @@ export function StorefrontAnalytics({
 
       {googleAnalyticsId && (
         <>
+          <script
+            id="eighty7nexus-ga4-init"
+            dangerouslySetInnerHTML={{
+              __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              window.gtag = window.gtag || gtag;
+              gtag('js', new Date());
+              gtag('config', '${googleAnalyticsId}', { send_page_view: false });
+              `
+            }}
+          />
           <Script
             id="eighty7nexus-ga4"
             src={`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(
@@ -96,21 +111,14 @@ export function StorefrontAnalytics({
             )}`}
             strategy="afterInteractive"
           />
-          <Script id="eighty7nexus-ga4-init" strategy="afterInteractive">
-            {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              window.gtag = window.gtag || gtag;
-              gtag('js', new Date());
-              gtag('config', '${googleAnalyticsId}', { send_page_view: false });
-            `}
-          </Script>
         </>
       )}
 
       {facebookPixelId && (
-        <Script id="eighty7nexus-meta-pixel" strategy="afterInteractive">
-          {`
+        <script
+          id="eighty7nexus-meta-pixel"
+          dangerouslySetInnerHTML={{
+            __html: `
             !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
             n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -120,13 +128,16 @@ export function StorefrontAnalytics({
             s.parentNode.insertBefore(t,s)}(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
             fbq('init', '${facebookPixelId}');
-          `}
-        </Script>
+            `
+          }}
+        />
       )}
 
       {tiktokPixelId && (
-        <Script id="eighty7nexus-tiktok-pixel" strategy="afterInteractive">
-          {`
+        <script
+          id="eighty7nexus-tiktok-pixel"
+          dangerouslySetInnerHTML={{
+            __html: `
             !function (w, d, t) {
               w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];
               ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],
@@ -139,8 +150,9 @@ export function StorefrontAnalytics({
               var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
               ttq.load('${tiktokPixelId}');
             }(window, document, 'ttq');
-          `}
-        </Script>
+            `
+          }}
+        />
       )}
     </>
   );

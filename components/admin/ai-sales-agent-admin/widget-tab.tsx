@@ -14,6 +14,7 @@ import {
   Sparkles,
   Terminal,
   Zap,
+  Smartphone,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -480,6 +481,111 @@ export function WidgetTab({ settings, setSettings, faviconUrl }: WidgetTabProps)
               <p className="text-xs text-muted-foreground">
                 {t("widget.appearance.headerAvatarDescription")}
               </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Mobile Settings Card */}
+        <Card className="gap-4">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-base">
+              <Smartphone className="h-4 w-4" />
+              Mobile Settings
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-5">
+            <div className="space-y-2">
+              <Label>Mobile Display Mode</Label>
+              <Select
+                value={settings.widget.mobile?.mode || "floating_circle"}
+                onValueChange={(value: any) =>
+                  setSettings((prev) => ({
+                    ...prev,
+                    widget: {
+                      ...prev.widget,
+                      mobile: {
+                        ...(prev.widget.mobile || {
+                          mode: "floating_circle",
+                          tabLabel: "AI Help",
+                          tabIcon: "Bot",
+                          position: "bottom-right",
+                          autoOpen: false,
+                        }),
+                        mode: value,
+                      },
+                    },
+                  }))
+                }
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="floating_circle">Floating Circle Icon</SelectItem>
+                  <SelectItem value="floating_pill">Floating Pill Button</SelectItem>
+                  <SelectItem value="bottom_bar_tab">Bottom Bar Tab (Integrated)</SelectItem>
+                  <SelectItem value="hidden">Hidden on Mobile</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {(settings.widget.mobile?.mode === "floating_pill" ||
+              settings.widget.mobile?.mode === "bottom_bar_tab") && (
+              <div className="space-y-2">
+                <Label>Tab Label</Label>
+                <Input
+                  value={settings.widget.mobile?.tabLabel || ""}
+                  onChange={(event) =>
+                    setSettings((prev) => ({
+                      ...prev,
+                      widget: {
+                        ...prev.widget,
+                        mobile: {
+                          ...(prev.widget.mobile || {
+                            mode: "floating_circle",
+                            tabLabel: "AI Help",
+                            tabIcon: "Bot",
+                            position: "bottom-right",
+                            autoOpen: false,
+                          }),
+                          tabLabel: event.target.value,
+                        },
+                      },
+                    }))
+                  }
+                  placeholder="AI Help"
+                />
+              </div>
+            )}
+
+            <div className="flex items-center justify-between rounded-lg border p-4">
+              <div className="space-y-0.5">
+                <Label>Auto-Open on Mobile</Label>
+                <p className="text-sm text-muted-foreground">
+                  Automatically open the AI chat drawer when visitors land on mobile.
+                </p>
+              </div>
+              <Switch
+                checked={settings.widget.mobile?.autoOpen || false}
+                onCheckedChange={(value) =>
+                  setSettings((prev) => ({
+                    ...prev,
+                    widget: {
+                      ...prev.widget,
+                      mobile: {
+                        ...(prev.widget.mobile || {
+                          mode: "floating_circle",
+                          tabLabel: "AI Help",
+                          tabIcon: "Bot",
+                          position: "bottom-right",
+                          autoOpen: false,
+                        }),
+                        autoOpen: value,
+                      },
+                    },
+                  }))
+                }
+              />
             </div>
           </CardContent>
         </Card>

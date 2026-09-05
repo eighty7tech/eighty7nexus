@@ -1286,13 +1286,6 @@ export function DashboardSidebar({
       );
     }
 
-    if (!multiBranchEnabled && user.role === USER_ROLES.ADMIN) {
-      nextGroups = filterNavGroupsByHref(
-        nextGroups,
-        new Set(["/admin/locations"]),
-      );
-    }
-
     const disabledPosHrefs = new Set<string>();
     if (!posKdsEnabled) disabledPosHrefs.add("/pos/kds");
     if (!posCustomerDisplayEnabled) disabledPosHrefs.add("/pos/customer-display");

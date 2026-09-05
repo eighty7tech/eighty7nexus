@@ -270,6 +270,7 @@ const SECTION_ALLOWED_KEYS: Record<string, readonly string[]> = {
     "reportsEnabled",
     "scaleEnabled",
     "posLayout",
+    "receipt",
   ],
   multiBranch: [
     "enabled",

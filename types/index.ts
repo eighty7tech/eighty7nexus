@@ -110,6 +110,8 @@ export interface VendorOnboardingDraft {
 export interface IUser {
   _id: Types.ObjectId;
   name: string;
+  firstName?: string;
+  lastName?: string;
   email: string;
   emailVerified: boolean;
   emailVerifiedAt?: Date;

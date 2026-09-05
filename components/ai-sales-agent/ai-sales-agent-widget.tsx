@@ -232,6 +232,9 @@ export function AISalesAgentWidget({ locale, hideToggleButton }: { locale: Local
   }
 
   const currentTheme = config.widget.widgetTheme || "nexus-modern";
+  const isCyber = currentTheme === "nexus-cyber-hud";
+  const isGlass = currentTheme === "nexus-glass";
+  const isCapsule = currentTheme === "nexus-capsule";
 
   return (
     <div
@@ -247,13 +250,13 @@ export function AISalesAgentWidget({ locale, hideToggleButton }: { locale: Local
         <div
           className={cn(
             "mb-3 flex w-[calc(100vw-2rem)] flex-col overflow-hidden transition-all duration-300",
-            currentTheme === "helix-synth" &&
-              "rounded-[32px] border border-white/30 bg-card/65 backdrop-blur-2xl text-foreground shadow-2xl",
-            currentTheme === "genetic-neural" &&
-              "rounded-2xl border-2 border-[#77CDCC] bg-[#000d24] text-emerald-100 shadow-[0_0_25px_rgba(119,205,204,0.3)]",
-            currentTheme === "quantum-sentience" &&
-              "rounded-[36px] border border-border bg-card text-foreground shadow-2xl",
-            (currentTheme === "nexus-modern" || currentTheme === "aether-core") &&
+            isGlass &&
+              "rounded-[32px] border border-white/20 bg-card/40 backdrop-blur-3xl text-foreground shadow-2xl",
+            isCyber &&
+              "rounded-md border-2 border-[#77CDCC]/80 bg-black/90 text-emerald-100 shadow-[0_0_35px_rgba(119,205,204,0.2)]",
+            isCapsule &&
+              "rounded-[40px] border border-border bg-card text-foreground shadow-2xl",
+            (!isGlass && !isCyber && !isCapsule) &&
               "rounded-[28px] border border-border bg-background text-foreground shadow-2xl"
           )}
           style={{
@@ -265,25 +268,25 @@ export function AISalesAgentWidget({ locale, hideToggleButton }: { locale: Local
             <div
               className={cn(
                 "flex h-12 items-center justify-between px-5 text-white transition-all",
-                currentTheme === "genetic-neural"
-                  ? "rounded-xl border border-[#77CDCC]/40 bg-[#001a45] shadow-xs font-mono"
-                  : currentTheme === "quantum-sentience"
+                isCyber
+                  ? "rounded-sm border border-[#77CDCC]/40 bg-[#001a45]/80 shadow-xs font-mono"
+                  : isCapsule
                   ? "rounded-full shadow-md"
-                  : currentTheme === "helix-synth"
-                  ? "rounded-full border border-white/20 bg-white/20 dark:bg-white/10 backdrop-blur-xl"
+                  : isGlass
+                  ? "rounded-full border border-white/20 bg-white/20 backdrop-blur-xl shadow-md"
                   : "rounded-2xl shadow-sm"
               )}
               style={{
                 background:
-                  currentTheme === "genetic-neural"
-                    ? "#001a45"
-                    : currentTheme === "helix-synth"
+                  isCyber
+                    ? "transparent"
+                    : isGlass
                     ? undefined
                     : headerGradient,
               }}
             >
               <div className="flex items-center gap-2">
-                {currentTheme === "genetic-neural" && (
+                {isCyber && (
                   <span className="h-2 w-2 rounded-full bg-[#77CDCC] animate-pulse" />
                 )}
                 <span className="text-sm font-semibold tracking-wide">
@@ -315,15 +318,17 @@ export function AISalesAgentWidget({ locale, hideToggleButton }: { locale: Local
             className="flex-1 space-y-4 overflow-y-auto px-4 pb-4 pt-10"
           >
             <div className="flex gap-2">
-              <AISalesAssistantAvatar primaryColor={config.widget.primaryColor} />
+              <AISalesAssistantAvatar primaryColor={config.widget.primaryColor} currentTheme={currentTheme} />
               <div
                 className={cn(
                   "w-fit max-w-[85%] px-4 py-2.5 text-sm leading-relaxed",
-                  currentTheme === "genetic-neural"
-                    ? "rounded-xl border border-[#77CDCC]/30 bg-[#001a45]/80 text-[#77CDCC] font-mono"
-                    : currentTheme === "helix-synth"
-                    ? "rounded-3xl border border-white/20 bg-card/70 backdrop-blur-md text-foreground"
-                    : "rounded-3xl bg-muted text-foreground"
+                  isCyber
+                    ? "rounded-sm border border-[#77CDCC]/30 bg-black/60 text-[#77CDCC] font-mono shadow-[0_0_15px_rgba(119,205,204,0.15)]"
+                    : isGlass
+                    ? "rounded-2xl rounded-tl-sm border border-white/10 bg-white/10 backdrop-blur-xl text-foreground shadow-md"
+                    : isCapsule
+                    ? "rounded-3xl rounded-tl-sm bg-muted/40 text-foreground"
+                    : "rounded-2xl rounded-tl-sm bg-muted text-foreground"
                 )}
               >
                 {config.greeting}
@@ -340,24 +345,31 @@ export function AISalesAgentWidget({ locale, hideToggleButton }: { locale: Local
                 addedActions={addedActions}
                 pendingActions={pendingActions}
                 labels={labels}
+                currentTheme={currentTheme}
               />
             ))}
 
             {loading && (
               <div className="flex items-center gap-2">
-                <AISalesAssistantAvatar primaryColor={config.widget.primaryColor} />
-                <div className="flex items-center gap-1 rounded-3xl bg-muted px-4 py-3">
+                <AISalesAssistantAvatar primaryColor={config.widget.primaryColor} currentTheme={currentTheme} />
+                <div className={cn(
+                  "flex items-center gap-1 px-4 py-3",
+                  isCyber ? "rounded-sm bg-black/40 border border-[#77CDCC]/30" :
+                  isGlass ? "rounded-2xl rounded-tl-sm bg-white/10 backdrop-blur-md" :
+                  isCapsule ? "rounded-3xl rounded-tl-sm bg-muted/40" :
+                  "rounded-2xl rounded-tl-sm bg-muted"
+                )}>
                   <span
-                    className="h-1.5 w-1.5 animate-bounce rounded-full"
-                    style={{ backgroundColor: config.widget.primaryColor, animationDelay: "0ms" }}
+                    className={cn("h-1.5 w-1.5 animate-bounce", isCyber ? "rounded-none" : "rounded-full")}
+                    style={{ backgroundColor: isCyber ? "#77CDCC" : config.widget.primaryColor, animationDelay: "0ms" }}
                   />
                   <span
-                    className="h-1.5 w-1.5 animate-bounce rounded-full"
-                    style={{ backgroundColor: config.widget.primaryColor, animationDelay: "150ms" }}
+                    className={cn("h-1.5 w-1.5 animate-bounce", isCyber ? "rounded-none" : "rounded-full")}
+                    style={{ backgroundColor: isCyber ? "#77CDCC" : config.widget.primaryColor, animationDelay: "150ms" }}
                   />
                   <span
-                    className="h-1.5 w-1.5 animate-bounce rounded-full"
-                    style={{ backgroundColor: config.widget.primaryColor, animationDelay: "300ms" }}
+                    className={cn("h-1.5 w-1.5 animate-bounce", isCyber ? "rounded-none" : "rounded-full")}
+                    style={{ backgroundColor: isCyber ? "#77CDCC" : config.widget.primaryColor, animationDelay: "300ms" }}
                   />
                 </div>
               </div>
@@ -367,19 +379,16 @@ export function AISalesAgentWidget({ locale, hideToggleButton }: { locale: Local
           <div className="px-4 pb-4">
             <div
               className={cn(
-                "flex items-center gap-2 py-1.5 pl-4 pr-1.5 text-foreground transition-all",
-                currentTheme === "genetic-neural"
-                  ? "rounded-xl border border-[#77CDCC] bg-[#001a45]/90 font-mono text-xs"
-                  : currentTheme === "helix-synth"
-                  ? "rounded-full border border-white/30 bg-card/60 backdrop-blur-xl"
-                  : "rounded-full border-2 bg-card"
+                "flex items-center gap-2 py-1.5 pl-4 pr-1.5 transition-all",
+                isCyber
+                  ? "rounded-none border-t-2 border-[#77CDCC]/50 bg-black/80 font-mono text-emerald-100 placeholder:text-emerald-100/50"
+                  : isGlass
+                  ? "rounded-full border border-white/20 bg-white/10 backdrop-blur-2xl text-foreground"
+                  : isCapsule
+                  ? "rounded-full border-2 bg-muted/30 text-foreground"
+                  : "rounded-full border-2 bg-background text-foreground"
               )}
-              style={{
-                borderColor:
-                  currentTheme === "genetic-neural"
-                    ? "#77CDCC"
-                    : config.widget.primaryColor,
-              }}
+              style={(!isCyber && !isGlass && !isCapsule) ? { borderColor: config.widget.primaryColor } : undefined}
             >
               <input
                 value={input}
@@ -388,8 +397,8 @@ export function AISalesAgentWidget({ locale, hideToggleButton }: { locale: Local
                   if (event.key === "Enter") void sendMessage();
                 }}
                 placeholder={
-                  currentTheme === "genetic-neural"
-                    ? ">> Input command or prompt..."
+                  isCyber
+                    ? ">> input command..."
                     : t("typeMessage")
                 }
                 aria-label={t("typeMessage")}
@@ -401,15 +410,12 @@ export function AISalesAgentWidget({ locale, hideToggleButton }: { locale: Local
                 disabled={loading || !input.trim()}
                 aria-label={t("send")}
                 className={cn(
-                  "flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white transition-opacity disabled:opacity-40",
-                  currentTheme === "genetic-neural" && "rounded-lg text-[#001a45]"
+                  "flex h-8 w-8 shrink-0 items-center justify-center transition-opacity disabled:opacity-40",
+                  isCyber ? "rounded-none bg-[#77CDCC]/20 text-[#77CDCC] border border-[#77CDCC] hover:bg-[#77CDCC]/40" : 
+                  isGlass ? "rounded-full bg-white/20 text-white hover:bg-white/30 backdrop-blur-md" :
+                  "rounded-full text-white"
                 )}
-                style={{
-                  backgroundColor:
-                    currentTheme === "genetic-neural"
-                      ? "#77CDCC"
-                      : config.widget.primaryColor,
-                }}
+                style={!isCyber && !isGlass ? { backgroundColor: config.widget.primaryColor } : undefined}
               >
                 {loading ? (
                   <Loader2 className="h-4 w-4 animate-spin" />
@@ -421,8 +427,8 @@ export function AISalesAgentWidget({ locale, hideToggleButton }: { locale: Local
             {config.widget.showFooterText && config.widget.footerText && (
               <p
                 className={cn(
-                  "mt-2 text-center text-[11px] text-muted-foreground",
-                  currentTheme === "genetic-neural" && "font-mono text-[#77CDCC]/80"
+                  "mt-2 text-center text-[11px]",
+                  isCyber ? "font-mono text-[#77CDCC]/60" : "text-muted-foreground"
                 )}
               >
                 {config.widget.footerText}

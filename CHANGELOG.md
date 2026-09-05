@@ -3,8 +3,25 @@
 ## [2026-09-04] - Ghana Delivery Methods Multi-Select
 
 ### Added:
+- **Delivery Methods Bulk Delete**: Added multi-select checkboxes to the Global "Configured Delivery Methods" table in the Delivery Admin UI, along with a "Delete Selected" bulk action.
+- **Unified Delivery Presets & Speedaf Support**: Redesigned the Delivery Methods Presets UI, replacing multiple cards with a sleek, unified banner. Introduced a single "Import All Popular Methods" button that imports STC Cargo, VIPX, Zara Express, Standard Dispatch, and newly added **Speedaf Logistics** presets simultaneously.
+- **Distinct AI Agent Chat Themes**: Completely redesigned the styling logic for the AI Sales Agent storefront widget so that the 4 predefined themes (`nexus-modern`, `nexus-glass`, `nexus-cyber-hud`, and `nexus-capsule`) are now strictly distinct from each other. 
+  - **Modern**: Clean e-commerce aesthetic with soft rounded corners.
+  - **Glass**: Highly premium glassmorphism with frosted borders and backdrop blurs.
+  - **Cyber HUD**: Futuristic terminal layout with monospace fonts, glowing accents, and sharp edges.
+  - **Capsule**: Vibrant, fully-rounded bubbly aesthetic for a soft, friendly vibe.
+  The selected theme now propagates completely down into every single message bubble, product card, and action pill.
+- **Header Widgets (Wholesale & Branches)**: Added support for toggling the display of the Location/Branch Selector and the Wholesale Mode toggle in the Store Header. Administrators can now completely manage the presence of these triggers from the Header Builder widget settings.
+- **Advanced Branches & Locations Management**: Overhauled the Admin Branches page (`/admin/locations`).
+  - Implemented an `AdminStatsStrip` displaying Total Branches, Active Branches, Pickup Stations, and Fulfillment Centers.
+  - Added a `StoreHeader` card displaying master store contact information at a glance.
+  - Replaced the inline editing dialog with a full-page, multi-tab `BranchDetailShell` (`/admin/locations/[id]`), providing dedicated tabs for Profile, Contact & Location, and Operations & POS configuration. This brings the Locations editing experience to parity with the advanced Vendor editing pages.
+- **AI Agent Mobile Settings**: Implemented the missing "Mobile Settings" UI card in the AI Sales Agent Widget configuration tab. Merchants can now easily toggle the widget's mobile display mode (Floating Pill, Bottom Bar Tab, Floating Circle, or Hidden), configure custom mobile tab labels, and set the mobile auto-open behavior directly from the admin dashboard.
 - **AI Sales Agent Delivery Wizard**: Implemented the "Ghana Delivery/Logistics/Install Wizard" interactive widget for the AI Sales Agent. When customers ask about delivery to regions in Ghana, Dispatch Riders, MoMo/COD payment, or installation services, the AI now routes them to a dynamic UI card to capture their region and installation preference before proceeding to checkout.
 - **Bulk Delete Capabilities**: Added multi-select checkboxes to the `GhanaDeliveryCard` in the Shipping Settings. Merchants can now easily select multiple delivery methods or "Select All" to bulk delete them, streamlining the process of resetting or overhauling regional delivery configurations.
+
+### Fixed:
+- **Multi-Branch Menu Visibility**: Fixed an issue where the "Branches & Locations" menu item in the admin dashboard sidebar would be hidden when deactivated. It will now always remain visible so merchants can easily access the locations page and enable the architecture.
 
 ### Improvements:
 - **Multi-Select Dropdown Clear Option**: Added a dedicated "Clear" button inside the `MultiSelectDropdown` header in the Delivery Method Dialog to quickly clear all selected Available Regions and Available Cities.
@@ -23,6 +40,8 @@
 - **Localization**: Removed all hardcoded english text from `track-order-content.tsx`, fully migrating to `next-intl`.
 
 ### Fixes:
+- **Receipt Event Tracking**: Fixed a bug where POS Receipt settings (logo, text, QR code configurations) were failing to save to the database and clearing out in the UI due to the `receipt` property missing from the API validation whitelist (`SECTION_ALLOWED_KEYS`).
+- **Analytics Event Tracking**: Fixed a race condition where initial page views were dropped because tracking snippet queues (`window.gtag`, `window.fbq`, `window.ttq`) were injected via deferred React Scripts and weren't available when the React `useEffect` fired immediately after hydration. Converted queue initialization to synchronous `dangerouslySetInnerHTML` script tags.
 - **AI Widget Theme Types**: Fixed TypeScript type overlap errors in `widget-tab.tsx` and `settings.ts` by updating legacy widget theme values (`nexus-glass`, `nexus-cyber-hud`, `nexus-capsule`) to the new values (`aether-core`, `quantum-sentience`, `helix-synth`).
 - **Vendor Page Guard**: Fixed the page guard import path and parameters in the vendor `ai-sales-agent/page.tsx` route to correctly enforce `requireVendorAreaAccess`.
 - **Vendor API Authentication**: Corrected the `auth: "vendor"` configuration in the `app/api/vendor/ai-sales-agent/route.ts` API route handler to correctly use `auth: "user"` along with `requireApprovedVendorByUserId` for accurate vendor context validation.
