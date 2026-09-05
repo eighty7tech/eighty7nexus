@@ -42,6 +42,5 @@ export async function upsertCredentialPassword(
     providerId: "credential",
     accountId: userId.toString(),
     password: passwordHash,
-    issuer: "",
   });
 }

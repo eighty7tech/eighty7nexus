@@ -3,6 +3,7 @@
 ## [2026-09-05] - POS Receipt, Mobile Sticky Bar, and Bug Fixes
 
 ### Added:
+- **Playwright E2E Testing**: Introduced [Playwright](https://playwright.dev/) for robust End-to-End (E2E) testing across Chromium, WebKit, and Firefox. Configuration and sample tests are available in the `e2e` directory, allowing for critical user journey validation.
 - **POS Receipt Image Logo**: Added an option in the POS receipt configuration to insert a custom image link or to fall back to the default site logo, making receipts highly customizable.
 - **Mobile Sticky Action Bar**: Implemented floating mobile sticky action bar settings in the Product Page Builder (Online Store settings).
 - **Delivery Methods Bulk Delete**: Added multi-select checkboxes to the Global "Configured Delivery Methods" table in the Delivery Admin UI, along with a "Delete Selected" bulk action.
@@ -12,6 +13,7 @@
 - **Product Page Layout Settings**: Added explicit toggles and descriptive texts to the mobile sticky action bar in the product page builder for better UI/UX.
 
 ### Fixed:
+- **Better Auth 1.7.x Typing Errors**: Removed the deprecated `issuer` field from credential account linking (`create-admin.ts` and `auth-credentials.ts`) to fix `better-auth` 1.7.x TS compatibility.
 - **SMS Secrets Clearing**: Fixed a bug where saving from the SMS/OTP admin settings tab would unintentionally clear the SMS provider's API secrets (like `twilioAuthToken` or `messagebirdAccessKey`). The settings route's credential handling algorithm (`resolveSecretUpdates`) now properly resolves the nested keys.
 - **Syntax Errors**: Fixed multiple TypeScript syntax and formatting issues (`TS1127`, `TS1005`, and `TS2322`) across `dashboard-sidebar.tsx`, `product-page-builder.tsx`, and `secret-input.tsx`.
 
