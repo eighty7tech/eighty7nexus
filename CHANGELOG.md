@@ -6,6 +6,7 @@
 - **Credential Account Issuer Migration**: Added `scripts/migrate-credential-issuer.mjs` and npm scripts (`pnpm db:migrate:credential-issuer` and `--dry-run`) to backfill `issuer: "local:credential"` across all MongoDB credential accounts.
 
 ### Improvements:
+- **Analytics Dashboard Custom UI**: Rebuilt the analytics page using the Storify-app native custom UI with Recharts, improving data visualization and custom metrics over the previous Plausible iframe embed.
 - **Better Auth Account Healing**: Added automatic schema healing on startup in `lib/auth.ts` and a Better Auth `account.create.before` database hook to ensure all credential accounts automatically have `issuer: "local:credential"`.
 - **Admin Profile Provisioning**: Enhanced `scripts/create-admin.mjs` to automatically ensure that created or upgraded administrators receive an `AdminProfile` with SuperAdmin permissions in the `adminprofiles` collection.
 
