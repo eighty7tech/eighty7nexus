@@ -4,6 +4,11 @@ import { mongodbAdapter } from "better-auth/adapters/mongodb";
 import { twoFactor } from "better-auth/plugins";
 import { ObjectId } from "mongodb";
 import { randomBytes } from "crypto";
+import dns from "node:dns";
+
+if (process.env.NODE_ENV !== "production") {
+  dns.setServers(["1.1.1.1", "8.8.8.8"]);
+}
 
 function inferDbNameFromMongoUri(uri) {
   const withoutQuery = (uri.split("?")[0] ?? uri).trim();
