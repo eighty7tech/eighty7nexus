@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import dns from "node:dns";
+import * as dns from "node:dns";
 
 // Fix DNS resolution issues on local machine for MongoDB Atlas, but NOT in Vercel/Prod
 if (process.env.NODE_ENV !== "production") {
