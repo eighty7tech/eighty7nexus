@@ -541,6 +541,18 @@ const adminNavGroups: {
         label: "admin.sidebar.staff",
         href: "/admin/staff",
         icon: "UserCog",
+        items: [
+          {
+            label: "admin.sidebar.staff",
+            href: "/admin/staff",
+            icon: "Users",
+          },
+          {
+            label: "System Admins",
+            href: "/admin/system-management/admins",
+            icon: "ShieldAlert",
+          }
+        ]
       },
       // ── Money ─────────────────────────────────
       // "Payments" answered "did this charge go through". "Finance" answers

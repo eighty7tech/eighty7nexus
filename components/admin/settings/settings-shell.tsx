@@ -77,6 +77,7 @@ const SECTION_TO_PATH: Record<AdminSettingsSectionId, string> = {
   whatsapp: "whatsapp",
   wholesale: "wholesale",
   "system-management": "system-management",
+  advanced: "advanced",
   compliance: "compliance",
 };
 

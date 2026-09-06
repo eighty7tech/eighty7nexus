@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 ### Added:
+- **Admin System Management**: Implemented a comprehensive CRUD interface for administrators at `/admin/system-management/admins`, including role and granular permission management utilizing `ADMIN_PERMISSIONS`.
+- **Advanced Settings Backup & Restore**: Added an "Advanced Configs" section in the settings allowing full backup (JSON dump) and direct restore of the system's `Settings` collection.
+- **Dedicated Admin Login Route**: Segregated the admin login portal to strictly `/admin/login` for security and easier role validation.
 - **SMS Test Connections**: Added a test connection interface for all SMS gateways in the admin dashboard. This allows administrators to verify SMS credentials (Twilio, Hubtel, Arkesel, MessageBird) before saving.
 - **Credential Account Issuer Migration**: Added `scripts/migrate-credential-issuer.mjs` and npm scripts (`pnpm db:migrate:credential-issuer` and `--dry-run`) to backfill `issuer: "local:credential"` across all MongoDB credential accounts.
 

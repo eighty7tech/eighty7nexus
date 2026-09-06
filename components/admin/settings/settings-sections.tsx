@@ -58,7 +58,42 @@ export type AdminSettingsSectionId =
   | "whatsapp"
   | "wholesale"
   | "system-management"
+  | "advanced"
   | "compliance";
+
+export const SECTION_TO_PATH: Record<AdminSettingsSectionId, string> = {
+  general: "general",
+  appearance: "appearance",
+  "floating-tabs": "floating-tabs",
+  "track-order": "track-order",
+  marketplace: "marketplace",
+  "multi-branch": "multi-branch",
+  boosting: "boosting",
+  pos: "pos",
+  receipt: "receipt",
+  otp: "otp",
+  twoFactor: "two-factor",
+  oauth: "oauth",
+  security: "security",
+  payment: "payment",
+  email: "email",
+  notifications: "notifications",
+  messaging: "messaging",
+  orders: "orders",
+  checkout: "checkout",
+  shipping: "shipping",
+  seo: "seo",
+  social: "social",
+  analytics: "analytics",
+  maintenance: "maintenance",
+  storage: "storage",
+  aiAuthoring: "ai-authoring",
+  whatsapp: "whatsapp",
+  wholesale: "wholesale",
+  "system-management": "system-management",
+  advanced: "advanced",
+  compliance: "compliance",
+};
 
 export type SectionStatus = "ok" | "warning" | "disabled";
 
@@ -365,6 +400,14 @@ export const ADMIN_SETTINGS_SECTIONS: AdminSettingsSection[] = [
     labelKey: "admin.settings.systemManagement.title",
     defaultLabel: "System Management",
     icon: HardDrive,
+  },
+  {
+    id: "advanced",
+    tab: "advanced",
+    group: "advanced",
+    labelKey: "admin.settings.advanced.title",
+    defaultLabel: "Advanced Configs",
+    icon: Wrench,
   },
 ];
 
