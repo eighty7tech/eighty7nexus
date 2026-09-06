@@ -308,23 +308,44 @@ export class S3CompatibleProvider implements StorageService {
    */
   async testConnection(): Promise<{ success: boolean; message: string }> {
     try {
-      const command = new HeadBucketCommand({
+      // We use ListObjectsV2 instead of HeadBucket because HeadBucket is a HEAD request 
+      // and returns no body on error, which causes the AWS SDK to throw a useless "UnknownError" 
+      // on 403 Forbidden or 404 Not Found.
+      const command = new ListObjectsV2Command({
         Bucket: this.config.bucketName,
+        MaxKeys: 1,
       });
 
       await this.client.send(command);
 
       const providerName =
-        this.config.provider === "cloudflare_r2" ? "Cloudflare R2" : "AWS S3";
+        this.config.provider === "cloudflare_r2"
+          ? "Cloudflare R2"
+          : this.config.provider === "minio"
+            ? "MinIO"
+            : this.config.provider === "digitalocean"
+              ? "DigitalOcean Spaces"
+              : "AWS S3";
 
       return {
         success: true,
         message: `${providerName} connected successfully`,
       };
     } catch (error: any) {
+      let message = error.message || "Failed to connect to storage";
+      
+      // If we still get UnknownError, it's usually a DNS or fetch failure (invalid endpoint)
+      if (error.name === "UnknownError" || message === "UnknownError" || message === "fetch failed") {
+        message = "Connection failed (Network or Endpoint Error). Please verify your Account ID, Region, or Endpoint URL is correct.";
+      } else if (error.name === "CredentialsProviderError") {
+        message = "Invalid access key or secret key.";
+      } else if (error.name === "NoSuchBucket") {
+        message = `Bucket "${this.config.bucketName}" does not exist.`;
+      }
+
       return {
         success: false,
-        message: error.message || "Failed to connect to storage",
+        message,
       };
     }
   }
