@@ -4,7 +4,7 @@ import { Star } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import type { ReviewsStats } from "@/app/[locale]/admin/reviews/page";
+import type { ReviewsStats } from "@/app/[locale]/admin/(dashboard)/reviews/page";
 
 interface ReviewsStatsCardProps {
   stats: ReviewsStats;
