@@ -195,7 +195,7 @@ export function CouponInput({
             value={code}
             onChange={(e) => setCode(e.target.value.toUpperCase())}
             placeholder={t("coupon.placeholder")}
-            className="pl-10"
+            className="pl-10 h-10 rounded-full text-sm placeholder:text-sm"
             disabled={isValidating}
           />
         </div>
@@ -203,6 +203,7 @@ export function CouponInput({
           type="button"
           variant="outline"
           onClick={handleApply}
+          className="h-10 rounded-full"
           disabled={isValidating || !code.trim()}
         >
           {isValidating ? (

@@ -7,6 +7,8 @@ import * as z from "zod";
 import { toast } from "sonner";
 import { ADMIN_PERMISSIONS } from "@/config/permissions.config";
 import { upsertAdminAction } from "@/app/actions/admin-management-actions";
+import { useTranslations } from "next-intl";
+import { Loader2 } from "lucide-react";
 
 import {
   Dialog,

@@ -75,7 +75,7 @@ export function GhanaAddressForm({ form }: { form: UseFormReturn<CheckoutFormDat
         <FormItem>
           <FormLabel>Country</FormLabel>
           <FormControl>
-            <Input value="Ghana" readOnly disabled className="h-10 bg-muted/40 font-medium" />
+            <Input value="Ghana" readOnly disabled className="h-10 rounded-full bg-muted/40 font-medium" />
           </FormControl>
         </FormItem>
 
@@ -96,7 +96,7 @@ export function GhanaAddressForm({ form }: { form: UseFormReturn<CheckoutFormDat
                   }}
                   disabled={loadingRegions}
                 >
-                  <SelectTrigger className="h-10">
+                  <SelectTrigger className="h-10 rounded-full text-sm">
                     <SelectValue placeholder="Select Region" />
                   </SelectTrigger>
                   <SelectContent>
@@ -131,7 +131,7 @@ export function GhanaAddressForm({ form }: { form: UseFormReturn<CheckoutFormDat
                     field.onChange(e.target.value);
                     form.setValue("billingCity", e.target.value);
                   }}
-                  className="h-10"
+                  className="h-10 rounded-full placeholder:text-sm text-sm"
                   placeholder="e.g. Accra, Kumasi"
                 />
               </FormControl>
@@ -154,7 +154,7 @@ export function GhanaAddressForm({ form }: { form: UseFormReturn<CheckoutFormDat
                   onChange={(e) => {
                     field.onChange(e.target.value);
                   }}
-                  className="h-10"
+                  className="h-10 rounded-full placeholder:text-sm text-sm"
                   placeholder="e.g. Osu, East Legon, Bantama, Spintex"
                 />
               </FormControl>
@@ -176,7 +176,7 @@ export function GhanaAddressForm({ form }: { form: UseFormReturn<CheckoutFormDat
               <FormControl>
                 <Input
                   {...field}
-                  className="h-10 font-mono tracking-wide uppercase"
+                  className="h-10 rounded-full placeholder:text-sm text-sm font-mono tracking-wide uppercase"
                   placeholder="e.g. AS-123-1234, GA-123-1234"
                   maxLength={13}
                   value={field.value || ""}
@@ -201,7 +201,7 @@ export function GhanaAddressForm({ form }: { form: UseFormReturn<CheckoutFormDat
               <FormControl>
                 <Input
                   {...field}
-                  className="h-10"
+                  className="h-10 rounded-full placeholder:text-sm text-sm"
                   placeholder="e.g. Oxford Street, Hse No. 12"
                 />
               </FormControl>
@@ -221,7 +221,7 @@ export function GhanaAddressForm({ form }: { form: UseFormReturn<CheckoutFormDat
             <FormControl>
               <Input
                 {...field}
-                className="h-10"
+                className="h-10 rounded-full placeholder:text-sm text-sm"
                 placeholder="e.g. Near Shell Filling Station, behind Papaye, red gate"
               />
             </FormControl>
@@ -242,7 +242,7 @@ export function GhanaAddressForm({ form }: { form: UseFormReturn<CheckoutFormDat
                 <Input
                   {...field}
                   value={field.value || ""}
-                  className="h-10"
+                  className="h-10 rounded-full placeholder:text-sm text-sm"
                   placeholder="e.g. Dzorwulu, Cantonments"
                 />
               </FormControl>
@@ -261,7 +261,7 @@ export function GhanaAddressForm({ form }: { form: UseFormReturn<CheckoutFormDat
                 <Input
                   {...field}
                   value={field.value || ""}
-                  className="h-10"
+                  className="h-10 rounded-full placeholder:text-sm text-sm"
                   placeholder="e.g. Call upon arrival, leave at reception"
                 />
               </FormControl>

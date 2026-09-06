@@ -149,6 +149,6 @@ export const PAYMENT_METHODS = [
 
 // Floating label CSS classes for Shopify-style inputs
 export const FLOATING_INPUT_CLASS =
-  "peer h-14 rounded-lg pt-6 pb-1.5 text-base placeholder-transparent";
+  "peer h-10 rounded-full px-4 pt-4 pb-1 text-sm placeholder-transparent";
 export const FLOATING_LABEL_CLASS =
-  "pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm text-muted-foreground transition-all duration-150 peer-focus:top-2 peer-focus:translate-y-0 peer-focus:text-xs peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:text-xs";
+  "pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-xs text-muted-foreground transition-all duration-150 peer-focus:top-1.5 peer-focus:translate-y-0 peer-focus:text-[10px] peer-[:not(:placeholder-shown)]:top-1.5 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:text-[10px]";
