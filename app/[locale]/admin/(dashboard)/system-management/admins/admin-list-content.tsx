@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useTransition } from "react";
+import { useTranslations } from "next-intl";
 import { getAdminsListAction, removeAdminPrivilegesAction } from "@/app/actions/admin-management-actions";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -24,6 +25,7 @@ import {
 import { ADMIN_PERMISSIONS } from "@/config/permissions.config";
 
 export function AdminListContent({ locale }: { locale: string }) {
+  const t = useTranslations();
   const [admins, setAdmins] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isPending, startTransition] = useTransition();
@@ -36,7 +38,7 @@ export function AdminListContent({ locale }: { locale: string }) {
         setAdmins(res.data);
       }
     } catch (err: any) {
-      toast.error(err.message || "Failed to load admins");
+      toast.error(err.message || t("admin.systemManagement.title"));
     } finally {
       setIsLoading(false);
     }
@@ -47,7 +49,7 @@ export function AdminListContent({ locale }: { locale: string }) {
   }, []);
 
   const handleRevoke = (id: string) => {
-    if (!confirm("Are you sure you want to revoke admin privileges for this user? They will become a standard customer.")) return;
+    if (!confirm(t("admin.systemManagement.deleteConfirmDesc"))) return;
     
     startTransition(async () => {
       try {
@@ -57,7 +59,7 @@ export function AdminListContent({ locale }: { locale: string }) {
           fetchAdmins();
         }
       } catch (err: any) {
-        toast.error(err.message || "Failed to revoke admin privileges");
+        toast.error(err.message || t("admin.systemManagement.deleteConfirmTitle"));
       }
     });
   };
@@ -65,10 +67,10 @@ export function AdminListContent({ locale }: { locale: string }) {
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between border-b pb-4">
-        <CardTitle>System Administrators</CardTitle>
+        <CardTitle>{t("admin.systemManagement.title")}</CardTitle>
         <AdminManagementModal onSaved={fetchAdmins}>
           <Button size="sm">
-            <Shield className="h-4 w-4 mr-2" /> Add Admin
+            <Shield className="h-4 w-4 mr-2" /> {t("admin.systemManagement.newAdminButton")}
           </Button>
         </AdminManagementModal>
       </CardHeader>
@@ -85,11 +87,11 @@ export function AdminListContent({ locale }: { locale: string }) {
             <table className="w-full text-sm text-left">
               <thead className="text-xs text-muted-foreground uppercase bg-muted/50 border-b">
                 <tr>
-                  <th className="px-4 py-3 rounded-tl-md">Admin Details</th>
-                  <th className="px-4 py-3">Role</th>
+                  <th className="px-4 py-3 rounded-tl-md">{t("admin.systemManagement.nameColumn")}</th>
+                  <th className="px-4 py-3">{t("admin.systemManagement.roleColumn")}</th>
                   <th className="px-4 py-3">Department</th>
                   <th className="px-4 py-3">Permissions</th>
-                  <th className="px-4 py-3 text-right rounded-tr-md">Actions</th>
+                  <th className="px-4 py-3 text-right rounded-tr-md">{t("admin.systemManagement.actionsColumn")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -137,18 +139,18 @@ export function AdminListContent({ locale }: { locale: string }) {
                           </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
-                          <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                          <DropdownMenuLabel>{t("admin.systemManagement.actionsColumn")}</DropdownMenuLabel>
                           <DropdownMenuSeparator />
                           <AdminManagementModal admin={admin} onSaved={fetchAdmins}>
                             <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
-                              <UserCog className="h-4 w-4 mr-2" /> Edit Permissions
+                              <UserCog className="h-4 w-4 mr-2" /> {t("admin.systemManagement.editAction")}
                             </DropdownMenuItem>
                           </AdminManagementModal>
                           <DropdownMenuItem 
                             className="text-red-600 focus:text-red-600 focus:bg-red-50"
                             onClick={() => handleRevoke(admin.id)}
                           >
-                            <UserX className="h-4 w-4 mr-2" /> Revoke Access
+                            <UserX className="h-4 w-4 mr-2" /> {t("admin.systemManagement.revokeAction")}
                           </DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>

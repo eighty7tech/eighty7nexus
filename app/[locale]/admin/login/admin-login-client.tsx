@@ -31,12 +31,12 @@ import {
 import { authClient, getSession, signOut } from "@/lib/auth-client";
 import { USER_ROLES } from "@/config/app.config";
 
-const AdminLoginSchema = z.object({
-  email: z.string().email("Invalid email address"),
-  password: z.string().min(1, "Password is required"),
+const AdminLoginSchema = (t: any) => z.object({
+  email: z.string().email(t("admin.login.invalidEmail")),
+  password: z.string().min(1, t("admin.login.passwordRequired")),
 });
 
-type AdminLoginInput = z.infer<typeof AdminLoginSchema>;
+type AdminLoginInput = z.infer<ReturnType<typeof AdminLoginSchema>>;
 
 interface AdminLoginClientProps {
   storeName: string;
@@ -50,7 +50,7 @@ export function AdminLoginClient({ storeName, logoUrl }: AdminLoginClientProps) 
   const [error, setError] = useState<string | null>(null);
 
   const form = useForm<AdminLoginInput>({
-    resolver: zodResolver(AdminLoginSchema),
+    resolver: zodResolver(AdminLoginSchema(t)),
     defaultValues: {
       email: "",
       password: "",
@@ -68,7 +68,7 @@ export function AdminLoginClient({ storeName, logoUrl }: AdminLoginClientProps) 
       });
 
       if (res?.error) {
-        setError(res.error.message || "Invalid credentials");
+        setError(res.error.message || t("admin.login.invalidCredentials"));
         setIsLoading(false);
         return;
       }
@@ -82,17 +82,17 @@ export function AdminLoginClient({ storeName, logoUrl }: AdminLoginClientProps) 
       if (!roles.includes(USER_ROLES.ADMIN) && role !== USER_ROLES.ADMIN) {
         // Not an admin. Sign them out forcefully.
         await signOut();
-        setError("Unauthorized: This portal is strictly for administrators.");
+        setError(t("admin.login.unauthorized"));
         setIsLoading(false);
         return;
       }
 
       // Success
-      toast.success("Welcome back, Admin");
+      toast.success(t("admin.login.welcomeBack"));
       router.push("/en/admin/dashboard");
       router.refresh();
     } catch (err: any) {
-      setError(err?.message || "An unexpected error occurred.");
+      setError(err?.message || t("admin.login.unexpectedError"));
       setIsLoading(false);
     }
   };
@@ -110,9 +110,9 @@ export function AdminLoginClient({ storeName, logoUrl }: AdminLoginClientProps) 
               </div>
             )}
           </div>
-          <CardTitle className="text-2xl font-bold tracking-tight">Admin Portal</CardTitle>
+          <CardTitle className="text-2xl font-bold tracking-tight">{t("admin.login.title")}</CardTitle>
           <CardDescription>
-            Sign in to access the secure administrative dashboard.
+            {t("admin.login.description")}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -130,11 +130,11 @@ export function AdminLoginClient({ storeName, logoUrl }: AdminLoginClientProps) 
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Admin Email</FormLabel>
+                    <FormLabel>{t("admin.login.emailLabel")}</FormLabel>
                     <FormControl>
                       <Input
                         type="email"
-                        placeholder="admin@example.com"
+                        placeholder={t("admin.login.emailPlaceholder")}
                         disabled={isLoading}
                         {...field}
                       />
@@ -149,11 +149,11 @@ export function AdminLoginClient({ storeName, logoUrl }: AdminLoginClientProps) 
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Password</FormLabel>
+                    <FormLabel>{t("admin.login.passwordLabel")}</FormLabel>
                     <FormControl>
                       <Input
                         type="password"
-                        placeholder="••••••••"
+                        placeholder={t("admin.login.passwordPlaceholder")}
                         disabled={isLoading}
                         {...field}
                       />
@@ -171,10 +171,10 @@ export function AdminLoginClient({ storeName, logoUrl }: AdminLoginClientProps) 
                 {isLoading ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Verifying Identity...
+                    {t("admin.login.verifying")}
                   </>
                 ) : (
-                  "Access Dashboard"
+                  t("admin.login.submitButton")
                 )}
               </Button>
             </form>
@@ -182,7 +182,7 @@ export function AdminLoginClient({ storeName, logoUrl }: AdminLoginClientProps) 
         </CardContent>
         <CardFooter className="pt-2 pb-6 flex justify-center border-t mt-4">
           <p className="text-xs text-muted-foreground flex items-center gap-1.5 mt-4">
-            <ShieldCheck className="h-3.5 w-3.5" /> Secured by 256-bit encryption
+            <ShieldCheck className="h-3.5 w-3.5" /> {t("admin.login.securedBy")}
           </p>
         </CardFooter>
       </Card>

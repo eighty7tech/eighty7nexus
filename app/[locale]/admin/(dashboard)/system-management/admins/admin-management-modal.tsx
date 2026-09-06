@@ -12,6 +12,7 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -29,7 +30,8 @@ import {
 } from "@/components/ui/form";
 import { Switch } from "@/components/ui/switch";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Badge } from "@/components/ui/badge";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
 
 const AdminFormSchema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -49,6 +51,7 @@ interface AdminManagementModalProps {
 }
 
 export function AdminManagementModal({ children, admin, onSaved }: AdminManagementModalProps) {
+  const t = useTranslations();
   const [open, setOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
 
@@ -93,6 +96,7 @@ export function AdminManagementModal({ children, admin, onSaved }: AdminManageme
 
   const isSuperAdmin = form.watch("isSuperAdmin");
   const selectedPermissions = form.watch("permissions") || [];
+  const isAllSelected = selectedPermissions.length === Object.values(ADMIN_PERMISSIONS).length;
 
   const togglePermission = (val: string) => {
     if (selectedPermissions.includes(val)) {
@@ -102,14 +106,22 @@ export function AdminManagementModal({ children, admin, onSaved }: AdminManageme
     }
   };
 
+  const handleSelectAll = (checked: boolean) => {
+    if (checked) {
+      form.setValue("permissions", Object.values(ADMIN_PERMISSIONS), { shouldDirty: true });
+    } else {
+      form.setValue("permissions", [], { shouldDirty: true });
+    }
+  };
+
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="max-w-2xl max-h-[90vh] flex flex-col p-0">
         <DialogHeader className="px-6 py-4 border-b">
-          <DialogTitle>{isEdit ? "Edit Administrator" : "Create Administrator"}</DialogTitle>
+          <DialogTitle>{isEdit ? t("admin.systemManagement.modalEditTitle") : t("admin.systemManagement.modalAddTitle")}</DialogTitle>
           <DialogDescription>
-            {isEdit ? "Update admin details and permissions." : "Create a new admin account and assign roles."}
+            {t("admin.systemManagement.modalDesc")}
           </DialogDescription>
         </DialogHeader>
 
@@ -197,9 +209,20 @@ export function AdminManagementModal({ children, admin, onSaved }: AdminManageme
 
               {!isSuperAdmin && (
                 <div className="space-y-4">
-                  <div>
-                    <h4 className="text-sm font-medium mb-1">Specific Permissions</h4>
-                    <p className="text-sm text-muted-foreground mb-3">Select the features this admin can manage.</p>
+                  <div className="mb-4">
+                    <FormLabel className="text-base">{t("admin.systemManagement.permissionsLabel")}</FormLabel>
+                    <FormDescription>
+                      {t("admin.systemManagement.permissionsDesc")}
+                    </FormDescription>
+                  </div>
+                  <div className="flex items-center space-x-2 pb-2 mb-2 border-b">
+                    <Checkbox 
+                      checked={isAllSelected}
+                      onCheckedChange={handleSelectAll}
+                    />
+                    <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                      {t("admin.systemManagement.selectAllPermissions")}
+                    </label>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                     {Object.entries(ADMIN_PERMISSIONS).map(([key, val]) => {
@@ -230,14 +253,15 @@ export function AdminManagementModal({ children, admin, onSaved }: AdminManageme
           </Form>
         </ScrollArea>
 
-        <div className="border-t p-4 flex justify-end gap-2 bg-muted/20">
+        <DialogFooter className="border-t p-4 flex justify-end gap-2 bg-muted/20">
           <Button type="button" variant="outline" onClick={() => setOpen(false)} disabled={isPending}>
-            Cancel
+            {t("admin.systemManagement.cancelButton")}
           </Button>
           <Button type="submit" form="admin-form" disabled={isPending}>
-            {isPending ? "Saving..." : isEdit ? "Save Changes" : "Create Admin"}
+            {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+            {t("admin.systemManagement.saveButton")}
           </Button>
-        </div>
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   );

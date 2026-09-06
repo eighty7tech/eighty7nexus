@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useTransition } from "react";
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 import { clearAppCache } from "@/app/actions/system-actions";
 import { 
@@ -12,15 +13,16 @@ import {
   CardFooter
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Download, Upload, AlertTriangle, FileJson, RefreshCcw } from "lucide-react";
+import { Download, Upload, AlertTriangle, FileJson, RefreshCw } from "lucide-react";
 
 export function AdvancedSettingsContent() {
+  const t = useTranslations();
   const [isUploading, setIsUploading] = useState(false);
   const [isPurging, setIsPurging] = useState(false);
+  const [isPending, startTransition] = useTransition();
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleBackup = () => {
-    // Open backup endpoint in new window to trigger download
     window.open("/api/admin/settings/advanced/backup", "_blank");
     toast.success("Backup downloaded");
   };
@@ -80,46 +82,44 @@ export function AdvancedSettingsContent() {
 
   return (
     <div className="grid gap-6 md:grid-cols-2">
-      {/* Settings Backup */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Download className="h-5 w-5" /> Backup Settings
+          <CardTitle className="text-base flex items-center gap-2">
+            <Download className="h-4 w-4" /> {t("admin.advancedSettings.systemBackupCard.title")}
           </CardTitle>
           <CardDescription>
-            Download a complete snapshot of all store settings, theme configurations, and API keys.
+            {t("admin.advancedSettings.systemBackupCard.description")}
           </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex items-start gap-3 p-4 bg-muted/30 rounded-lg border">
             <FileJson className="h-8 w-8 text-muted-foreground shrink-0 mt-0.5" />
             <div className="text-sm text-muted-foreground">
-              The backup is exported as a standard JSON file. Keep this file secure as it contains API keys and sensitive configuration data.
+              {t("admin.advancedSettings.systemBackupCard.details")}
             </div>
           </div>
         </CardContent>
         <CardFooter>
           <Button onClick={handleBackup} className="w-full">
-            Download Settings JSON
+            {t("admin.advancedSettings.systemBackupCard.downloadButton")}
           </Button>
         </CardFooter>
       </Card>
 
-      {/* Settings Restore */}
       <Card className="border-orange-500/30 shadow-orange-500/5">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-orange-600 dark:text-orange-400">
-            <Upload className="h-5 w-5" /> Restore Settings
+          <CardTitle className="text-base flex items-center gap-2 text-orange-600 dark:text-orange-400">
+            <Upload className="h-5 w-5" /> {t("admin.advancedSettings.systemBackupCard.restoreTitle")}
           </CardTitle>
           <CardDescription>
-            Restore settings from a previously downloaded JSON backup file.
+            {t("admin.advancedSettings.systemBackupCard.restoreDescription")}
           </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex items-start gap-3 p-4 bg-orange-500/10 rounded-lg border border-orange-500/20">
             <AlertTriangle className="h-8 w-8 text-orange-600 dark:text-orange-400 shrink-0 mt-0.5" />
             <div className="text-sm text-orange-800 dark:text-orange-200">
-              <strong>Warning:</strong> Restoring a backup will instantly overwrite all current settings. This action cannot be undone.
+              <strong>{t("admin.common.warning")}:</strong> {t("admin.advancedSettings.systemBackupCard.restoreWarning")}
             </div>
           </div>
           <input
@@ -137,42 +137,41 @@ export function AdvancedSettingsContent() {
             disabled={isUploading}
             onClick={() => fileInputRef.current?.click()}
           >
-            {isUploading ? "Restoring..." : "Upload & Restore JSON"}
+            {isUploading ? t("admin.common.restoring") : t("admin.advancedSettings.systemBackupCard.uploadButton")}
           </Button>
         </CardFooter>
       </Card>
 
-      {/* Advanced Maintenance */}
       <Card className="md:col-span-2">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <RefreshCcw className="h-5 w-5" /> Cache & Maintenance
+          <CardTitle className="text-base flex items-center gap-2 text-destructive">
+            <RefreshCw className="h-4 w-4" /> {t("admin.advancedSettings.resetCard.title")}
           </CardTitle>
           <CardDescription>
-            Tools to force system synchronization and resolve stale data issues.
+            {t("admin.advancedSettings.resetCard.description")}
           </CardDescription>
         </CardHeader>
         <CardContent className="grid gap-4 sm:grid-cols-2">
           <div className="p-4 border rounded-lg flex flex-col justify-between">
             <div>
-              <h4 className="font-medium mb-1">Purge System Cache</h4>
+              <h4 className="font-medium mb-1">{t("admin.advancedSettings.resetCard.purgeTitle")}</h4>
               <p className="text-sm text-muted-foreground mb-4">
-                Invalidates all Next.js server caches. Use this if recent changes aren't appearing on the storefront.
+                {t("admin.advancedSettings.resetCard.purgeDescription")}
               </p>
             </div>
             <Button variant="outline" onClick={handlePurgeCache} disabled={isPurging}>
-              {isPurging ? "Purging..." : "Purge Cache"}
+              {isPurging ? t("admin.common.purging") : t("admin.advancedSettings.resetCard.purgeButton")}
             </Button>
           </div>
           
           <div className="p-4 border rounded-lg flex flex-col justify-between opacity-70">
             <div>
-              <h4 className="font-medium mb-1">Force Settings Sync (Coming Soon)</h4>
+              <h4 className="font-medium mb-1">{t("admin.advancedSettings.resetCard.syncTitle")}</h4>
               <p className="text-sm text-muted-foreground mb-4">
-                Forces all edge nodes to refetch settings from the primary database immediately.
+                {t("admin.advancedSettings.resetCard.syncDescription")}
               </p>
             </div>
-            <Button variant="outline" disabled>Sync Settings</Button>
+            <Button variant="outline" disabled>{t("admin.advancedSettings.resetCard.syncButton")}</Button>
           </div>
         </CardContent>
       </Card>

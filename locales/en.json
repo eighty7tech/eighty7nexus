@@ -6160,6 +6160,82 @@
         "title": "Mega Menu",
         "description": "The All Categories rail: build category flyouts with links, images, and promos."
       }
+    },
+    "login": {
+      "title": "Admin Portal",
+      "description": "Sign in to access the secure administrative dashboard.",
+      "invalidEmail": "Invalid email address",
+      "passwordRequired": "Password is required",
+      "invalidCredentials": "Invalid credentials",
+      "unauthorized": "Unauthorized: This portal is strictly for administrators.",
+      "welcomeBack": "Welcome back, Admin",
+      "unexpectedError": "An unexpected error occurred.",
+      "emailLabel": "Admin Email",
+      "emailPlaceholder": "admin@example.com",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "••••••••",
+      "verifying": "Verifying Identity...",
+      "submitButton": "Access Dashboard",
+      "securedBy": "Secured by 256-bit encryption"
+    },
+    "systemManagement": {
+      "title": "System Admins",
+      "description": "Manage administrators and their specific system permissions.",
+      "searchPlaceholder": "Search admins...",
+      "newAdminButton": "New Admin",
+      "nameColumn": "Admin",
+      "roleColumn": "Role",
+      "statusColumn": "Status",
+      "joinedColumn": "Joined",
+      "actionsColumn": "Actions",
+      "editAction": "Edit Access",
+      "revokeAction": "Revoke Access",
+      "deleteConfirmTitle": "Revoke Admin Access?",
+      "deleteConfirmDesc": "This will remove all administrative privileges for this user. They will only have standard user access.",
+      "modalAddTitle": "Add Administrator",
+      "modalEditTitle": "Edit Administrator",
+      "modalDesc": "Configure administrative access and specific permissions for this user.",
+      "userLabel": "User",
+      "userPlaceholder": "Search for a registered user...",
+      "roleLabel": "Role Level",
+      "rolePlaceholder": "Select admin role",
+      "permissionsLabel": "Granular Permissions",
+      "permissionsDesc": "Select specific access rights for this administrator.",
+      "selectAllPermissions": "Select All Permissions",
+      "cancelButton": "Cancel",
+      "saveButton": "Save Changes"
+    },
+    "advancedSettings": {
+      "title": "Advanced System Configurations",
+      "description": "Manage core system settings, backups, and critical overrides. Proceed with caution.",
+      "systemBackupCard": {
+        "title": "System Configuration Backup",
+        "description": "Export or restore the entire system configuration. This includes all active settings, thresholds, and keys.",
+        "downloadButton": "Download Full Config Backup",
+        "downloading": "Generating Backup...",
+        "restoreTitle": "Restore Configuration",
+        "restoreWarning": "Warning: This will overwrite all current system settings. This action cannot be undone.",
+        "restoreButton": "Upload & Restore Config",
+        "restoring": "Restoring Configuration...",
+        "details": "The backup is exported as a standard JSON file. Keep this file secure as it contains API keys and sensitive configuration data.",
+        "restoreDescription": "Restore settings from a previously downloaded JSON backup file.",
+        "uploadButton": "Upload & Restore JSON"
+      },
+      "resetCard": {
+        "title": "Cache & Maintenance",
+        "description": "Tools to force system synchronization and resolve stale data issues.",
+        "purgeTitle": "Purge System Cache",
+        "purgeDescription": "Invalidates all Next.js server caches. Use this if recent changes aren't appearing on the storefront.",
+        "purgeButton": "Purge Cache",
+        "syncTitle": "Force Settings Sync (Coming Soon)",
+        "syncDescription": "Forces all edge nodes to refetch settings from the primary database immediately.",
+        "syncButton": "Sync Settings"
+      }
+    },
+    "common": {
+      "warning": "Warning",
+      "restoring": "Restoring...",
+      "purging": "Purging..."
     }
   },
   "vendor": {
