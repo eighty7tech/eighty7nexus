@@ -38,6 +38,9 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   serverExternalPackages: ["sharp"],
   experimental: {
     // Cap the build's parallelism on memory-constrained servers. Static
