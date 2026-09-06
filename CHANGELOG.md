@@ -320,8 +320,12 @@
   - Bound dynamic typography stylesheet applier directly to `useAppSettings` store state, ensuring fonts apply instantaneously upon selection and persist reliably across page navigations.
 - **Fixed Duplicate Object Key in Public Settings Endpoint (`app/api/settings/public/route.ts`)**:
   - Removed duplicate `appearance` property definition from `/api/settings/public` route response.
+  - Configured server-side pagination layout wrapper pattern to streamline Next.js pre-rendering
 
-## [2026-09-03] — Google 500+ Fonts Engine, Advanced Typography Suite, Admin & POS 3 Layout Stacks, and POS Checkout Pop-up Fix
+### Fixes:
+- **Analytics Crash**: Fixed an issue where the Admin Analytics page would render a completely blank screen because it crashed while attempting to read missing metrics from the Plausible API (e.g. `aggregate.visitors.value`).
+
+## [0.6.2] - 2026-09-04 — Google 500+ Fonts Engine, Advanced Typography Suite, Admin & POS 3 Layout Stacks, and POS Checkout Pop-up Fix
 
 ### Added:
 - **Google 500+ Fonts Catalog Engine (`lib/typography/google-fonts-catalog.ts`)**: Built a comprehensive catalog of 514 popular Google Fonts classified across 5 categories (`sans-serif`, `serif`, `display`, `monospace`, `handwriting`) with popularity scores, weight variations (100–900), and dynamic URL generator `buildGoogleFontUrl` with zero layout shift.

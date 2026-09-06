@@ -52,11 +52,11 @@ import {
 // ─── Types ─────────────────────────────────────────────────────────────────────
 
 interface PlausibleAggResult {
-  visitors: { value: number };
-  pageviews: { value: number };
-  bounce_rate: { value: number };
-  visit_duration: { value: number };
-  visits: { value: number };
+  visitors?: { value: number };
+  pageviews?: { value: number };
+  bounce_rate?: { value: number };
+  visit_duration?: { value: number };
+  visits?: { value: number };
 }
 
 interface TimeseriesPoint {
@@ -723,32 +723,32 @@ export function AdminAnalyticsContent({
       id: "unique-visitors",
       label: t("admin.analyticsPage.cards.uniqueVisitors"),
       icon: <Users />,
-      value: aggregate ? formatNumber(aggregate.visitors.value, locale) : "—",
+      value: aggregate ? formatNumber(aggregate.visitors?.value ?? 0, locale) : "—",
     },
     {
       id: "total-pageviews",
       label: t("admin.analyticsPage.cards.totalPageviews"),
       icon: <Eye />,
-      value: aggregate ? formatNumber(aggregate.pageviews.value, locale) : "—",
+      value: aggregate ? formatNumber(aggregate.pageviews?.value ?? 0, locale) : "—",
     },
     {
       id: "total-visits",
       label: t("admin.analyticsPage.cards.totalVisits"),
       icon: <MousePointerClick />,
-      value: aggregate ? formatNumber(aggregate.visits.value, locale) : "—",
+      value: aggregate ? formatNumber(aggregate.visits?.value ?? 0, locale) : "—",
     },
     {
       id: "bounce-rate",
       label: t("admin.analyticsPage.cards.bounceRate"),
       icon: <TrendingDown />,
-      value: aggregate ? `${aggregate.bounce_rate.value}%` : "—",
+      value: aggregate ? `${aggregate.bounce_rate?.value ?? 0}%` : "—",
     },
     {
       id: "avg-duration",
       label: t("admin.analyticsPage.cards.avgDuration"),
       icon: <Clock />,
       value: aggregate
-        ? formatDuration(aggregate.visit_duration.value, t)
+        ? formatDuration(aggregate.visit_duration?.value ?? 0, t)
         : "—",
     },
   ];
