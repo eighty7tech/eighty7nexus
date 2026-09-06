@@ -155,8 +155,9 @@ const withSerwist = withSerwistInit({
   swDest: "public/sw.js",
   reloadOnOnline: false,
   // Serwist does not support Turbopack (used in `next dev`).
-  // Disable the plugin in non-production environments to suppress the warning.
-  disable: process.env.NODE_ENV !== "production",
+  // It also adds significant time to production builds.
+  // We disable it by default to keep builds fast. Set ENABLE_PWA=true to bundle it.
+  disable: process.env.NODE_ENV !== "production" || process.env.ENABLE_PWA !== "true",
 });
 
 export default withSerwist(withNextIntl(nextConfig));
