@@ -98,32 +98,27 @@ export function AdminLoginClient({ storeName, logoUrl }: AdminLoginClientProps) 
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-zinc-950 p-4 relative overflow-hidden">
-      {/* Dark Secure Background */}
-      <div className="absolute inset-0 bg-[url('/noise.png')] opacity-20 mix-blend-overlay pointer-events-none" />
-      <div className="absolute -top-40 -right-40 w-96 h-96 bg-red-900/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-zinc-800/40 rounded-full blur-3xl pointer-events-none" />
-
-      <Card className="w-full max-w-md bg-zinc-900/90 border-zinc-800 text-zinc-100 shadow-2xl relative z-10 backdrop-blur-xl">
+    <div className="min-h-screen flex items-center justify-center bg-background p-4">
+      <Card className="w-full max-w-md shadow-sm">
         <CardHeader className="space-y-3 pb-6 text-center">
           <div className="flex justify-center mb-2">
             {logoUrl ? (
-              <img src={logoUrl} alt={storeName} className="h-10 w-auto object-contain brightness-0 invert" />
+              <img src={logoUrl} alt={storeName} className="h-10 w-auto object-contain" />
             ) : (
-              <div className="h-12 w-12 rounded-xl bg-zinc-800 flex items-center justify-center border border-zinc-700 shadow-inner">
-                <ShieldCheck className="h-6 w-6 text-zinc-300" />
+              <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                <ShieldCheck className="h-6 w-6 text-primary" />
               </div>
             )}
           </div>
           <CardTitle className="text-2xl font-bold tracking-tight">Admin Portal</CardTitle>
-          <CardDescription className="text-zinc-400">
+          <CardDescription>
             Sign in to access the secure administrative dashboard.
           </CardDescription>
         </CardHeader>
         <CardContent>
           {error && (
-            <div className="mb-6 p-3 rounded-md bg-red-950/50 border border-red-900/50 flex items-start gap-2 text-sm text-red-200">
-              <ShieldAlert className="h-4 w-4 shrink-0 mt-0.5 text-red-400" />
+            <div className="mb-6 p-3 rounded-md bg-destructive/15 border border-destructive/20 flex items-start gap-2 text-sm text-destructive">
+              <ShieldAlert className="h-4 w-4 shrink-0 mt-0.5 text-destructive" />
               <p>{error}</p>
             </div>
           )}
@@ -135,17 +130,16 @@ export function AdminLoginClient({ storeName, logoUrl }: AdminLoginClientProps) 
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-zinc-300">Admin Email</FormLabel>
+                    <FormLabel>Admin Email</FormLabel>
                     <FormControl>
                       <Input
                         type="email"
                         placeholder="admin@example.com"
-                        className="bg-zinc-950/50 border-zinc-700 text-zinc-100 placeholder:text-zinc-600 focus-visible:ring-zinc-600"
                         disabled={isLoading}
                         {...field}
                       />
                     </FormControl>
-                    <FormMessage className="text-red-400" />
+                    <FormMessage />
                   </FormItem>
                 )}
               />
@@ -155,24 +149,23 @@ export function AdminLoginClient({ storeName, logoUrl }: AdminLoginClientProps) 
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-zinc-300">Password</FormLabel>
+                    <FormLabel>Password</FormLabel>
                     <FormControl>
                       <Input
                         type="password"
                         placeholder="••••••••"
-                        className="bg-zinc-950/50 border-zinc-700 text-zinc-100 placeholder:text-zinc-600 focus-visible:ring-zinc-600"
                         disabled={isLoading}
                         {...field}
                       />
                     </FormControl>
-                    <FormMessage className="text-red-400" />
+                    <FormMessage />
                   </FormItem>
                 )}
               />
 
               <Button
                 type="submit"
-                className="w-full bg-zinc-100 text-zinc-900 hover:bg-white font-semibold"
+                className="w-full font-semibold"
                 disabled={isLoading}
               >
                 {isLoading ? (
@@ -187,8 +180,8 @@ export function AdminLoginClient({ storeName, logoUrl }: AdminLoginClientProps) 
             </form>
           </Form>
         </CardContent>
-        <CardFooter className="pt-2 pb-6 flex justify-center border-t border-zinc-800/50 mt-4">
-          <p className="text-xs text-zinc-500 flex items-center gap-1.5 mt-4">
+        <CardFooter className="pt-2 pb-6 flex justify-center border-t mt-4">
+          <p className="text-xs text-muted-foreground flex items-center gap-1.5 mt-4">
             <ShieldCheck className="h-3.5 w-3.5" /> Secured by 256-bit encryption
           </p>
         </CardFooter>
